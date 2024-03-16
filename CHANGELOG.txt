@@ -1,7 +1,9 @@
 [Version number]
 - Added new Artificial planet texture courtesy of Draconis13.
 - Removed unused files, assets and code.
-- US_gas_giant is now appropriately called "Ice Giant"
+- US_gas_giant is now appropriately called "Ice Giant".
+- "Desertic" planets are now called "Desert" like vanilla.
+- Fixed "a Archipelago" typo.
 
 --------------------------
 --- ORIGINAL CHANGELOG ---
