@@ -1132,7 +1132,7 @@
   },
 
   "US_desertA":{
-    "name":"Desert",
+    "name":"Desertic",
     "descriptionId":"desert",
     "aOrAn":"a",
     "tilt":20,
@@ -1169,7 +1169,7 @@
     
   },
   "US_desertB":{
-    "name":"Desert",
+    "name":"Desertic",
     "descriptionId":"desert",
     "aOrAn":"a",
     "tilt":10,
@@ -1206,7 +1206,7 @@
     
   },
   "US_desertC":{
-    "name":"Desert",
+    "name":"Desertic",
     "descriptionId":"desert",
     "aOrAn":"a",
     "tilt":15,
