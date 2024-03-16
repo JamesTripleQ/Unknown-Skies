@@ -1691,6 +1691,7 @@
   "US_water":{
     "name":"Archipelago",
     "descriptionId":"US_archipelago",
+	"aOrAn":"an",
     "tilt":-30,
     "pitch":15,
     "rotation":-3,
@@ -1735,6 +1736,7 @@
   "US_waterB":{
     "name":"Archipelago",
     "descriptionId":"US_archipelago",
+	"aOrAn":"an",
     "tilt":10,
     "pitch":15,
     "rotation":-3,

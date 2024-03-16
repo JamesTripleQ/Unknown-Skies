@@ -1,22 +1,10 @@
 {
-    "ring":{
-        "loopOne":"US_ring",
-        "musicSuppression":0.75,
-    },
-    "debris_field":{
-        "loopOne":"US_debris",
-        "musicSuppression":0.25,
-    },
-    #"asteroid_belt":{
-    #    "loopOne":"US_belt",
-    #    "musicSuppression":0.75,
-    #},
-    #"asteroid_field":{
-    #    "loopOne":"US_asteroids",
-    #    "musicSuppression":0.5,
-    #},
-    #"spatial_anomaly":{
-    #    "loopOne":"US_anomaly",
-    #    "musicSuppression":1,
-    #},
+	"ring":{
+		"loopOne":"US_ring",
+		"musicSuppression":0.75,
+	},
+	"debris_field":{
+		"loopOne":"US_debris",
+		"musicSuppression":0.25,
+	},
 }
