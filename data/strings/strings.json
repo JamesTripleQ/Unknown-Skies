@@ -1,0 +1,53 @@
+{
+	"unknownSkies":{
+		"+":"+",
+		"-":"-",
+		"%":"%",
+	
+		"artificial":"Chaotic Structures",
+		"artificial_0":"%s defense rating.",
+
+		"base":"Ancient Military Ruins",
+		"base_0":"%s ship quality if there is an active Heavy Industry or Orbital Works.",
+
+		"drone_0":"%s hazard rating (based on population size).",
+		
+		"accelerator":"Space Accelerator",
+		"accelerator_0":"%s accessibility (based on market size).",
+		
+		"magnet":"Intense Magnetic Field",
+		"magnet_0":"%s defense rating.",
+		"magnet_1":"%s population growth (based on market size).",
+		
+		"spore":"Parasitic Spore",
+		"spore_0":"Local drug demand %s.",
+		"spore_1":"nullified",
+		"spore_2":"%s population growth (based on market size).",
+		"spore_3":"%s minimal stability.",
+		"spore_4":"+5",
+		"spore_5":"%s production from all industries.",
+	
+		"landmark":"Religious Landmark",
+		"landmark_0":"%s stability.",
+		"landmark_1":"%s accessibility.",
+		"landmark_2":"%s population growth (based on market size).",
+
+		"shroom":"Xeno-fungus",
+		"shroom_0":"Local drug demand %s.",
+		"shroom_1":"nullified",
+		"shroom_2":"%s recreational drug production.",
+		"shroom_3":"%s stability.",
+
+		"storm":"Dust Storm",
+		"storm_0":"%s defense rating.",
+		"storm_1":"%s accessibility.",
+
+		"tunnel_0":"Hazard rating fixed to %s",
+		"tunnel_1":"100%",
+		"tunnel_2":"%s population growth (based on market size).",
+
+		"virus":"Lingering Virus",
+		"crystal":"Chemical Crystals",
+		"crystal_0":"%s luxury goods production.",
+	}
+}

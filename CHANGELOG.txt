@@ -1,0 +1,41 @@
+1.0
+
+[RC2] 
+- Fixed Underground Tunnels tooltip.
+- Added save patching code to re-assign the new backgrounds to existing systems. 
+ > Interestingly, this means US can be added mid-playthrough and it will add the new backgrounds.
+
+[RC1]
+
+- Reworked backgrounds: 
+   . Now includes 69 backdrops (from 27),
+   . They are somewhat more consistent in art-style and darker as to not disrupt gameplay.
+
+- Background list can be expanded through modSettings.json entries with third-party sub-mods,
+- All strings have been externalized for ease of translation,
+- Very rare planets types and conditions have been made unique, often with stronger effects. (Artificial, Magnetic and Perpetual Storm planets, Parasitic Spores, Xeno-fungus and Lingering Virus conditions),
+- Added "Chemical Crystals" uncommon condition that can show up on toxic worlds to give them *some* colonization value from time to time.
+
+0.43
+- Compatibility patch for 0.95a
+
+0.42
+- Removed 0.9a workarounds
+- All planet types have the proper conditions generated
+- Special planets in non proc-gen system now get the proper special conditions 
+
+0.41
+- Fixed effect scaling with Magnetic Crust effect
+
+0.40
+- Added two more rare planet types
+- Added rare planetary conditions
+
+0.21
+- Procgen adjustments
+
+0.20
+- Added 12 new planet types
+
+0.10
+- Initial release

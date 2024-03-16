@@ -1,0 +1,54 @@
+{
+#USED
+    "US_debris":[
+        {"file":"sounds/sfx_terrain/US_debris.ogg","pitch":1,"volume":0.2},
+    ],
+    "US_ring":[
+        {"file":"sounds/sfx_terrain/US_asteroid_ice.ogg","pitch":1,"volume":0.2},
+    ],
+
+#REFERENCED BUT UNUSED
+
+#UNUSED
+
+    #"US_anomaly":[
+    #    {"file":"sounds/sfx_terrain/US_asteroid_alien.ogg","pitch":1,"volume":0.3},
+    #],
+    #"US_asteroids":[
+    #    {"file":"sounds/sfx_terrain/US_asteroid_lava.ogg","pitch":1,"volume":0.2},
+    #],
+    #"US_belt":[
+    #    {"file":"sounds/sfx_terrain/US_asteroid_rock.ogg","pitch":1,"volume":0.2},
+    #],
+    #"US_asteroid_2":[
+    #	{"file":"sounds/sfx_terrain/US_asteroid_mine.ogg","pitch":1,"volume":0.3},
+    #],
+    #"US_unstable_field":[
+    #	{"file":"sounds/sfx_terrain/US_badlands.ogg","pitch":1,"volume":0.3},
+    #],
+    #"US_alien":[
+    #	{"file":"sounds/sfx_terrain/US_mine.ogg","pitch":1,"volume":0.3},
+    #],
+    #"US_unrest":[
+    #	{"file":"sounds/sfx_terrain/US_nebula_alien.ogg","pitch":1,"volume":0.3},
+    #],
+    #"US_gasCloud":[
+    #	{"file":"sounds/sfx_terrain/US_nebula_barrier.ogg","pitch":1,"volume":0.3},
+    #],
+    #"US_calmSeas":[
+    #	{"file":"sounds/sfx_terrain/US_nebula_crow.ogg","pitch":1,"volume":0.3},
+    #],
+    #"US_unstable_nebula":[
+    #	{"file":"sounds/sfx_terrain/US_nebula_dmatter.ogg","pitch":1,"volume":0.3},
+    #],
+    #"US_edgeOfThePrecipice":[
+    #	{"file":"sounds/sfx_terrain/US_nebula_edge.ogg","pitch":1,"volume":0.3},
+    #],
+    #"US_explosive_nebula":[
+    #	{"file":"sounds/sfx_terrain/US_nebula_walker.ogg","pitch":1,"volume":0.3},
+    #],
+}
+
+
+
+
