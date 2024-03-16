@@ -267,7 +267,8 @@
 
   "US_gas_giant":{
     "name":"Ice Giant",
-    "descriptionId":"gas_giant",
+    "descriptionId":"ice_giant",
+	"aOrAn":"an",
     "tilt":-10,
     "pitch":-15,
     "rotation":-3,
@@ -288,9 +289,9 @@
     "texture":"graphics/planets/US_planet_textureBlueGiant.jpg",
     "icon":"graphics/warroom/icon_planet.png",
     "iconColor":[
-      220,
-      180,
-      100,
+      120,
+      170,
+      210,
       255
     ],
     "isStar":false,
