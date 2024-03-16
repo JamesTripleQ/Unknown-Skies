@@ -1897,7 +1897,7 @@
 
   },
   "US_storm":{
-    "name":"Windy Arid",
+    "name":"Windswept",
     "descriptionId":"US_storm",
     "tilt":20,
     "pitch":5,

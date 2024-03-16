@@ -1,15 +1,19 @@
-[Version number]
-- Added new Artificial planet texture courtesy of Draconis13.
-- Removed unused files, assets and code.
-- US_gas_giant is now appropriately called "Ice Giant".
+1.0.1
+- Updated for 0.97a
+- Added a new Artificial planet texture courtesy of Draconis13.
+- Unique planets and conditions can no longer spawn in the Abyss.
+- Parasitic Spores can no longer rarely spawn on Magnetic worlds.
+- Planets with Military Virus will always have at least Widespread Ruins.
+- Artificial planets will always have at least Extensive Ruins.
+- US_gas_giant is now appropriately labeled as an Ice Giant.
+- Military Virus' description now mentions its stability debuff.
+- Renamed "Windy Arid" to "Windswept".
 - Fixed "a Archipelago" typo.
-- Fixed a few special conditions breaking when removed
-- Externalized Military Virus strings
-- Magnetic and spore can no longer spawn on the same planet
-- Special planets and conditions can no longer spawn in deepspace
-- change planet type is now public
-- virus planets will always have at least widespread ruins
-- artificial planets will always have at least extensive ruins
+- Fixed a few special conditions breaking if removed.
+- Externalized Military Virus strings (which for some reason weren't already).
+- Removed many unused files, assets and code.
+- The ChangePlanetType function is now public for anyone using Unknown Skies for custom systems.
+- Added a few loading tips.
 
 --------------------------
 --- ORIGINAL CHANGELOG ---
