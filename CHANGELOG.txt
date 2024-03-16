@@ -1,7 +1,11 @@
 [Version number]
-- Added new Artificial planet texture courtesy of Draconis13
+- Added new Artificial planet texture courtesy of Draconis13.
+- Removed unused files, assets and code.
+- US_gas_giant is now appropriately called "Ice Giant"
 
-ORIGINAL CHANGELOG
+--------------------------
+--- ORIGINAL CHANGELOG ---
+--------------------------
 
 1.0
 

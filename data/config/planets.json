@@ -266,7 +266,7 @@
   },
 
   "US_gas_giant":{
-    "name":"Gas Giant",
+    "name":"Ice Giant",
     "descriptionId":"gas_giant",
     "tilt":-10,
     "pitch":-15,
