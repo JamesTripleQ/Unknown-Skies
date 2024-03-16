@@ -5,6 +5,11 @@
 - Fixed "a Archipelago" typo.
 - Fixed a few special conditions breaking when removed
 - Externalized Military Virus strings
+- Magnetic and spore can no longer spawn on the same planet
+- Special planets and conditions can no longer spawn in deepspace
+- change planet type is now public
+- virus planets will always have at least widespread ruins
+- artificial planets will always have at least extensive ruins
 
 --------------------------
 --- ORIGINAL CHANGELOG ---
