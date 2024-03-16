@@ -1,3 +1,8 @@
+[Version number]
+- Added new Artificial planet texture courtesy of Draconis13
+
+ORIGINAL CHANGELOG
+
 1.0
 
 [RC2] 
