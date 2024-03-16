@@ -3,7 +3,7 @@
 		"+":"+",
 		"-":"-",
 		"%":"%",
-	
+
 		"artificial":"Chaotic Structures",
 		"artificial_0":"%s defense rating.",
 
@@ -11,14 +11,17 @@
 		"base_0":"%s ship quality if there is an active Heavy Industry or Orbital Works.",
 
 		"drone_0":"%s hazard rating (based on population size).",
-		
+
+		"crystal":"Chemical Crystals",
+		"crystal_0":"%s luxury goods production.",
+
 		"accelerator":"Space Accelerator",
 		"accelerator_0":"%s accessibility (based on market size).",
-		
+
 		"magnet":"Intense Magnetic Field",
 		"magnet_0":"%s defense rating.",
 		"magnet_1":"%s population growth (based on market size).",
-		
+
 		"spore":"Parasitic Spore",
 		"spore_0":"Local drug demand %s.",
 		"spore_1":"nullified",
@@ -26,7 +29,7 @@
 		"spore_3":"%s minimal stability.",
 		"spore_4":"+5",
 		"spore_5":"%s production from all industries.",
-	
+
 		"landmark":"Religious Landmark",
 		"landmark_0":"%s stability.",
 		"landmark_1":"%s accessibility.",
@@ -47,7 +50,9 @@
 		"tunnel_2":"%s population growth (based on market size).",
 
 		"virus":"Lingering Virus",
-		"crystal":"Chemical Crystals",
-		"crystal_0":"%s luxury goods production.",
+		"virus_0":"%s defense rating.",
+		"virus_1":"%s population growth (based on market size).",
+		"virus_2":"%s weapon production.",
+		"virus_3":"%s stability.",
 	}
 }

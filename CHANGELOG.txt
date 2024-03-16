@@ -3,6 +3,8 @@
 - Removed unused files, assets and code.
 - US_gas_giant is now appropriately called "Ice Giant".
 - Fixed "a Archipelago" typo.
+- Fixed a few special conditions breaking when removed
+- Externalized Military Virus strings
 
 --------------------------
 --- ORIGINAL CHANGELOG ---

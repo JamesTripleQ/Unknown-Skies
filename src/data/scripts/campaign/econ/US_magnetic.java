@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package data.scripts.campaign.econ;
 
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
@@ -13,26 +8,22 @@ import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+
 import static data.scripts.US_txt.txt;
 
-
 public class US_magnetic extends BaseHazardCondition implements MarketImmigrationModifier {
-
     private final float DEFENSE_BONUS = 3000;
 
     @Override
-    public void apply(String id) {        
+    public void apply(String id) {
         super.apply(id);
-        
         float mult = market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).getBonusMult();
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyFlat(id, DEFENSE_BONUS/mult, txt("magnet"));   
-        
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyFlat(id, DEFENSE_BONUS / mult, txt("magnet"));
         market.addTransientImmigrationModifier(this);
     }
 
     @Override
     public void unapply(String id) {
-
         super.unapply(id);
         market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).unmodify(id);
         market.removeTransientImmigrationModifier(this);
@@ -43,25 +34,25 @@ public class US_magnetic extends BaseHazardCondition implements MarketImmigratio
         incoming.add(Factions.POOR, 10f);
         incoming.getWeight().modifyFlat(getModId(), getThisImmigrationBonus(), Misc.ucFirst(condition.getName().toLowerCase()));
     }
-	
+
     private float getThisImmigrationBonus() {
-        return -2*market.getSize();
+        return -2 * market.getSize();
     }
-    
+
     @Override
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
         super.createTooltipAfterDescription(tooltip, expanded);
-        
+
         tooltip.addPara(
                 txt("magnet_0"),
                 10f,
                 Misc.getHighlightColor(),
-                txt("+") + (int)DEFENSE_BONUS
+                txt("+") + (int) DEFENSE_BONUS
         );
-        
+
         tooltip.addPara(
                 txt("magnet_1"),
-                10f, 
+                10f,
                 Misc.getHighlightColor(),
                 "" + (int) getThisImmigrationBonus()
         );
