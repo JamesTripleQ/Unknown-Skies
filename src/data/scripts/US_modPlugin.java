@@ -266,7 +266,7 @@ public class US_modPlugin extends BaseModPlugin {
         // Storm swap
         if (!shroomCandidates.isEmpty()) {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
-            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to STROM type.");
+            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to STORM type.");
             ChangePlanetType(planet, "US_storm");
             planet.setTypeId("US_storm");
             AddConditionIfNeeded(planet, "US_storm");
