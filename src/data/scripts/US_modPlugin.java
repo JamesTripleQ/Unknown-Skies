@@ -331,12 +331,11 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info(p + " : " + PLANET_TYPES.get(p));
             LOG.info(PLANET_TYPES.get(p) * 100 / planets + " percent");
             LOG.info(" ");
-
         }
         LOG.info(" ");
         LOG.info(planets + " planets in total.");
-        LOG.info("_______________");
 
+        LOG.info("_______________");
         LOG.info("Special Conditions:");
         LOG.info(" ");
         for (String p : SPECIAL_CONDITIONS.keySet()) {
