@@ -229,7 +229,7 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info(" ");
             countConditions("Parasitic Spores");
 
-            // Setup for magnetic planet pick
+            // Setup for future picks
             sporeCandidates.remove(planet);
         }
 
@@ -241,7 +241,7 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info(" ");
             countConditions("Psychoactive Fungus");
 
-            // Setup for storm planet pick
+            // Setup for future picks
             shroomCandidates.remove(planet);
         }
 
@@ -258,6 +258,9 @@ public class US_modPlugin extends BaseModPlugin {
             if (!planet.getMarket().hasCondition(Conditions.RUINS_EXTENSIVE) && !planet.getMarket().hasCondition(Conditions.RUINS_VAST) && !planet.getMarket().hasCondition(Conditions.RUINS_WIDESPREAD)) {
                 AddConditionIfNeeded(planet, Conditions.RUINS_EXTENSIVE);
             }
+
+            // Setup for future picks
+            virusCandidates.remove(planet);
         }
 
         // Storm swap
@@ -271,6 +274,9 @@ public class US_modPlugin extends BaseModPlugin {
             RemoveConditionIfNeeded(planet, "mild_climate");
             LOG.info(" ");
             countConditions("Perpetual Dust Storm");
+
+            // Setup for future picks
+            shroomCandidates.remove(planet);
         }
 
         // Magnetic swap
@@ -291,6 +297,9 @@ public class US_modPlugin extends BaseModPlugin {
             magField.setCircularOrbit(planet, 0, 0, 100);
             LOG.info(" ");
             countConditions("Magnetic Crust");
+
+            // Setup for future picks
+            sporeCandidates.remove(planet);
         }
 
         // Artificial swap
@@ -309,6 +318,9 @@ public class US_modPlugin extends BaseModPlugin {
             if (!planet.getMarket().hasCondition(Conditions.RUINS_EXTENSIVE) && !planet.getMarket().hasCondition(Conditions.RUINS_VAST)) {
                 AddConditionIfNeeded(planet, Conditions.RUINS_EXTENSIVE);
             }
+
+            // Setup for future picks
+            artificialCandidates.remove(planet);
         }
 
         // Print out sector content
