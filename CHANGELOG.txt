@@ -1,3 +1,6 @@
+[WIP] 1.0.2
+- AddConditionIfNeeded and RemoveConditionIfNeeded functions are now public for anyone using Unknown Skies for custom systems.
+
 1.0.1
 - Updated for 0.97a
 - Added a new Artificial planet texture courtesy of Draconis13.

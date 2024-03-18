@@ -386,7 +386,7 @@ public class US_modPlugin extends BaseModPlugin {
         }
     }
 
-    private void AddConditionIfNeeded(PlanetAPI p, String toAdd) {
+    public void AddConditionIfNeeded(PlanetAPI p, String toAdd) {
         // Check for the unwanted conditions
         boolean doIt = true;
         if (!p.getMarket().getConditions().isEmpty()) {
@@ -404,7 +404,7 @@ public class US_modPlugin extends BaseModPlugin {
         }
     }
 
-    private void RemoveConditionIfNeeded(PlanetAPI p, String toRemove) {
+    public void RemoveConditionIfNeeded(PlanetAPI p, String toRemove) {
         // Check for the unwanted conditions
         boolean doIt = false;
         if (!p.getMarket().getConditions().isEmpty()) {
