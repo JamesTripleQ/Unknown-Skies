@@ -4,7 +4,7 @@
 
 1.0.1
 - Updated for 0.97a
-- Added a new Artificial planet texture courtesy of Draconis13.
+- Added a new Artificial planet texture courtesy of Draconis13 (dev note: this change was reverted in 1.0.2).
 - Unique planets and conditions can no longer spawn in the Abyss.
 - Parasitic Spores can no longer rarely spawn on Magnetic worlds.
 - Planets with Military Virus will always have at least Widespread Ruins.
