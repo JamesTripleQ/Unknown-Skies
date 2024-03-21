@@ -1847,9 +1847,9 @@
     "texture":"graphics/planets/US_planet_textureMagnetic.jpg",
     "icon":"graphics/warroom/icon_planet.png",
     "iconColor":[
-      220,
-      200,
-      145,
+      195,
+      150,
+      120,
       255
     ],
     "isStar":false,
@@ -1883,9 +1883,9 @@
     "texture":"graphics/planets/US_planet_textureArtificial.jpg",
     "icon":"graphics/warroom/icon_planet.png",
     "iconColor":[
-      100,
-      100,
-      75,
+      150,
+      115,
+      95,
       255
     ],
     "isStar":false,
@@ -1919,9 +1919,9 @@
     "texture":"graphics/planets/US_planet_textureStorm.jpg",
     "icon":"graphics/warroom/icon_planet.png",
     "iconColor":[
-      200,
-      180,
-      105,
+      140,
+      95,
+      55,
       255
     ],
     "isStar":false,
