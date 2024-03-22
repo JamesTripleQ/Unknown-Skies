@@ -30,14 +30,14 @@ public class US_shrooms extends BaseHazardCondition {
         industry = market.getIndustry(Industries.LIGHTINDUSTRY);
         if (industry != null) {
             if (industry.isFunctional()) {
-                industry.supply(id + "_0", Commodities.DRUGS, DRUG_BONUS, txt("shroom"));
+                industry.supply(id + "_0", Commodities.DRUGS, DRUG_BONUS, condition.getName());
             } else {
                 industry.getSupply(Commodities.DRUGS).getQuantity().unmodifyFlat(id + "_0");
             }
         }
 
         // Stability debuff
-        market.getStability().modifyFlat(id, STABILITY_MALUS, txt("shroom"));
+        market.getStability().modifyFlat(id, STABILITY_MALUS, condition.getName());
     }
 
     @Override

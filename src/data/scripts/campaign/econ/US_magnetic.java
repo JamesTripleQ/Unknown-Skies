@@ -17,8 +17,7 @@ public class US_magnetic extends BaseHazardCondition implements MarketImmigratio
     @Override
     public void apply(String id) {
         super.apply(id);
-        float mult = market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).getBonusMult();
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyFlat(id, DEFENSE_BONUS / mult, txt("magnet"));
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyFlat(id, DEFENSE_BONUS, condition.getName());
         market.addTransientImmigrationModifier(this);
     }
 

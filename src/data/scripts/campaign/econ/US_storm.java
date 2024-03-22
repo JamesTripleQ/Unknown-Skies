@@ -14,8 +14,8 @@ public class US_storm extends BaseHazardCondition {
     @Override
     public void apply(String id) {
         super.apply(id);
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_BONUS, txt("storm"));
-        market.getAccessibilityMod().modifyFlat(id, -ACCESS_PENALTY / 100f, txt("storm"));
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_BONUS, condition.getName());
+        market.getAccessibilityMod().modifyFlat(id, -ACCESS_PENALTY / 100f, condition.getName());
     }
 
     @Override

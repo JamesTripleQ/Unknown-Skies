@@ -18,7 +18,7 @@ public class US_crystals extends BaseHazardCondition {
         Industry industry = market.getIndustry(Industries.LIGHTINDUSTRY);
         if (industry != null) {
             if (industry.isFunctional()) {
-                industry.supply(id + "_0", Commodities.LUXURY_GOODS, CRYSTAL_BONUS, txt("crystal"));
+                industry.supply(id + "_0", Commodities.LUXURY_GOODS, CRYSTAL_BONUS, condition.getName());
             } else {
                 industry.getSupply(Commodities.LUXURY_GOODS).getQuantity().unmodifyFlat(id + "_0");
             }

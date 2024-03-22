@@ -12,7 +12,7 @@ public class US_artificial extends BaseHazardCondition {
 
     @Override
     public void apply(String id) {
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_BONUS, txt("artificial"));
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_BONUS, condition.getName());
     }
 
     @Override

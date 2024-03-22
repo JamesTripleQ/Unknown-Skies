@@ -33,12 +33,12 @@ public class US_mind extends BaseHazardCondition implements MarketImmigrationMod
         // Reduce production
         for (Industry i : market.getIndustries()) {
             for (MutableCommodityQuantity c : i.getAllSupply()) {
-                i.getSupply(c.getCommodityId()).getQuantity().modifyFlat(id, PRODUCTION_MALUS, txt("spore"));
+                i.getSupply(c.getCommodityId()).getQuantity().modifyFlat(id, PRODUCTION_MALUS, condition.getName());
             }
         }
 
         // Stability buff
-        market.getStability().modifyFlat(id, getStabilityFloor(), txt("spore"));
+        market.getStability().modifyFlat(id, getStabilityFloor(), condition.getName());
         market.addTransientImmigrationModifier(this);
     }
 
@@ -93,7 +93,7 @@ public class US_mind extends BaseHazardCondition implements MarketImmigrationMod
                 txt("spore_2"),
                 10f,
                 Misc.getHighlightColor(),
-                txt("+") + getThisImmigrationBonus()
+                txt("+") + (int) getThisImmigrationBonus()
         );
 
         tooltip.addPara(

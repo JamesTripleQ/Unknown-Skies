@@ -16,8 +16,8 @@ public class US_religious extends BaseHazardCondition implements MarketImmigrati
 
     @Override
     public void apply(String id) {
-        market.getAccessibilityMod().modifyFlat(id, ACCESSIBILITY_BONUS / 100, txt("landmark"));
-        market.getStability().modifyFlat(id, STABILITY_BONUS, txt("landmark"));
+        market.getAccessibilityMod().modifyFlat(id, ACCESSIBILITY_BONUS / 100, condition.getName());
+        market.getStability().modifyFlat(id, STABILITY_BONUS, condition.getName());
         market.addTransientImmigrationModifier(this);
     }
 

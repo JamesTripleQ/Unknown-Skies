@@ -25,17 +25,17 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
         super.apply(id);
 
         // Defense debuff
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_MALUS, txt("virus"));
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_MALUS, condition.getName());
         // Growth debuff
         market.addTransientImmigrationModifier(this);
         // Stability debuff
-        market.getStability().modifyFlat(id, STABILITY_MALUS, txt("virus"));
+        market.getStability().modifyFlat(id, STABILITY_MALUS, condition.getName());
 
         // Raise weapon production
         Industry industry = market.getIndustry(Industries.HEAVYINDUSTRY);
         if (industry != null) {
             if (industry.isFunctional()) {
-                industry.supply(id + "_0", Commodities.HAND_WEAPONS, WEAPON_BONUS, txt("virus"));
+                industry.supply(id + "_0", Commodities.HAND_WEAPONS, WEAPON_BONUS, condition.getName());
             } else {
                 industry.getSupply(Commodities.HAND_WEAPONS).getQuantity().unmodifyFlat(id + "_0");
             }

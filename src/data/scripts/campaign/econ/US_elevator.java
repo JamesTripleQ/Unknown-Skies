@@ -12,7 +12,7 @@ public class US_elevator extends BaseHazardCondition {
 
     @Override
     public void apply(String id) {
-        market.getAccessibilityMod().modifyFlat(id, getAccessibilityBonus() / 100, txt("accelerator"));
+        market.getAccessibilityMod().modifyFlat(id, getAccessibilityBonus() / 100, condition.getName());
     }
 
     @Override
