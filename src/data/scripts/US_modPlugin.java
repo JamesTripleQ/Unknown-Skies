@@ -58,9 +58,6 @@ public class US_modPlugin extends BaseModPlugin {
         RUINS.add("decivilized", 0.5f);
     }
 
-    private final Map<String, Integer> PLANET_TYPES = new HashMap<>();
-    private final Map<String, Integer> SPECIAL_CONDITIONS = new HashMap<>();
-
     @Override
     public void onNewGame() {
         // Store mod version for save patching
@@ -105,8 +102,6 @@ public class US_modPlugin extends BaseModPlugin {
         List<PlanetAPI> virusCandidates = new ArrayList<>();
         List<PlanetAPI> artificialCandidates = new ArrayList<>();
 
-        float planets = 0;
-
         // Seed planetary conditions
         for (StarSystemAPI s : Global.getSector().getStarSystems()) {
             if (s == null) continue;
@@ -116,66 +111,14 @@ public class US_modPlugin extends BaseModPlugin {
             for (PlanetAPI p : s.getPlanets()) {
                 if (p.isStar()) continue;
 
-                // Log planet types
-                if (PLANET_TYPES.containsKey(p.getTypeId())) {
-                    PLANET_TYPES.put(p.getTypeId(), PLANET_TYPES.get(p.getTypeId()) + 1);
-                } else {
-                    PLANET_TYPES.put(p.getTypeId(), 1);
-                }
-
-                planets++;
-
-                // Log special conditions
+                // Add ruins to planets with Floating Continent
                 if (p.getMarket().hasCondition("US_floating")) {
-                    LOG.info("FLOATING CONTINENT found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
                     AddRandomConditionIfNeeded(p, RUINS.getItems(), RUINS);
-                    LOG.info(" ");
-                    countConditions("Floating Continent");
                 }
-                if (p.getMarket().hasCondition("US_religious")) {
-                    LOG.info("RELIGIOUS SITE found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
-                    LOG.info(" ");
-                    countConditions("Religious Landmark");
-                }
-                if (p.getMarket().hasCondition("US_base")) {
-                    LOG.info("MILITARY BASE found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
-                    LOG.info(" ");
-                    countConditions("Abandoned Base");
-                }
-                if (p.getMarket().hasCondition("US_crash")) {
-                    LOG.info("CRASHED DRONE found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
-                    LOG.info(" ");
-                    countConditions("Crashed Drone");
-                }
-                if (p.getMarket().hasCondition("US_virus")) {
-                    LOG.info("VIRUS found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
-                    LOG.info(" ");
-                    countConditions("Military Virus");
-                }
-                if (p.getMarket().hasCondition("US_elevator")) {
-                    LOG.info("SPACE ELEVATOR found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
-                    LOG.info(" ");
-                    countConditions("Space Elevator");
-                }
-                if (p.getMarket().hasCondition("US_shrooms")) {
-                    LOG.info("MAGIC SHROOMS found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
-                    LOG.info(" ");
-                    countConditions("Magic Shrooms");
-                }
-                if (p.getMarket().hasCondition("US_tunnels")) {
-                    LOG.info("UNDERGROUND MAZE found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
-                    LOG.info(" ");
-                    countConditions("Underground Maze");
-                }
-                if (p.getMarket().hasCondition("US_mind")) {
-                    LOG.info("PARASITIC SPORES found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
-                    LOG.info(" ");
-                    countConditions("Parasitic Spores");
-                }
-                if (p.getMarket().hasCondition("US_bedrock")) {
-                    LOG.info("ACCESSIBLE BEDROCK found on " + p.getName() + " (" + p.getTypeId() + ") in " + s.getName());
-                    LOG.info(" ");
-                    countConditions("Accessible Bedrock");
+
+                // Add irradiated to burnt planets
+                if (p.getTypeId().equals("US_burnt")) {
+                    AddConditionIfNeeded(p, Conditions.IRRADIATED);
                 }
 
                 // Find special condition candidates
@@ -198,14 +141,6 @@ public class US_modPlugin extends BaseModPlugin {
                         artificialCandidates.add(p);
                     }
                 }
-
-                // Add irradiated to burnt planets
-                if (p.getTypeId().equals("US_burnt")) {
-                    LOG.info("Adding IRRADIATED condition to " + p.getName() + " in " + s.getName());
-                    AddConditionIfNeeded(p, "irradiated");
-                    LOG.info(" ");
-                    countConditions("Irradiated Environment");
-                }
             }
         }
 
@@ -213,10 +148,8 @@ public class US_modPlugin extends BaseModPlugin {
         if (!crystalCandidates.isEmpty()) {
             for (PlanetAPI planet : crystalCandidates) {
                 if (Math.random() > 0.75f) {
-                    LOG.info("Adding CRYSTAL condition to " + planet.getName() + " in " + planet.getStarSystem().getName());
+                    LOG.info("Adding Chemical Crystals to " + planet.getName() + " in " + planet.getStarSystem().getName());
                     AddConditionIfNeeded(planet, "US_crystals");
-                    LOG.info(" ");
-                    countConditions("Chemical Crystals");
                 }
             }
         }
@@ -224,10 +157,8 @@ public class US_modPlugin extends BaseModPlugin {
         // Spore placement
         if (!sporeCandidates.isEmpty()) {
             PlanetAPI planet = sporeCandidates.get(new Random().nextInt(sporeCandidates.size()));
-            LOG.info("Adding SPORE condition to " + planet.getName() + " in " + planet.getStarSystem().getName());
+            LOG.info("Adding Parasitic Spores to " + planet.getName() + " in " + planet.getStarSystem().getName());
             AddConditionIfNeeded(planet, "US_mind");
-            LOG.info(" ");
-            countConditions("Parasitic Spores");
 
             // Setup for future picks
             sporeCandidates.remove(planet);
@@ -236,10 +167,8 @@ public class US_modPlugin extends BaseModPlugin {
         // Fungus placement
         if (!shroomCandidates.isEmpty()) {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
-            LOG.info("Adding FUNGUS condition to " + planet.getName() + " in " + planet.getStarSystem().getName());
+            LOG.info("Adding Psychoactive Fungus to " + planet.getName() + " in " + planet.getStarSystem().getName());
             AddConditionIfNeeded(planet, "US_shrooms");
-            LOG.info(" ");
-            countConditions("Psychoactive Fungus");
 
             // Setup for future picks
             shroomCandidates.remove(planet);
@@ -248,10 +177,8 @@ public class US_modPlugin extends BaseModPlugin {
         // Virus placement
         if (!virusCandidates.isEmpty()) {
             PlanetAPI planet = virusCandidates.get(new Random().nextInt(virusCandidates.size()));
-            LOG.info("Adding VIRUS condition to " + planet.getName() + " in " + planet.getStarSystem().getName());
+            LOG.info("Adding Military Virus to " + planet.getName() + " in " + planet.getStarSystem().getName());
             AddConditionIfNeeded(planet, "US_virus");
-            LOG.info(" ");
-            countConditions("Military Virus");
 
             // Add ruins if needed (at least widespread)
             RemoveConditionIfNeeded(planet, Conditions.RUINS_SCATTERED);
@@ -266,14 +193,12 @@ public class US_modPlugin extends BaseModPlugin {
         // Storm swap
         if (!shroomCandidates.isEmpty()) {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
-            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to STORM type.");
+            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
             ChangePlanetType(planet, "US_storm");
             planet.setTypeId("US_storm");
             AddConditionIfNeeded(planet, "US_storm");
             RemoveConditionIfNeeded(planet, "extreme_weather");
             RemoveConditionIfNeeded(planet, "mild_climate");
-            LOG.info(" ");
-            countConditions("Perpetual Dust Storm");
 
             // Setup for future picks
             shroomCandidates.remove(planet);
@@ -282,7 +207,7 @@ public class US_modPlugin extends BaseModPlugin {
         // Magnetic swap
         if (!sporeCandidates.isEmpty()) {
             PlanetAPI planet = sporeCandidates.get(new Random().nextInt(sporeCandidates.size()));
-            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to MAGNETIC type.");
+            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Magnetic");
             ChangePlanetType(planet, "US_magnetic");
             planet.setTypeId("US_magnetic");
             AddConditionIfNeeded(planet, "US_magnetic");
@@ -295,8 +220,6 @@ public class US_modPlugin extends BaseModPlugin {
                     0.25f, // probability to spawn aurora sequence, checked once/day when no aurora in progress
                     new Color(25, 250, 100, 150)));
             magField.setCircularOrbit(planet, 0, 0, 100);
-            LOG.info(" ");
-            countConditions("Magnetic Crust");
 
             // Setup for future picks
             sporeCandidates.remove(planet);
@@ -305,12 +228,10 @@ public class US_modPlugin extends BaseModPlugin {
         // Artificial swap
         if (!artificialCandidates.isEmpty()) {
             PlanetAPI planet = artificialCandidates.get(new Random().nextInt(artificialCandidates.size()));
-            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to ARTIFICIAL type.");
+            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Artificial");
             ChangePlanetType(planet, "US_artificial");
             planet.setTypeId("US_artificial");
             AddConditionIfNeeded(planet, "US_artificial");
-            LOG.info(" ");
-            countConditions("Artificial");
 
             // Add ruins if needed (at least extensive)
             RemoveConditionIfNeeded(planet, Conditions.RUINS_SCATTERED);
@@ -322,27 +243,6 @@ public class US_modPlugin extends BaseModPlugin {
             // Setup for future picks
             artificialCandidates.remove(planet);
         }
-
-        // Print out sector content
-        LOG.info("_______________");
-        LOG.info("PLANET TYPES:");
-        LOG.info(" ");
-        for (String p : PLANET_TYPES.keySet()) {
-            LOG.info(p + " : " + PLANET_TYPES.get(p));
-            LOG.info(PLANET_TYPES.get(p) * 100 / planets + " percent");
-            LOG.info(" ");
-        }
-        LOG.info(" ");
-        LOG.info(planets + " planets in total.");
-
-        LOG.info("_______________");
-        LOG.info("Special Conditions:");
-        LOG.info(" ");
-        for (String p : SPECIAL_CONDITIONS.keySet()) {
-            LOG.info(p + " : " + SPECIAL_CONDITIONS.get(p));
-            LOG.info(" ");
-        }
-        LOG.info("_______________");
 
         // Cleanup
         BG_YOUNG.clear();
@@ -356,16 +256,6 @@ public class US_modPlugin extends BaseModPlugin {
         SHROOM_LIST.clear();
         VIRUS_LIST.clear();
         ARTIFICIAL_LIST.clear();
-        PLANET_TYPES.clear();
-        SPECIAL_CONDITIONS.clear();
-    }
-
-    private void countConditions(String condition) {
-        if (SPECIAL_CONDITIONS.containsKey(condition)) {
-            SPECIAL_CONDITIONS.put(condition, SPECIAL_CONDITIONS.get(condition) + 1);
-        } else {
-            SPECIAL_CONDITIONS.put(condition, 1);
-        }
     }
 
     private void AddRandomConditionIfNeeded(PlanetAPI p, List<String> toCheck, WeightedRandomPicker<String> picker) {
