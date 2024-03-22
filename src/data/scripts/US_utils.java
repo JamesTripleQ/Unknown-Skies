@@ -15,6 +15,7 @@ import java.util.*;
 
 import static data.scripts.US_modPlugin.LOG;
 
+@SuppressWarnings("unused")
 public class US_utils {
 
     /*------------------

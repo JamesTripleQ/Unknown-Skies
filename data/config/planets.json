@@ -41,7 +41,6 @@
       0,
       10
     ],
-    
   },
   "US_star_yellow":{
     "name":"Yellow Star",
@@ -1135,7 +1134,6 @@
   "US_desertA":{
     "name":"Desertic",
     "descriptionId":"desert",
-    "aOrAn":"a",
     "tilt":20,
     "pitch":0,
     "rotation":-3,
@@ -1167,12 +1165,10 @@
       -3,
       8
     ],
-    
   },
   "US_desertB":{
     "name":"Desertic",
     "descriptionId":"desert",
-    "aOrAn":"a",
     "tilt":10,
     "pitch":0,
     "rotation":-3,
@@ -1204,12 +1200,10 @@
       -3,
       8
     ],
-    
   },
   "US_desertC":{
     "name":"Desertic",
     "descriptionId":"desert",
-    "aOrAn":"a",
     "tilt":15,
     "pitch":0,
     "rotation":-3,
@@ -1241,7 +1235,6 @@
       -3,
       8
     ],
-    
   },
 
   "US_red":{
@@ -1378,7 +1371,7 @@
 
   },
   "US_arid":{
-    "name":"Unstable Arid",
+    "name":"Arid Unstable",
     "aOrAn":"an",
     "tilt":30,
     "pitch":0,
@@ -1423,8 +1416,7 @@
   },
 
   "US_crimson":{
-    "name":"Bombarded Lifeless",
-    "aOrAn":"an",
+    "name":"Lifeless-Bombarded",
     "tilt":30,
     "pitch":0,
     "rotation":-3,
@@ -1469,7 +1461,6 @@
 
   "US_lifeless":{
     "name":"Lifeless",
-    "aOrAn":"a",
     "tilt":15,
     "pitch":2,
     "rotation":-2,
@@ -1558,7 +1549,6 @@
   "US_jungle":{
     "name":"Jungle",
     "descriptionId":"jungle",
-    "aOrAn":"a",
     "tilt":15,
     "pitch":0,
     "rotation":-3,
@@ -1781,7 +1771,6 @@
 
   "US_continent":{
     "name":"Continental",
-    "aOrAn":"a",
     "tilt":15,
     "pitch":5,
     "rotation":-2,
@@ -1899,6 +1888,7 @@
   "US_storm":{
     "name":"Windswept",
     "descriptionId":"US_storm",
+	"aOrAn":"a",
     "tilt":20,
     "pitch":5,
     "rotation":-2,

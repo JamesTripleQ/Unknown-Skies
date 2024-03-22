@@ -1,4 +1,7 @@
 [WIP] 1.0.2
+- Renamed Unstable Arid to Arid Unstable
+- Renamed Bombarded Lifeless to Lifeless-Bombarded
+- Massive internal refactoring
 - Reverted back to the original Artificial texture due to the new one sadly not scaling well on larger worlds (a fixed version might be re-added in the future).
 - Updated icon colors for unique planets.
 - AddConditionIfNeeded and RemoveConditionIfNeeded functions are now public for anyone using Unknown Skies for custom systems.
