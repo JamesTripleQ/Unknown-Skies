@@ -12,7 +12,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_txt.txt;
+import static data.scripts.US_utils.txt;
 
 public class US_mind extends BaseHazardCondition implements MarketImmigrationModifier {
     private final int PRODUCTION_MALUS = -1;

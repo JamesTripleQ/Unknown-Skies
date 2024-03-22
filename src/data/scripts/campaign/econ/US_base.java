@@ -10,7 +10,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Stats;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_txt.txt;
+import static data.scripts.US_utils.txt;
 
 public class US_base extends BaseHazardCondition {
     private final float PRODUCTION_BONUS = 0.25f;

@@ -12,7 +12,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_txt.txt;
+import static data.scripts.US_utils.txt;
 
 public class US_virus extends BaseHazardCondition implements MarketImmigrationModifier {
     private final float DEFENSE_MALUS = 0.25f;
