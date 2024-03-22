@@ -108,6 +108,7 @@ public class US_utils {
                 break;
             }
         }
+        planet.setTypeId(newType);
         planet.applySpecChanges();
     }
 

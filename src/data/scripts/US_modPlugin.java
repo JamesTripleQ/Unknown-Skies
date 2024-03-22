@@ -110,7 +110,7 @@ public class US_modPlugin extends BaseModPlugin {
                     addRandomConditionIfNeeded(p, RUINS.getItems(), RUINS);
                 }
 
-                // Add irradiated to burnt planets
+                // Add Irradiated to Burnt planets
                 if (p.getTypeId().equals("US_burnt")) {
                     addConditionIfNeeded(p, Conditions.IRRADIATED);
                 }
@@ -189,7 +189,6 @@ public class US_modPlugin extends BaseModPlugin {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
             changePlanetType(planet, "US_storm");
-            planet.setTypeId("US_storm");
             addConditionIfNeeded(planet, "US_storm");
             removeConditionIfNeeded(planet, "extreme_weather");
             removeConditionIfNeeded(planet, "mild_climate");
@@ -203,16 +202,20 @@ public class US_modPlugin extends BaseModPlugin {
             PlanetAPI planet = sporeCandidates.get(new Random().nextInt(sporeCandidates.size()));
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Magnetic");
             changePlanetType(planet, "US_magnetic");
-            planet.setTypeId("US_magnetic");
             addConditionIfNeeded(planet, "US_magnetic");
-            SectorEntityToken magField = planet.getStarSystem().addTerrain(Terrain.MAGNETIC_FIELD, new MagneticFieldTerrainPlugin.MagneticFieldParams(80, // terrain effect band width
-                    planet.getRadius() + 50, // terrain effect middle radius
-                    planet, // entity that it's around
-                    planet.getRadius(), // visual band start
-                    planet.getRadius() + 110, // visual band end
-                    new Color(50, 175, 200, 100), // base color
-                    0.25f, // probability to spawn aurora sequence, checked once/day when no aurora in progress
-                    new Color(25, 250, 100, 150)));
+            SectorEntityToken magField = planet.getStarSystem().addTerrain(
+                    Terrain.MAGNETIC_FIELD,
+                    new MagneticFieldTerrainPlugin.MagneticFieldParams(
+                            80,
+                            planet.getRadius() + 50,
+                            planet,
+                            planet.getRadius(),
+                            planet.getRadius() + 110,
+                            new Color(50, 175, 200, 100),
+                            0.25f,
+                            new Color(25, 250, 100, 150)
+                    )
+            );
             magField.setCircularOrbit(planet, 0, 0, 100);
 
             // Setup for future picks
@@ -224,7 +227,6 @@ public class US_modPlugin extends BaseModPlugin {
             PlanetAPI planet = artificialCandidates.get(new Random().nextInt(artificialCandidates.size()));
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Artificial");
             changePlanetType(planet, "US_artificial");
-            planet.setTypeId("US_artificial");
             addConditionIfNeeded(planet, "US_artificial");
 
             // Add ruins if needed (at least extensive)
