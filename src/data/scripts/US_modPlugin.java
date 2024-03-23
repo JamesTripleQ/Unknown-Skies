@@ -115,24 +115,23 @@ public class US_modPlugin extends BaseModPlugin {
                     addConditionIfNeeded(p, Conditions.IRRADIATED);
                 }
 
-                // Find special condition candidates
+                // Find Chemical Crystals candidates
                 if (CRYSTAL_LIST.contains(p.getTypeId())) {
                     crystalCandidates.add(p);
-                } else if (SPORE_LIST.contains(p.getTypeId())) {
-                    if (!p.getStarSystem().isDeepSpace()) {
+                }
+
+                // Find unique condition candidates
+                if (!p.getStarSystem().isDeepSpace() && !p.hasCondition(Conditions.SOLAR_ARRAY)) {
+                    if (SPORE_LIST.contains(p.getTypeId())) {
                         sporeCandidates.add(p);
-                    }
-                } else if (SHROOM_LIST.contains(p.getTypeId())) {
-                    if (!p.getStarSystem().isDeepSpace()) {
+                    } else if (SHROOM_LIST.contains(p.getTypeId())) {
                         shroomCandidates.add(p);
-                    }
-                } else if (VIRUS_LIST.contains(p.getTypeId())) {
-                    if (!p.getStarSystem().isDeepSpace()) {
+                    } else if (VIRUS_LIST.contains(p.getTypeId())) {
                         virusCandidates.add(p);
-                    }
-                } else if (ARTIFICIAL_LIST.contains(p.getTypeId())) {
-                    if ((p.getStarSystem().hasTag(Tags.THEME_DERELICT) || p.getStarSystem().hasTag(Tags.THEME_RUINS)) && !p.getStarSystem().isDeepSpace()) {
-                        artificialCandidates.add(p);
+                    } else if (ARTIFICIAL_LIST.contains(p.getTypeId())) {
+                        if (p.getStarSystem().hasTag(Tags.THEME_DERELICT) || p.getStarSystem().hasTag(Tags.THEME_RUINS) || p.hasTag(Tags.HAS_CORONAL_TAP)) {
+                            artificialCandidates.add(p);
+                        }
                     }
                 }
             }

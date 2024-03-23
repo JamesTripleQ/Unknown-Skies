@@ -1,4 +1,6 @@
 [WIP] 1.0.2
+- unqiue planets and conditions can no longer spawn on the solar array planet
+- artificial worlds can now spawn in coronal tap system regardless if it has ruins/derelicts
 - Magnetic Crust now properly applies a flat defense buff
 - Tweaked some condition text
 - Renamed Unstable Arid to Arid Unstable
