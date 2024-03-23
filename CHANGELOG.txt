@@ -1,3 +1,6 @@
+[WIP] 1.1.0
+- fixed a bug that prevented the us orange star from spawnin (how long has that been there?)
+
 1.0.2
 - Reverted back to the original Artificial texture due to the new one not scaling well on larger planets.
 - Magnetic Crust now properly applies its flat defense buff.
