@@ -1,18 +1,17 @@
-[WIP] 1.0.2
-- unqiue planets and conditions can no longer spawn on the solar array planet
-- artificial worlds can now spawn in coronal tap system regardless if it has ruins/derelicts
-- Magnetic Crust now properly applies a flat defense buff
-- Tweaked some condition text
-- Renamed Unstable Arid to Arid Unstable
-- Renamed Bombarded Lifeless to Lifeless-Bombarded
-- Massive internal refactoring
-- Reverted back to the original Artificial texture due to the new one sadly not scaling well on larger worlds (a fixed version might be re-added in the future).
+1.0.2
+- Reverted back to the original Artificial texture due to the new one not scaling well on larger planets.
+- Magnetic Crust now properly applies its flat defense buff.
+- Unique planets and conditions can no longer spawn on the solar array planet.
+- Artificial worlds can now spawn in Hypershunt systems regardless if they have ruins or derelicts.
+- Renamed "Unstable Arid" to "Arid Unstable" and "Bombarded Lifeless" to "Lifeless-Bombarded" for better vanilla consistency.
 - Updated icon colors for unique planets.
-- AddConditionIfNeeded and RemoveConditionIfNeeded functions are now public for anyone using Unknown Skies for custom systems.
+- Tweaked some condition text.
+- addConditionIfNeeded and removeConditionIfNeeded functions are now public for anyone using Unknown Skies for custom systems.
+- Massive internal refactoring.
 
 1.0.1
 - Updated for 0.97a
-- Added a new Artificial planet texture courtesy of Draconis13 (dev note: this change was reverted in 1.0.2).
+- Added a new Artificial planet texture courtesy of Draconis13.
 - Unique planets and conditions can no longer spawn in the Abyss.
 - Parasitic Spores can no longer rarely spawn on Magnetic worlds.
 - Planets with Military Virus will always have at least Widespread Ruins.
@@ -24,7 +23,7 @@
 - Fixed a few special conditions breaking if removed.
 - Externalized Military Virus strings (which for some reason weren't already).
 - Removed many unused files, assets and code.
-- The ChangePlanetType function is now public for anyone using Unknown Skies for custom systems.
+- The changePlanetType function is now public for anyone using Unknown Skies for custom systems.
 - Added a few loading tips.
 
 --------------------------
