@@ -15,7 +15,7 @@ import com.fs.starfarer.api.util.Misc;
 import static data.scripts.US_utils.txt;
 
 public class US_virus extends BaseHazardCondition implements MarketImmigrationModifier {
-    private final float DEFENSE_MALUS = 0.25f;
+    private final float DEFENSE_MALUS = 0.5f;
     private final int WEAPON_BONUS = 3;
     private final float STABILITY_MALUS = -2f;
     private final float IMMIGRATION_MALUS = -3f;
@@ -23,7 +23,6 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
     @Override
     public void apply(String id) {
         super.apply(id);
-
         // Defense debuff
         market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_MALUS, condition.getName());
         // Growth debuff
@@ -40,6 +39,15 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
                 industry.getSupply(Commodities.HAND_WEAPONS).getQuantity().unmodifyFlat(id + "_0");
             }
         }
+
+        industry = market.getIndustry(Industries.ORBITALWORKS);
+        if (industry != null) {
+            if (industry.isFunctional()) {
+                industry.supply(id + "_0", Commodities.HAND_WEAPONS, WEAPON_BONUS, condition.getName());
+            } else {
+                industry.getSupply(Commodities.HAND_WEAPONS).getQuantity().unmodifyFlat(id + "_0");
+            }
+        }
     }
 
     @Override
@@ -48,7 +56,13 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
         market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).unmodify(id);
         market.removeTransientImmigrationModifier(this);
         market.getStability().unmodify(id);
+
         Industry industry = market.getIndustry(Industries.HEAVYINDUSTRY);
+        if (industry != null) {
+            industry.getSupply(Commodities.HAND_WEAPONS).getQuantity().unmodifyFlat(id + "_0");
+        }
+
+        industry = market.getIndustry(Industries.ORBITALWORKS);
         if (industry != null) {
             industry.getSupply(Commodities.HAND_WEAPONS).getQuantity().unmodifyFlat(id + "_0");
         }
