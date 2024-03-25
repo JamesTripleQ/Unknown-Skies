@@ -1,7 +1,8 @@
-[WIP] 1.0.4
-- Military Virus now works on orbital works
-- mention religious is based on luddics
-- reduced defense debuff to -50% from -75%
+1.0.4
+- Reduced the defense debuff from Military Virus to -50% (was -75%).
+- Fixed Military Virus' production buff not applying to Orbital Works.
+- Minor text change to Ancient Religious Landmark to specify that it involves Luddic immigrants.
+
 
 1.0.3
 - Fixed a major bug that prevented the US_star_orange from spawning.
