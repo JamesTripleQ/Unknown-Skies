@@ -1,6 +1,5 @@
-[WIP 1.0.5]
-- fixed bug which caused water worlds to not have acquiculture
-- added a rather important tooltip for water worlds
+1.0.5
+- Fixed an issue present in the original mod which caused Archipelago worlds to not be able to build aquaculture.
 
 1.0.4
 - Reduced the defense debuff from Military Virus to -50% (was -75%).
