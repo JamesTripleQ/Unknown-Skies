@@ -70,14 +70,14 @@ public class US_modPlugin extends BaseModPlugin {
                 }
             }
         }
+
+        // Set aquaculture planets
+        Farming.AQUA_PLANETS.add("US_water");
+        Farming.AQUA_PLANETS.add("US_waterB");
     }
 
     @Override
     public void onNewGameAfterProcGen() {
-        // Set aquaculture planets
-        Farming.AQUA_PLANETS.add("US_water");
-        Farming.AQUA_PLANETS.add("US_waterB");
-
         // Read the background list
         if (BG_YOUNG.isEmpty()) {
             getData();
