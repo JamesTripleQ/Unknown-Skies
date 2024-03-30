@@ -8,7 +8,7 @@
 		"artificial_0":"%s ground defense strength",
 
 		"base":"Pre-Collapse military base",
-		"base_0":"%s factionwide ship quality (Heavy Industry)",
+		"base_0":"%s factionwide ship quality (Heavy Industry & Orbital Works)",
 
 		"drone_0":"%s hazard rating (based on market size)",
 
@@ -52,7 +52,7 @@
 		"virus":"Military virus",
 		"virus_0":"%s ground defense strength",
 		"virus_1":"%s population growth (based on market size)",
-		"virus_2":"%s heavy armament production (Heavy Industry)",
+		"virus_2":"%s heavy armament production (Heavy Industry & Orbital Works)",
 		"virus_3":"%s stability"
 	}
 }

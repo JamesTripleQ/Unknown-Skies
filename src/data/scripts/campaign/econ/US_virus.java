@@ -93,8 +93,6 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
                 "" + (int) getThisImmigrationBonus()
         );
 
-
-
         tooltip.addPara(
                 txt("virus_2"),
                 10f,
