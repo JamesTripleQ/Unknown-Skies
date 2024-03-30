@@ -1,9 +1,9 @@
-[WIP 1.0.6]
-- redid most desc
-- fixed crash applying its buff twice
-- fixed elevator not scaling with market size
-- added some better scaling to runnels
-- fungus now only buffs drug production on free port
+1.0.6
+- Rewrote most condition effects to be more in line with vanilla.
+- Increased Underground Network scaling (was -3/4/5/6, now -6/8/10/12).
+- Fixed Old Space Accelerator not properly scaling with market size (was +50/49/48/47, now +50/40/30/20).
+- Psychoactive Fungus now only provides its drug production buff on planets with free port.
+- Fixed Crashed Terraforming Drone showing an additional hazard reduction as its effect.
 
 1.0.5
 - Fixed an issue present in the original mod which caused Archipelago worlds to not be able to build aquaculture.
