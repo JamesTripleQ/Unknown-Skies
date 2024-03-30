@@ -2,6 +2,7 @@ package data.scripts.campaign.econ;
 
 import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.impl.campaign.ids.Strings;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
@@ -14,8 +15,8 @@ public class US_storm extends BaseHazardCondition {
     @Override
     public void apply(String id) {
         super.apply(id);
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_BONUS, condition.getName());
-        market.getAccessibilityMod().modifyFlat(id, -ACCESS_PENALTY / 100f, condition.getName());
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_BONUS, txt("storm"));
+        market.getAccessibilityMod().modifyFlat(id, -ACCESS_PENALTY / 100f, txt("storm"));
     }
 
     @Override
@@ -30,17 +31,17 @@ public class US_storm extends BaseHazardCondition {
         super.createTooltipAfterDescription(tooltip, expanded);
 
         tooltip.addPara(
-                txt("storm_0"),
-                10f,
-                Misc.getHighlightColor(),
-                txt("+") + (int) ((DEFENSE_BONUS - 1) * 100) + txt("%")
-        );
-
-        tooltip.addPara(
                 txt("storm_1"),
                 10f,
                 Misc.getHighlightColor(),
                 txt("-") + (int) ACCESS_PENALTY + txt("%")
+        );
+
+        tooltip.addPara(
+                txt("storm_0"),
+                10f,
+                Misc.getHighlightColor(),
+                Strings.X + DEFENSE_BONUS + ""
         );
     }
 }

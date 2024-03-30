@@ -6,7 +6,7 @@ US_tunnels,special,5,35,,TRUE,16,,"ore_sparse,ore_moderate,rare_ore_sparse,rare_
 US_religious,special,5,35,0,TRUE,16,,"ruins_scattered, ruins_widespread, ruins_extensive, ruins_vast",,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,,2,2,2,2,2,,,,,,,,,,,,,,,,
 US_elevator,special,5,35,0,TRUE,16,,"ruins_scattered, ruins_widespread, farmland_poor, farmland_adequate, farmland_rich, farmland_bountiful","meteor_impacts, high_gravity, ruins_extensive, ruins_vast",0,0,0,0,0,0,0,0,0,2,0,0,2,2,2,,2,0,2,2,2,,,,,,,,,,,,,,,,
 US_floating,special,5,35,-0.5,TRUE,16,,,,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-US_crash,special,5,35,-0.5,TRUE,16,,"cold,very_cold,hot,very_hot,no_atmosphere,thin_atmosphere,toxic_atmosphere,dense_atmosphere,extreme_weather,irradiated",mild_climate,,1,1,1,1,1,1,1,1,1,1,1,,,,,,,1,1,1,,,,,,,,,,,,,,,,
+US_crash,special,5,35,0,TRUE,16,,"cold,very_cold,hot,very_hot,no_atmosphere,thin_atmosphere,toxic_atmosphere,dense_atmosphere,extreme_weather,irradiated",mild_climate,,1,1,1,1,1,1,1,1,1,1,1,,,,,,,1,1,1,,,,,,,,,,,,,,,,
 US_base,special,5,35,0,TRUE,16,,"ruins_scattered, ruins_widespread, ruins_extensive, ruins_vast",,0,0,0,0,0,0,0,0,0,2,0,0,2,2,2,,2,0,2,2,2,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Hand-placed condition,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

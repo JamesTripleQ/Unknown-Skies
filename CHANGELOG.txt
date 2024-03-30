@@ -1,3 +1,10 @@
+[WIP 1.0.6]
+- redid most desc
+- fixed crash applying its buff twice
+- fixed elevator not scaling with market size
+- added some better scaling to runnels
+- fungus now only buffs drug production on free port
+
 1.0.5
 - Fixed an issue present in the original mod which caused Archipelago worlds to not be able to build aquaculture.
 

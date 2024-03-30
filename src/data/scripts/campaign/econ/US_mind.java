@@ -33,12 +33,12 @@ public class US_mind extends BaseHazardCondition implements MarketImmigrationMod
         // Reduce production
         for (Industry i : market.getIndustries()) {
             for (MutableCommodityQuantity c : i.getAllSupply()) {
-                i.getSupply(c.getCommodityId()).getQuantity().modifyFlat(id, PRODUCTION_MALUS, condition.getName());
+                i.getSupply(c.getCommodityId()).getQuantity().modifyFlat(id, PRODUCTION_MALUS, txt("spore"));
             }
         }
 
         // Stability buff
-        market.getStability().modifyFlat(id, getStabilityFloor(), condition.getName());
+        market.getStability().modifyFlat(id, getStabilityFloor(), txt("spore"));
         market.addTransientImmigrationModifier(this);
     }
 
@@ -83,10 +83,10 @@ public class US_mind extends BaseHazardCondition implements MarketImmigrationMod
         super.createTooltipAfterDescription(tooltip, expanded);
 
         tooltip.addPara(
-                txt("spore_0"),
+                txt("spore_3"),
                 10f,
                 Misc.getHighlightColor(),
-                txt("spore_1")
+                txt("spore_4")
         );
 
         tooltip.addPara(
@@ -97,17 +97,17 @@ public class US_mind extends BaseHazardCondition implements MarketImmigrationMod
         );
 
         tooltip.addPara(
-                txt("spore_3"),
-                10f,
-                Misc.getHighlightColor(),
-                txt("spore_4")
-        );
-
-        tooltip.addPara(
                 txt("spore_5"),
                 10f,
                 Misc.getHighlightColor(),
                 "" + PRODUCTION_MALUS
+        );
+
+        tooltip.addPara(
+                txt("spore_0"),
+                10f,
+                Misc.getHighlightColor(),
+                txt("spore_1")
         );
     }
 }

@@ -29,15 +29,15 @@ public class US_shrooms extends BaseHazardCondition {
         // Raise drug production
         industry = market.getIndustry(Industries.LIGHTINDUSTRY);
         if (industry != null) {
-            if (industry.isFunctional()) {
-                industry.supply(id + "_0", Commodities.DRUGS, DRUG_BONUS, condition.getName());
+            if (industry.isFunctional() && market.isFreePort()) {
+                industry.supply(id + "_0", Commodities.DRUGS, DRUG_BONUS, txt("shroom"));
             } else {
                 industry.getSupply(Commodities.DRUGS).getQuantity().unmodifyFlat(id + "_0");
             }
         }
 
         // Stability debuff
-        market.getStability().modifyFlat(id, STABILITY_MALUS, condition.getName());
+        market.getStability().modifyFlat(id, STABILITY_MALUS, txt("shroom"));
     }
 
     @Override
@@ -65,10 +65,10 @@ public class US_shrooms extends BaseHazardCondition {
         super.createTooltipAfterDescription(tooltip, expanded);
 
         tooltip.addPara(
-                txt("shroom_0"),
+                txt("shroom_3"),
                 10f,
                 Misc.getHighlightColor(),
-                txt("shroom_1")
+                "" + (int) STABILITY_MALUS
         );
 
         tooltip.addPara(
@@ -79,10 +79,10 @@ public class US_shrooms extends BaseHazardCondition {
         );
 
         tooltip.addPara(
-                txt("shroom_3"),
+                txt("shroom_0"),
                 10f,
                 Misc.getHighlightColor(),
-                "" + (int) STABILITY_MALUS
+                txt("shroom_1")
         );
     }
 }

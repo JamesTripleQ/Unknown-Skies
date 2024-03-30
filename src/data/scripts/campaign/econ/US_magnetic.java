@@ -17,7 +17,7 @@ public class US_magnetic extends BaseHazardCondition implements MarketImmigratio
     @Override
     public void apply(String id) {
         super.apply(id);
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyFlat(id, DEFENSE_BONUS, condition.getName());
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyFlat(id, DEFENSE_BONUS, txt("magnet"));
         market.addTransientImmigrationModifier(this);
     }
 
@@ -43,17 +43,17 @@ public class US_magnetic extends BaseHazardCondition implements MarketImmigratio
         super.createTooltipAfterDescription(tooltip, expanded);
 
         tooltip.addPara(
-                txt("magnet_0"),
-                10f,
-                Misc.getHighlightColor(),
-                txt("+") + (int) DEFENSE_BONUS
-        );
-
-        tooltip.addPara(
                 txt("magnet_1"),
                 10f,
                 Misc.getHighlightColor(),
                 "" + (int) getThisImmigrationBonus()
+        );
+
+        tooltip.addPara(
+                txt("magnet_0"),
+                10f,
+                Misc.getHighlightColor(),
+                txt("+") + (int) DEFENSE_BONUS
         );
     }
 }

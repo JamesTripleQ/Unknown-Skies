@@ -33,7 +33,7 @@ public class US_tunnels extends BaseHazardCondition implements MarketImmigration
     }
 
     private float getThisImmigrationBonus() {
-        return -market.getSize();
+        return -(market.getSize() * 2);
     }
 
     private float getHazardBonus() {
@@ -50,6 +50,7 @@ public class US_tunnels extends BaseHazardCondition implements MarketImmigration
                 Misc.getHighlightColor(),
                 txt("tunnel_1")
         );
+
         tooltip.addPara(
                 txt("tunnel_2"),
                 10f,

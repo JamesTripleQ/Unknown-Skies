@@ -60,7 +60,7 @@ public class US_base extends BaseHazardCondition {
 
     private void modifyAllFactionMarkets(String id, FactionAPI faction) {
         for (MarketAPI thisMarket : Misc.getFactionMarkets(faction)) {
-            thisMarket.getStats().getDynamic().getMod(Stats.PRODUCTION_QUALITY_MOD).modifyFlat(id, PRODUCTION_BONUS, condition.getName());
+            thisMarket.getStats().getDynamic().getMod(Stats.PRODUCTION_QUALITY_MOD).modifyFlat(id, PRODUCTION_BONUS, txt("base"));
             super.apply(id);
         }
     }

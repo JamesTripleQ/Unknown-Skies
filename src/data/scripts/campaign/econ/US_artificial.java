@@ -2,6 +2,7 @@ package data.scripts.campaign.econ;
 
 import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.impl.campaign.ids.Strings;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
@@ -12,7 +13,7 @@ public class US_artificial extends BaseHazardCondition {
 
     @Override
     public void apply(String id) {
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_BONUS, condition.getName());
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_BONUS, txt("artificial"));
     }
 
     @Override
@@ -28,7 +29,7 @@ public class US_artificial extends BaseHazardCondition {
                 txt("artificial_0"),
                 10f,
                 Misc.getHighlightColor(),
-                txt("+") + (int) ((DEFENSE_BONUS - 1) * 100) + txt("%")
+                Strings.X + DEFENSE_BONUS + ""
         );
     }
 }

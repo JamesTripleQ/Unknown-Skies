@@ -4,10 +4,7 @@ import com.fs.starfarer.api.campaign.econ.Industry;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
-import com.fs.starfarer.api.impl.campaign.ids.Commodities;
-import com.fs.starfarer.api.impl.campaign.ids.Factions;
-import com.fs.starfarer.api.impl.campaign.ids.Industries;
-import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -24,17 +21,17 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
     public void apply(String id) {
         super.apply(id);
         // Defense debuff
-        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_MALUS, condition.getName());
+        market.getStats().getDynamic().getMod(Stats.GROUND_DEFENSES_MOD).modifyMult(id, DEFENSE_MALUS, txt("virus"));
         // Growth debuff
         market.addTransientImmigrationModifier(this);
         // Stability debuff
-        market.getStability().modifyFlat(id, STABILITY_MALUS, condition.getName());
+        market.getStability().modifyFlat(id, STABILITY_MALUS, txt("virus"));
 
         // Raise weapon production
         Industry industry = market.getIndustry(Industries.HEAVYINDUSTRY);
         if (industry != null) {
             if (industry.isFunctional()) {
-                industry.supply(id + "_0", Commodities.HAND_WEAPONS, WEAPON_BONUS, condition.getName());
+                industry.supply(id + "_0", Commodities.HAND_WEAPONS, WEAPON_BONUS, txt("virus"));
             } else {
                 industry.getSupply(Commodities.HAND_WEAPONS).getQuantity().unmodifyFlat(id + "_0");
             }
@@ -43,7 +40,7 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
         industry = market.getIndustry(Industries.ORBITALWORKS);
         if (industry != null) {
             if (industry.isFunctional()) {
-                industry.supply(id + "_0", Commodities.HAND_WEAPONS, WEAPON_BONUS, condition.getName());
+                industry.supply(id + "_0", Commodities.HAND_WEAPONS, WEAPON_BONUS, txt("virus"));
             } else {
                 industry.getSupply(Commodities.HAND_WEAPONS).getQuantity().unmodifyFlat(id + "_0");
             }
@@ -81,29 +78,35 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
     @Override
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
         super.createTooltipAfterDescription(tooltip, expanded);
+
         tooltip.addPara(
-                txt("virus_0"),
+                txt("virus_3"),
                 10f,
                 Misc.getHighlightColor(),
-                "" + (int) ((DEFENSE_MALUS - 1) * 100) + "%"
+                "" + (int) STABILITY_MALUS
         );
+
         tooltip.addPara(
                 txt("virus_1"),
                 10f,
                 Misc.getHighlightColor(),
                 "" + (int) getThisImmigrationBonus()
         );
+
+
+
         tooltip.addPara(
                 txt("virus_2"),
                 10f,
                 Misc.getHighlightColor(),
                 txt("+") + WEAPON_BONUS
         );
+
         tooltip.addPara(
-                txt("virus_3"),
+                txt("virus_0"),
                 10f,
                 Misc.getHighlightColor(),
-                "" + (int) STABILITY_MALUS
+                Strings.X + DEFENSE_MALUS + ""
         );
     }
 }

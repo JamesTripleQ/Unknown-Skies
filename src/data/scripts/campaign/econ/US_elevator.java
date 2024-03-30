@@ -12,7 +12,7 @@ public class US_elevator extends BaseHazardCondition {
 
     @Override
     public void apply(String id) {
-        market.getAccessibilityMod().modifyFlat(id, getAccessibilityBonus() / 100, condition.getName());
+        market.getAccessibilityMod().modifyFlat(id, getAccessibilityBonus() / 100, txt("accelerator"));
     }
 
     @Override
@@ -21,7 +21,7 @@ public class US_elevator extends BaseHazardCondition {
     }
 
     private float getAccessibilityBonus() {
-        return Math.max(0, ACCESSIBILITY_BONUS - (Math.max(0, market.getSize() - 3)));
+        return Math.max(0, ACCESSIBILITY_BONUS - (Math.max(0, market.getSize() - 3) * 10));
     }
 
     @Override
@@ -32,7 +32,7 @@ public class US_elevator extends BaseHazardCondition {
                 txt("accelerator_0"),
                 10f,
                 Misc.getHighlightColor(),
-                txt("+") + (int) ACCESSIBILITY_BONUS + txt("%")
+                txt("+") + (int) getAccessibilityBonus() + txt("%")
         );
     }
 }
