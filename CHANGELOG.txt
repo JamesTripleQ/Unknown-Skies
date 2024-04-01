@@ -1,5 +1,5 @@
 1.0.7
-- Fixed US_star_browndwarf spawning too frequently and having some incorrect stats
+- Fixed US_star_browndwarf spawning too frequently and having some incorrect stats.
 
 1.0.6
 - Rewrote most condition effects to be more in line with vanilla.
