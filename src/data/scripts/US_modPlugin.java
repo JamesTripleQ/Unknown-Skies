@@ -5,6 +5,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
+import com.fs.starfarer.api.impl.campaign.abilities.GenerateSlipsurgeAbility;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.ids.Tags;
@@ -16,14 +17,13 @@ import com.fs.starfarer.api.util.WeightedRandomPicker;
 
 import java.awt.Color;
 import java.util.ArrayList;
-
-import org.json.JSONObject;;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 
 import static data.scripts.US_utils.*;
 
@@ -45,11 +45,28 @@ public class US_modPlugin extends BaseModPlugin {
     private final WeightedRandomPicker<String> RUINS = new WeightedRandomPicker<>();
 
     {
-        RUINS.add("ruins_scattered", 1);
-        RUINS.add("ruins_widespread", 2);
-        RUINS.add("ruins_extensive", 3);
-        RUINS.add("ruins_vast", 1.5f);
-        RUINS.add("decivilized", 0.5f);
+        RUINS.add(Conditions.RUINS_SCATTERED, 1);
+        RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
+        RUINS.add(Conditions.RUINS_EXTENSIVE, 3);
+        RUINS.add(Conditions.RUINS_VAST, 1.5f);
+        RUINS.add(Conditions.DECIVILIZED, 0.5f);
+    }
+
+    @Override
+    public void onApplicationLoad() {
+        // Set aquaculture planets
+        Farming.AQUA_PLANETS.add("US_water");
+        Farming.AQUA_PLANETS.add("US_waterB");
+
+        // Set Slipsurge strength
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_red_giant", 0.6f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_blue_giant", 0.6f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_orange", 0.4f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_yellow", 0.4f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_white", 0.25f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_browndwarf", 0.1f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giant", 0f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giantB", 0f);
     }
 
     @Override
@@ -70,10 +87,6 @@ public class US_modPlugin extends BaseModPlugin {
                 }
             }
         }
-
-        // Set aquaculture planets
-        Farming.AQUA_PLANETS.add("US_water");
-        Farming.AQUA_PLANETS.add("US_waterB");
     }
 
     @Override
@@ -129,7 +142,7 @@ public class US_modPlugin extends BaseModPlugin {
                     } else if (VIRUS_LIST.contains(p.getTypeId())) {
                         virusCandidates.add(p);
                     } else if (ARTIFICIAL_LIST.contains(p.getTypeId())) {
-                        if (p.getStarSystem().hasTag(Tags.THEME_DERELICT) || p.getStarSystem().hasTag(Tags.THEME_RUINS) || p.hasTag(Tags.HAS_CORONAL_TAP)) {
+                        if (p.getStarSystem().hasTag(Tags.THEME_DERELICT) || p.getStarSystem().hasTag(Tags.THEME_RUINS)) {
                             artificialCandidates.add(p);
                         }
                     }
@@ -189,8 +202,9 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
             changePlanetType(planet, "US_storm");
             addConditionIfNeeded(planet, "US_storm");
-            removeConditionIfNeeded(planet, "extreme_weather");
-            removeConditionIfNeeded(planet, "mild_climate");
+            removeConditionIfNeeded(planet, Conditions.NO_ATMOSPHERE);
+            removeConditionIfNeeded(planet, Conditions.EXTREME_WEATHER);
+            removeConditionIfNeeded(planet, Conditions.MILD_CLIMATE);
 
             // Setup for future picks
             shroomCandidates.remove(planet);
