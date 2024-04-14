@@ -1,3 +1,6 @@
+[W.I.P. 1.0.9]
+- minor text tweaks again
+
 1.0.8
 - Added proper Slipsurge support to US stars.
 - Windswept world can no longer spawns with no atmosphere (it couldn't happen anyway but just to be sure it's properly dealt with now).

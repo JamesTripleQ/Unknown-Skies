@@ -8,7 +8,7 @@
 		"artificial_0":"%s ground defense strength",
 
 		"base":"Pre-Collapse military base",
-		"base_0":"%s factionwide ship quality (Heavy Industry & Orbital Works)",
+		"base_0":"%s factionwide ship quality (Heavy Industry, Orbital Works)",
 
 		"drone_0":"%s hazard rating (based on market size)",
 
@@ -23,7 +23,7 @@
 		"magnet_1":"%s population growth (based on market size)",
 
 		"spore":"Parasitic spores",
-		"spore_0":"%s recreational drug demand",
+		"spore_0":"%s recreational drug demand (Population & Infrastructure, Mining)",
 		"spore_1":"Nullifies",
 		"spore_2":"%s population growth (based on market size)",
 		"spore_3":"%s minimal stability",
@@ -36,7 +36,7 @@
 		"landmark_2":"%s population growth (based on market size)",
 
 		"shroom":"Psychoactive fungus",
-		"shroom_0":"%s recreational drug demand",
+		"shroom_0":"%s recreational drug demand (Population & Infrastructure, Mining)",
 		"shroom_1":"Nullifies",
 		"shroom_2":"%s recreational drug production (Light Industry)",
 		"shroom_3":"%s stability",
@@ -52,7 +52,7 @@
 		"virus":"Military virus",
 		"virus_0":"%s ground defense strength",
 		"virus_1":"%s population growth (based on market size)",
-		"virus_2":"%s heavy armament production (Heavy Industry & Orbital Works)",
+		"virus_2":"%s heavy armament production (Heavy Industry, Orbital Works)",
 		"virus_3":"%s stability"
 	}
 }
