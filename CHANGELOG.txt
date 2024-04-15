@@ -1,11 +1,12 @@
-[W.I.P. 1.0.9]
-- minor text tweaks again
+1.0.9
+- Fixed some text inconsistencies.
+- Tweaked some of the easter egg names.
 
 1.0.8
 - Added proper Slipsurge support to US stars.
 - Windswept world can no longer spawns with no atmosphere (it couldn't happen anyway but just to be sure it's properly dealt with now).
 - Reverted Artificial worlds being able to spawn in Hypershunt systems without ruins (it didn't make sense).
-- Optimized some interior code.
+- Optimized some internal code.
 
 
 1.0.7
