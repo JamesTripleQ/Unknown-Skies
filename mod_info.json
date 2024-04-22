@@ -1,10 +1,16 @@
 {
-    "id": "US",
-    "name": "Unknown Skies",
-    "author": "Tartiflette, maintained by JamesTripleQ",
+	"id": "US",
+	"name": "Unknown Skies",
+	"author": "Tartiflette, maintained by JamesTripleQ",
 	"version": "1.0.9",
-    "description": "Enhance your journey into the unknown with a vastly expanded variety of planets and environments.",
-    "gameVersion": "0.97a-RC11",
-    "jars":["jars/US.jar"],
-    "modPlugin":"data.scripts.US_modPlugin",
+	"description": "Enhance your journey into the unknown with a vastly expanded variety of planets and environments.",
+	"gameVersion": "0.97a-RC11",
+	"jars":["jars/US.jar"],
+	"dependencies": [
+		{
+			"id": "MagicLib",
+			"name": "MagicLib"
+		}
+	],
+	"modPlugin":"data.scripts.US_modPlugin"
 }

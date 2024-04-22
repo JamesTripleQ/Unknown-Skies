@@ -1,12 +1,12 @@
 {
-    "masterVersionFile":"https://raw.githubusercontent.com/JamesTripleQ/Unknown-Skies/master/US.version",
-    "modName":"Unknown Skies",
-    "modThreadId":"12041",
-    "modNexusId":"14",
-    "modVersion":
-    {
-        "major":1,
-        "minor":0,
-        "patch":9
-    },
+	"masterVersionFile":"https://raw.githubusercontent.com/JamesTripleQ/Unknown-Skies/master/US.version",
+	"modName":"Unknown Skies",
+	"modThreadId":"12041",
+	"modNexusId":"14",
+	"modVersion":
+	{
+		"major":1,
+		"minor":0,
+		"patch":9
+	},
 }

@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="starfarer.api" level="project" />
+    <orderEntry type="library" name="MagicLib" level="project" />
   </component>
 </module>

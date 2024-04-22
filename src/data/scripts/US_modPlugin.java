@@ -23,10 +23,11 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
+import org.magiclib.util.MagicSettings;
 
 import static data.scripts.US_utils.*;
 
+@SuppressWarnings("unused")
 public class US_modPlugin extends BaseModPlugin {
     public static Logger LOG = Global.getLogger(US_modPlugin.class);
     private final List<String> BG_YOUNG = new ArrayList<>();
@@ -82,8 +83,9 @@ public class US_modPlugin extends BaseModPlugin {
             Global.getSector().getMemoryWithoutUpdate().set("$unknownSkies_version", 1.00f);
             for (StarSystemAPI s : Global.getSector().getStarSystems()) {
                 if (s != null && s.isProcgen() && s.getConstellation() != null) {
-                    getData();
+                    loadSettings();
                     replaceBackground(s);
+                    cleanupSettings();
                 }
             }
         }
@@ -93,7 +95,7 @@ public class US_modPlugin extends BaseModPlugin {
     public void onNewGameAfterProcGen() {
         // Read the background list
         if (BG_YOUNG.isEmpty()) {
-            getData();
+            loadSettings();
         }
 
         // Replace backgrounds
@@ -253,18 +255,7 @@ public class US_modPlugin extends BaseModPlugin {
             artificialCandidates.remove(planet);
         }
 
-        // Cleanup
-        BG_YOUNG.clear();
-        BG_AVERAGE.clear();
-        BG_OLD.clear();
-        NEB_YOUNG.clear();
-        NEB_AVERAGE.clear();
-        NEB_OLD.clear();
-        CRYSTAL_LIST.clear();
-        SPORE_LIST.clear();
-        SHROOM_LIST.clear();
-        VIRUS_LIST.clear();
-        ARTIFICIAL_LIST.clear();
+        cleanupSettings();
     }
 
     private void replaceBackground(StarSystemAPI system) {
@@ -308,42 +299,34 @@ public class US_modPlugin extends BaseModPlugin {
     }
 
     // Read data from modSettings.json
-    private final String YOUNG = "YOUNG", AVERAGE = "AVERAGE", OLD = "OLD", YOUNGAVERAGE = "YOUNGAVERAGE", AVERAGEOLD = "AVERAGEOLD", ALL = "ALL";
-    private final String CRYSTAL = "crystal_types", SPORE = "spore_type", SHROOM = "shroom_type", VIRUS = "virus_type", ARTIFICIAL = "artificial_type";
-
-    private void getData() {
-        // Merge the modSettings.json files
-        JSONObject modSettings = mergeModSettings();
-        if (modSettings == null) return;
-
+    private void loadSettings() {
         String modId = "unknownSkies";
-        String bg = "backgrounds";
 
         // Get the background map of <path> : <age>
-        Map<String, String> BGmap = getMap(modSettings, modId, bg);
+        Map<String, String> BGmap = MagicSettings.getStringMap(modId, "backgrounds");
 
         // Sort the background paths
         for (Entry<String, String> entry : BGmap.entrySet()) {
             switch (entry.getValue()) {
-                case YOUNG:
+                case "YOUNG":
                     BG_YOUNG.add(entry.getKey());
                     if (entry.getKey().endsWith("n.jpg")) {
                         NEB_YOUNG.add(entry.getKey());
                     }
                     break;
-                case AVERAGE:
+                case "AVERAGE":
                     BG_AVERAGE.add(entry.getKey());
                     if (entry.getKey().endsWith("n.jpg")) {
                         NEB_AVERAGE.add(entry.getKey());
                     }
                     break;
-                case OLD:
+                case "OLD":
                     BG_OLD.add(entry.getKey());
                     if (entry.getKey().endsWith("n.jpg")) {
                         NEB_OLD.add(entry.getKey());
                     }
                     break;
-                case YOUNGAVERAGE:
+                case "YOUNGAVERAGE":
                     BG_YOUNG.add(entry.getKey());
                     BG_AVERAGE.add(entry.getKey());
                     if (entry.getKey().endsWith("n.jpg")) {
@@ -351,7 +334,7 @@ public class US_modPlugin extends BaseModPlugin {
                         NEB_AVERAGE.add(entry.getKey());
                     }
                     break;
-                case AVERAGEOLD:
+                case "AVERAGEOLD":
                     BG_AVERAGE.add(entry.getKey());
                     BG_OLD.add(entry.getKey());
                     if (entry.getKey().endsWith("n.jpg")) {
@@ -359,7 +342,7 @@ public class US_modPlugin extends BaseModPlugin {
                         NEB_OLD.add(entry.getKey());
                     }
                     break;
-                case ALL:
+                case "ALL":
                     BG_YOUNG.add(entry.getKey());
                     BG_AVERAGE.add(entry.getKey());
                     BG_OLD.add(entry.getKey());
@@ -373,10 +356,25 @@ public class US_modPlugin extends BaseModPlugin {
         }
 
         // Get the planet type list for the special condition/planets
-        CRYSTAL_LIST = getList(modSettings, modId, CRYSTAL);
-        SPORE_LIST = getList(modSettings, modId, SPORE);
-        SHROOM_LIST = getList(modSettings, modId, SHROOM);
-        VIRUS_LIST = getList(modSettings, modId, VIRUS);
-        ARTIFICIAL_LIST = getList(modSettings, modId, ARTIFICIAL);
+        CRYSTAL_LIST = MagicSettings.getList(modId, "crystal_types");
+        SPORE_LIST = MagicSettings.getList(modId, "spore_type");
+        SHROOM_LIST = MagicSettings.getList(modId, "shroom_type");
+        VIRUS_LIST = MagicSettings.getList(modId, "virus_type");
+        ARTIFICIAL_LIST = MagicSettings.getList(modId, "artificial_type");
+    }
+
+    // Cleanup
+    private void cleanupSettings() {
+        BG_YOUNG.clear();
+        BG_AVERAGE.clear();
+        BG_OLD.clear();
+        NEB_YOUNG.clear();
+        NEB_AVERAGE.clear();
+        NEB_OLD.clear();
+        CRYSTAL_LIST.clear();
+        SPORE_LIST.clear();
+        SHROOM_LIST.clear();
+        VIRUS_LIST.clear();
+        ARTIFICIAL_LIST.clear();
     }
 }
