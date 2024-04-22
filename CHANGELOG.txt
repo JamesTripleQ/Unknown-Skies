@@ -1,6 +1,6 @@
-[WIP] 1.0.10
-- added magic lib depencency
-- settings load is now handled by magic lib making the mod more stable with it in the future
+1.0.10
+- Added MagicLib dependency.
+- Loading settings is now handled by MagicLib making the mod more stable with it in the future.
 
 1.0.9
 - Fixed some text inconsistencies.
