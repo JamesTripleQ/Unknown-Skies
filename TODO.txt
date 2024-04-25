@@ -1,0 +1,6 @@
+Add a table to the tooltip of "based on market size" conditions showing their scaling
+Cap scaling at market size 6
+Default scaling on uncolonized planets should be set to 3 (purely cosmetic)
+Tweak tunnels scaling again (maybe)
+Add vanilla images to files just in case
+Externalize via settings the industries that should have drug effects nullified

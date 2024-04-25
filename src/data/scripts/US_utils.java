@@ -9,7 +9,6 @@ import com.fs.starfarer.loading.specs.PlanetSpec;
 
 import java.util.*;
 
-@SuppressWarnings("unused")
 public class US_utils {
 
     /*------------------
