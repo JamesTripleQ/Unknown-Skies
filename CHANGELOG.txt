@@ -1,3 +1,8 @@
+[W.I.P.] 1.0.11
+new easter egg name
+added vanilla images to the files just in case they get removed
+scaling can no longer be lower than size three or bigger than size 6
+
 1.0.10
 - Added MagicLib dependency.
 - Loading settings is now handled by MagicLib making the mod more stable with it in the future.

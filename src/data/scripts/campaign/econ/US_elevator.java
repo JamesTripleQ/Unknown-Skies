@@ -1,10 +1,10 @@
-
 package data.scripts.campaign.econ;
 
 import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
+import static data.scripts.US_utils.getFixedMarketSize;
 import static data.scripts.US_utils.txt;
 
 public class US_elevator extends BaseHazardCondition {
@@ -12,7 +12,7 @@ public class US_elevator extends BaseHazardCondition {
 
     @Override
     public void apply(String id) {
-        market.getAccessibilityMod().modifyFlat(id, getAccessibilityBonus() / 100, txt("accelerator"));
+        market.getAccessibilityMod().modifyFlat(id, getAccessibilityBonus(market.getSize()) / 100, txt("accelerator"));
     }
 
     @Override
@@ -20,8 +20,8 @@ public class US_elevator extends BaseHazardCondition {
         market.getAccessibilityMod().unmodify(id);
     }
 
-    private float getAccessibilityBonus() {
-        return Math.max(0, ACCESSIBILITY_BONUS - (Math.max(0, market.getSize() - 3) * 10));
+    private float getAccessibilityBonus(int size) {
+        return Math.max(0, ACCESSIBILITY_BONUS - (Math.max(0, getFixedMarketSize(size) - 3) * 10));
     }
 
     @Override
@@ -32,7 +32,7 @@ public class US_elevator extends BaseHazardCondition {
                 txt("accelerator_0"),
                 10f,
                 Misc.getHighlightColor(),
-                txt("+") + (int) getAccessibilityBonus() + txt("%")
+                txt("+") + (int) getAccessibilityBonus(market.getSize()) + txt("%")
         );
     }
 }

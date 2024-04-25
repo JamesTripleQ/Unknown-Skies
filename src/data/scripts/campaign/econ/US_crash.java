@@ -4,13 +4,14 @@ import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
+import static data.scripts.US_utils.getFixedMarketSize;
 import static data.scripts.US_utils.txt;
 
 public class US_crash extends BaseHazardCondition {
 
     @Override
     public void apply(String id) {
-        market.getHazard().modifyFlat(id, getHazardBonus(), condition.getName());
+        market.getHazard().modifyFlat(id, getHazardBonus(market.getSize()), condition.getName());
     }
 
     @Override
@@ -18,8 +19,8 @@ public class US_crash extends BaseHazardCondition {
         market.getHazard().unmodify(id);
     }
 
-    private float getHazardBonus() {
-        return -0.5f + Math.min(0.5f, Math.max(0, market.getSize() - 4) / 10f);
+    private float getHazardBonus(int size) {
+        return -0.5f + Math.min(0.5f, Math.max(0, getFixedMarketSize(size) - 4) / 10f);
     }
 
     @Override
@@ -30,7 +31,7 @@ public class US_crash extends BaseHazardCondition {
                 txt("drone_0"),
                 10f,
                 Misc.getHighlightColor(),
-                (int) (getHazardBonus() * 100) + txt("%")
+                (int) (getHazardBonus(market.getSize()) * 100) + txt("%")
         );
     }
 }

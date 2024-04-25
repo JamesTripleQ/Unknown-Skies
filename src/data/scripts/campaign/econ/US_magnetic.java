@@ -9,6 +9,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
+import static data.scripts.US_utils.getFixedMarketSize;
 import static data.scripts.US_utils.txt;
 
 public class US_magnetic extends BaseHazardCondition implements MarketImmigrationModifier {
@@ -31,11 +32,11 @@ public class US_magnetic extends BaseHazardCondition implements MarketImmigratio
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
         incoming.add(Factions.POOR, 10f);
-        incoming.getWeight().modifyFlat(getModId(), getThisImmigrationBonus(), Misc.ucFirst(condition.getName().toLowerCase()));
+        incoming.getWeight().modifyFlat(getModId(), getThisImmigrationBonus(market.getSize()), Misc.ucFirst(condition.getName().toLowerCase()));
     }
 
-    private float getThisImmigrationBonus() {
-        return -2 * market.getSize();
+    private float getThisImmigrationBonus(int size) {
+        return -2 * getFixedMarketSize(size);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class US_magnetic extends BaseHazardCondition implements MarketImmigratio
                 txt("magnet_1"),
                 10f,
                 Misc.getHighlightColor(),
-                "" + (int) getThisImmigrationBonus()
+                "" + (int) getThisImmigrationBonus(market.getSize())
         );
 
         tooltip.addPara(

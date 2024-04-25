@@ -8,6 +8,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
+import static data.scripts.US_utils.getFixedMarketSize;
 import static data.scripts.US_utils.txt;
 
 public class US_religious extends BaseHazardCondition implements MarketImmigrationModifier {
@@ -32,11 +33,11 @@ public class US_religious extends BaseHazardCondition implements MarketImmigrati
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
         incoming.add(Factions.LUDDIC_CHURCH, 10f);
         incoming.add(Factions.LUDDIC_PATH, 5f);
-        incoming.getWeight().modifyFlat(getModId(), getThisImmigrationBonus(), Misc.ucFirst(condition.getName().toLowerCase()));
+        incoming.getWeight().modifyFlat(getModId(), getThisImmigrationBonus(market.getSize()), Misc.ucFirst(condition.getName().toLowerCase()));
     }
 
-    private float getThisImmigrationBonus() {
-        return 20 - 2 * market.getSize();
+    private float getThisImmigrationBonus(int size) {
+        return 20 - 2 * getFixedMarketSize(size);
     }
 
     @Override
@@ -61,7 +62,7 @@ public class US_religious extends BaseHazardCondition implements MarketImmigrati
                 txt("landmark_2"),
                 10f,
                 Misc.getHighlightColor(),
-                txt("+") + (int) getThisImmigrationBonus()
+                txt("+") + (int) getThisImmigrationBonus(market.getSize())
         );
     }
 }

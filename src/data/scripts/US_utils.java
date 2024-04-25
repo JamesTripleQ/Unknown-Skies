@@ -105,4 +105,12 @@ public class US_utils {
         planet.setTypeId(newType);
         planet.applySpecChanges();
     }
+
+    /*-----------------------
+    ---- CONDITION UTILS ----
+    -----------------------*/
+
+    public static int getFixedMarketSize(int size) {
+        return Math.min(Math.max(size, 3), 6);
+    }
 }

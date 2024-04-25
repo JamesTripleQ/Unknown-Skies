@@ -12,6 +12,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
+import static data.scripts.US_utils.getFixedMarketSize;
 import static data.scripts.US_utils.txt;
 
 public class US_mind extends BaseHazardCondition implements MarketImmigrationModifier {
@@ -67,11 +68,11 @@ public class US_mind extends BaseHazardCondition implements MarketImmigrationMod
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
         incoming.add(Factions.PLAYER, 10f);
-        incoming.getWeight().modifyFlat(getModId(), getThisImmigrationBonus(), Misc.ucFirst(condition.getName().toLowerCase()));
+        incoming.getWeight().modifyFlat(getModId(), getThisImmigrationBonus(market.getSize()), Misc.ucFirst(condition.getName().toLowerCase()));
     }
 
-    private float getThisImmigrationBonus() {
-        return 10 * market.getSize();
+    private float getThisImmigrationBonus(int size) {
+        return 10 * getFixedMarketSize(size);
     }
 
     private float getStabilityFloor() {
@@ -93,7 +94,7 @@ public class US_mind extends BaseHazardCondition implements MarketImmigrationMod
                 txt("spore_2"),
                 10f,
                 Misc.getHighlightColor(),
-                txt("+") + (int) getThisImmigrationBonus()
+                txt("+") + (int) getThisImmigrationBonus(market.getSize())
         );
 
         tooltip.addPara(
