@@ -8,8 +8,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_utils.getFixedMarketSize;
-import static data.scripts.US_utils.txt;
+import static data.scripts.US_utils.*;
 
 public class US_religious extends BaseHazardCondition implements MarketImmigrationModifier {
     public static float STABILITY_BONUS = 1;
@@ -64,5 +63,20 @@ public class US_religious extends BaseHazardCondition implements MarketImmigrati
                 Misc.getHighlightColor(),
                 txt("+") + (int) getThisImmigrationBonus(market.getSize())
         );
+
+        addScalingTable(
+                market,
+                tooltip,
+                expanded,
+                txt("+") + (int) getThisImmigrationBonus(3),
+                txt("+") + (int) getThisImmigrationBonus(4),
+                txt("+") + (int) getThisImmigrationBonus(5),
+                txt("+") + (int) getThisImmigrationBonus(6)
+        );
+    }
+
+    @Override
+    public boolean isTooltipExpandable() {
+        return true;
     }
 }

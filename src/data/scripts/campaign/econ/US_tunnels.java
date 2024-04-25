@@ -9,8 +9,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_utils.getFixedMarketSize;
-import static data.scripts.US_utils.txt;
+import static data.scripts.US_utils.*;
 
 public class US_tunnels extends BaseHazardCondition implements MarketImmigrationModifier {
 
@@ -58,5 +57,20 @@ public class US_tunnels extends BaseHazardCondition implements MarketImmigration
                 Misc.getHighlightColor(),
                 "" + (int) getThisImmigrationBonus(market.getSize())
         );
+
+        addScalingTable(
+                market,
+                tooltip,
+                expanded,
+                "" + (int) getThisImmigrationBonus(3),
+                "" + (int) getThisImmigrationBonus(4),
+                "" + (int) getThisImmigrationBonus(5),
+                "" + (int) getThisImmigrationBonus(6)
+        );
+    }
+
+    @Override
+    public boolean isTooltipExpandable() {
+        return true;
     }
 }

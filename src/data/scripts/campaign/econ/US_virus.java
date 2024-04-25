@@ -9,8 +9,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_utils.getFixedMarketSize;
-import static data.scripts.US_utils.txt;
+import static data.scripts.US_utils.*;
 
 public class US_virus extends BaseHazardCondition implements MarketImmigrationModifier {
     private final float DEFENSE_MALUS = 0.5f;
@@ -107,5 +106,20 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
                 Misc.getHighlightColor(),
                 Strings.X + DEFENSE_MALUS + ""
         );
+
+        addScalingTable(
+                market,
+                tooltip,
+                expanded,
+                "" + (int) getThisImmigrationBonus(3),
+                "" + (int) getThisImmigrationBonus(4),
+                "" + (int) getThisImmigrationBonus(5),
+                "" + (int) getThisImmigrationBonus(6)
+        );
+    }
+
+    @Override
+    public boolean isTooltipExpandable() {
+        return true;
     }
 }

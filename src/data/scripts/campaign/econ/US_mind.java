@@ -12,8 +12,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_utils.getFixedMarketSize;
-import static data.scripts.US_utils.txt;
+import static data.scripts.US_utils.*;
 
 public class US_mind extends BaseHazardCondition implements MarketImmigrationModifier {
     private final int PRODUCTION_MALUS = -1;
@@ -110,5 +109,20 @@ public class US_mind extends BaseHazardCondition implements MarketImmigrationMod
                 Misc.getHighlightColor(),
                 txt("spore_1")
         );
+
+        addScalingTable(
+                market,
+                tooltip,
+                expanded,
+                txt("+") + (int) getThisImmigrationBonus(3),
+                txt("+") + (int) getThisImmigrationBonus(4),
+                txt("+") + (int) getThisImmigrationBonus(5),
+                txt("+") + (int) getThisImmigrationBonus(6)
+        );
+    }
+
+    @Override
+    public boolean isTooltipExpandable() {
+        return true;
     }
 }

@@ -10,22 +10,22 @@
 		"base":"Pre-Collapse military base",
 		"base_0":"%s factionwide ship quality (Heavy Industry, Orbital Works)",
 
-		"drone_0":"%s hazard rating (based on market size)",
+		"drone_0":"%s hazard rating (based on colony size)",
 
 		"crystal":"Chemical crystals",
 		"crystal_0":"%s luxury goods production (Light Industry)",
 
 		"accelerator":"Old space accelerator",
-		"accelerator_0":"%s accessibility (based on market size)",
+		"accelerator_0":"%s accessibility (based on colony size)",
 
 		"magnet":"Magnetic crust",
 		"magnet_0":"%s ground defense strength",
-		"magnet_1":"%s population growth (based on market size)",
+		"magnet_1":"%s population growth (based on colony size)",
 
 		"spore":"Parasitic spores",
 		"spore_0":"%s recreational drug demand (Population & Infrastructure, Mining)",
 		"spore_1":"Nullifies",
-		"spore_2":"%s population growth (based on market size)",
+		"spore_2":"%s population growth (based on colony size)",
 		"spore_3":"%s minimal stability",
 		"spore_4":"+5",
 		"spore_5":"%s commodity production (all industries)",
@@ -33,7 +33,7 @@
 		"landmark":"Ancient religious landmark",
 		"landmark_0":"%s stability",
 		"landmark_1":"%s accessibility",
-		"landmark_2":"%s population growth (based on market size)",
+		"landmark_2":"%s population growth (based on colony size)",
 
 		"shroom":"Psychoactive fungus",
 		"shroom_0":"%s recreational drug demand (Population & Infrastructure, Mining)",
@@ -47,11 +47,11 @@
 
 		"tunnel_0":"Hazard rating fixed to %s",
 		"tunnel_1":"100%",
-		"tunnel_2":"%s population growth (based on market size)",
+		"tunnel_2":"%s population growth (based on colony size)",
 
 		"virus":"Military virus",
 		"virus_0":"%s ground defense strength",
-		"virus_1":"%s population growth (based on market size)",
+		"virus_1":"%s population growth (based on colony size)",
 		"virus_2":"%s heavy armament production (Heavy Industry, Orbital Works)",
 		"virus_3":"%s stability"
 	}

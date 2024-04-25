@@ -1,2 +1,0 @@
-Add a table to the tooltip of "based on market size" conditions showing their scaling
-Externalize via settings the industries that should have drug effects nullified

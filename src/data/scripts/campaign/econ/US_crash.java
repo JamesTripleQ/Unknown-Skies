@@ -4,8 +4,7 @@ import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_utils.getFixedMarketSize;
-import static data.scripts.US_utils.txt;
+import static data.scripts.US_utils.*;
 
 public class US_crash extends BaseHazardCondition {
 
@@ -33,5 +32,20 @@ public class US_crash extends BaseHazardCondition {
                 Misc.getHighlightColor(),
                 (int) (getHazardBonus(market.getSize()) * 100) + txt("%")
         );
+
+        addScalingTable(
+                market,
+                tooltip,
+                expanded,
+                (int) (getHazardBonus(3) * 100) + txt("%"),
+                (int) (getHazardBonus(4) * 100) + txt("%"),
+                (int) (getHazardBonus(5) * 100) + txt("%"),
+                (int) (getHazardBonus(6) * 100) + txt("%")
+        );
+    }
+
+    @Override
+    public boolean isTooltipExpandable() {
+        return true;
     }
 }
