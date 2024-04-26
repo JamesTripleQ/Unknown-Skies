@@ -1,7 +1,11 @@
 [W.I.P.] 1.0.11
-new easter egg name
-added vanilla images to the files just in case they get removed
-scaling can no longer be lower than size three or bigger than size 6
+- Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.
+- Conditions that scale with market size now have a scaling cap:
+   . Markets of size 2 and lower will always have the size 3 effect.
+   . Markets of size 7 and higher will always have the size 6 effect.
+- Added the vanilla condition images used by the mod to the files in case they get removed in the future.
+- Minor text rewording.
+- Added a new easter egg name.
 
 1.0.10
 - Added MagicLib dependency.
