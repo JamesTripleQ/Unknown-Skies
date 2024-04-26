@@ -12,6 +12,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.ids.Terrain;
 import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationType;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
+import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 
@@ -25,6 +26,8 @@ import java.util.Random;
 import org.apache.log4j.Logger;
 import org.magiclib.util.MagicSettings;
 
+import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PK_PLANET_KEY;
+import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PLANETARY_SHIELD_PLANET;
 import static data.scripts.US_utils.*;
 
 @SuppressWarnings("unused")
@@ -136,7 +139,8 @@ public class US_modPlugin extends BaseModPlugin {
                 }
 
                 // Find unique condition candidates
-                if (!p.getStarSystem().isDeepSpace() && !p.hasCondition(Conditions.SOLAR_ARRAY)) {
+                if (!p.getStarSystem().isDeepSpace() && !(p.getMemoryWithoutUpdate().getBoolean(PLANETARY_SHIELD_PLANET) ||
+                        p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY) || p.hasCondition(Conditions.SOLAR_ARRAY))) {
                     if (SPORE_LIST.contains(p.getTypeId())) {
                         sporeCandidates.add(p);
                     } else if (SHROOM_LIST.contains(p.getTypeId())) {
@@ -202,7 +206,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!shroomCandidates.isEmpty()) {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
-            changePlanetType(planet, "US_storm");
+            planet.changeType("US_storm", StarSystemGenerator.random);
             addConditionIfNeeded(planet, "US_storm");
             removeConditionIfNeeded(planet, Conditions.NO_ATMOSPHERE);
             removeConditionIfNeeded(planet, Conditions.EXTREME_WEATHER);
@@ -216,7 +220,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!sporeCandidates.isEmpty()) {
             PlanetAPI planet = sporeCandidates.get(new Random().nextInt(sporeCandidates.size()));
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Magnetic");
-            changePlanetType(planet, "US_magnetic");
+            planet.changeType("US_magnetic", StarSystemGenerator.random);
             addConditionIfNeeded(planet, "US_magnetic");
             SectorEntityToken magField = planet.getStarSystem().addTerrain(
                     Terrain.MAGNETIC_FIELD,
@@ -241,7 +245,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!artificialCandidates.isEmpty()) {
             PlanetAPI planet = artificialCandidates.get(new Random().nextInt(artificialCandidates.size()));
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Artificial");
-            changePlanetType(planet, "US_artificial");
+            planet.changeType("US_artificial", StarSystemGenerator.random);
             addConditionIfNeeded(planet, "US_artificial");
 
             // Add ruins if needed (at least extensive)

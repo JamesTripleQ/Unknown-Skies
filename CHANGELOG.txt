@@ -6,6 +6,8 @@
 - Added the vanilla condition images used by the mod to the files in case they get removed in the future.
 - Minor text rewording.
 - Added a new easter egg name.
+FIXED IDS LETS GOOOOOOOOOOOOOOOOOOOO
+no more risk of condition on shield and PK planet
 
 1.0.10
 - Added MagicLib dependency.
