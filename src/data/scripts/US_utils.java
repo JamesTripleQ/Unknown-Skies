@@ -124,9 +124,7 @@ public class US_utils {
     public static void addScalingTable(MarketAPI market, TooltipMakerAPI tooltip, boolean expanded, String effect3, String effect4, String effect5, String effect6) {
         if (!expanded) {
             tooltip.addPara("Expand tooltip to view condition scaling", Misc.getGrayColor(), 10f);
-        }
-
-        if (expanded) {
+        } else {
             Color base = market.getPlanetEntity().getSpec().getIconColor();
             Color dark = base.darker().darker().darker().darker();
             Color bright = base.brighter().brighter().brighter().brighter();
