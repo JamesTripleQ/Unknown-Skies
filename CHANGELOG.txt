@@ -1,3 +1,7 @@
+W.I.P. 1.0.12
+minor text fix
+externalized tooltip strings
+
 1.0.11
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.
 - Conditions that scale with market size now have a scaling cap:

@@ -91,7 +91,7 @@ public class US_utils {
 
     public static void addScalingTable(MarketAPI market, TooltipMakerAPI tooltip, boolean expanded, String effect3, String effect4, String effect5, String effect6) {
         if (!expanded) {
-            tooltip.addPara("Expand tooltip to view condition scaling", Misc.getGrayColor(), 10f);
+            tooltip.addPara(txt("tooltip_hint"), Misc.getGrayColor(), 10f);
         } else {
             Color base = market.getPlanetEntity().getSpec().getIconColor();
             Color dark = base.darker().darker().darker().darker();
@@ -105,9 +105,9 @@ public class US_utils {
                 }
             }
 
-            tooltip.addSectionHeading("Condition scaling", base, dark, Alignment.MID, 10f);
+            tooltip.addSectionHeading(txt("tooltip_header"), base, dark, Alignment.MID, 10f);
 
-            tooltip.beginTable(base, dark, bright, 20f, true, true, new Object[]{"Colony size", 100f, "Condition effect", 130f});
+            tooltip.beginTable(base, dark, bright, 20f, true, true, new Object[]{txt("tooltip_size"), 100f, txt("tooltip_scale"), 130f});
 
             tooltip.addRow(Alignment.MID, Misc.getTextColor(), "3", Alignment.MID, Misc.getHighlightColor(), effect3);
             tooltip.addRow(Alignment.MID, Misc.getTextColor(), "4", Alignment.MID, Misc.getHighlightColor(), effect4);

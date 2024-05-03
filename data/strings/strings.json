@@ -4,6 +4,11 @@
 		"-":"-",
 		"%":"%",
 
+		"tooltip_hint":"Expand tooltip to view condition scaling",
+		"tooltip_header":"Condition scaling",
+		"tooltip_size":"Colony size",
+		"tooltip_scale":"Condition effect",
+
 		"artificial":"Chaotic structures",
 		"artificial_0":"%s ground defense strength",
 
@@ -38,7 +43,7 @@
 		"shroom":"Psychoactive fungus",
 		"shroom_0":"%s recreational drug demand (Population & Infrastructure, Mining)",
 		"shroom_1":"Nullifies",
-		"shroom_2":"%s recreational drug production (Light Industry)",
+		"shroom_2":"%s recreational drugs production (Light Industry)",
 		"shroom_3":"%s stability",
 
 		"storm":"Perpetual dust storm",
@@ -52,7 +57,7 @@
 		"virus":"Military virus",
 		"virus_0":"%s ground defense strength",
 		"virus_1":"%s population growth (based on colony size)",
-		"virus_2":"%s heavy armament production (Heavy Industry, Orbital Works)",
+		"virus_2":"%s heavy armaments production (Heavy Industry, Orbital Works)",
 		"virus_3":"%s stability"
 	}
 }
