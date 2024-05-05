@@ -12,10 +12,9 @@ import com.fs.starfarer.api.util.Misc;
 import static data.scripts.US_utils.*;
 
 public class US_virus extends BaseHazardCondition implements MarketImmigrationModifier {
-    private final float DEFENSE_MALUS = 0.5f;
-    private final int WEAPON_BONUS = 3;
+    private final float DEFENSE_MALUS = 0.6f;
+    private final int WEAPON_BONUS = 4;
     private final float STABILITY_MALUS = -2f;
-    private final float IMMIGRATION_MALUS = -3f;
 
     @Override
     public void apply(String id) {
@@ -72,7 +71,7 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
     }
 
     private float getThisImmigrationBonus(int size) {
-        return IMMIGRATION_MALUS * getFixedMarketSize(size);
+        return -2f * (getFixedMarketSize(size) + 1);
     }
 
     @Override
@@ -111,6 +110,7 @@ public class US_virus extends BaseHazardCondition implements MarketImmigrationMo
                 market,
                 tooltip,
                 expanded,
+                2,
                 "" + (int) getThisImmigrationBonus(3),
                 "" + (int) getThisImmigrationBonus(4),
                 "" + (int) getThisImmigrationBonus(5),

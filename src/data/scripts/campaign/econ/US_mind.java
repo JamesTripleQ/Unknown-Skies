@@ -114,6 +114,7 @@ public class US_mind extends BaseHazardCondition implements MarketImmigrationMod
                 market,
                 tooltip,
                 expanded,
+                2,
                 txt("+") + (int) getThisImmigrationBonus(3),
                 txt("+") + (int) getThisImmigrationBonus(4),
                 txt("+") + (int) getThisImmigrationBonus(5),

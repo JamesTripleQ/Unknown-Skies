@@ -62,6 +62,7 @@ public class US_tunnels extends BaseHazardCondition implements MarketImmigration
                 market,
                 tooltip,
                 expanded,
+                2,
                 "" + (int) getThisImmigrationBonus(3),
                 "" + (int) getThisImmigrationBonus(4),
                 "" + (int) getThisImmigrationBonus(5),

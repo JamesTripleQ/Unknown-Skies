@@ -7,7 +7,9 @@
 		"tooltip_hint":"Expand tooltip to view condition scaling",
 		"tooltip_header":"Condition scaling",
 		"tooltip_size":"Colony size",
-		"tooltip_scale":"Condition effect",
+		"tooltip_scale_0":"Hazard rating",
+		"tooltip_scale_1":"Accessibility",
+		"tooltip_scale_2":"Population growth",
 
 		"artificial":"Chaotic structures",
 		"artificial_0":"%s ground defense strength",

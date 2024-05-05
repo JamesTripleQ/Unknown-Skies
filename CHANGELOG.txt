@@ -1,6 +1,9 @@
 W.I.P. 1.0.12
 minor text fix
 externalized tooltip strings
+tweaked scaling table strings
+unique planetary conditions (arti, magn, storm) are now always rightmost
+virus weapon bonus now 4 (was 3), ground defense now -40 (was -50), population growth now colony size + 1 * -2 (was colony size * -3)
 
 1.0.11
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.
@@ -27,7 +30,6 @@ externalized tooltip strings
 - Reverted Artificial worlds being able to spawn in Hypershunt systems without ruins (it didn't make sense).
 - Optimized some internal code.
 
-
 1.0.7
 - Fixed US_star_browndwarf spawning too frequently and having some incorrect stats.
 
@@ -45,7 +47,6 @@ externalized tooltip strings
 - Reduced the defense debuff from Military Virus to -50% (was -75%).
 - Fixed Military Virus' production buff not applying to Orbital Works.
 - Minor text change to Ancient Religious Landmark to specify that it involves Luddic immigrants.
-
 
 1.0.3
 - Fixed a major bug that prevented the US_star_orange from spawning.

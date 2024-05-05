@@ -68,6 +68,7 @@ public class US_religious extends BaseHazardCondition implements MarketImmigrati
                 market,
                 tooltip,
                 expanded,
+                2,
                 txt("+") + (int) getThisImmigrationBonus(3),
                 txt("+") + (int) getThisImmigrationBonus(4),
                 txt("+") + (int) getThisImmigrationBonus(5),

@@ -42,6 +42,7 @@ public class US_elevator extends BaseHazardCondition {
                 market,
                 tooltip,
                 expanded,
+                1,
                 txt("+") + (int) getAccessibilityBonus(3) + txt("%"),
                 txt("+") + (int) getAccessibilityBonus(4) + txt("%"),
                 txt("+") + (int) getAccessibilityBonus(5) + txt("%"),

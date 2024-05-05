@@ -37,6 +37,7 @@ public class US_crash extends BaseHazardCondition {
                 market,
                 tooltip,
                 expanded,
+                0,
                 (int) (getHazardBonus(3) * 100) + txt("%"),
                 (int) (getHazardBonus(4) * 100) + txt("%"),
                 (int) (getHazardBonus(5) * 100) + txt("%"),

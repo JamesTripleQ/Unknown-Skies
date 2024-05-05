@@ -60,6 +60,7 @@ public class US_magnetic extends BaseHazardCondition implements MarketImmigratio
                 market,
                 tooltip,
                 expanded,
+                2,
                 "" + (int) getThisImmigrationBonus(3),
                 "" + (int) getThisImmigrationBonus(4),
                 "" + (int) getThisImmigrationBonus(5),
