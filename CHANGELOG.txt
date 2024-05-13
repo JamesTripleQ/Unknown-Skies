@@ -4,6 +4,7 @@ externalized tooltip strings
 tweaked scaling table strings
 unique planetary conditions (arti, magn, storm) are now always rightmost
 virus weapon bonus now 4 (was 3), ground defense now -40 (was -50), population growth now colony size + 1 * -2 (was colony size * -3)
+tweaked arti tooltip to not show .0
 
 1.0.11
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.

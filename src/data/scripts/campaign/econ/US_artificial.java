@@ -29,7 +29,7 @@ public class US_artificial extends BaseHazardCondition {
                 txt("artificial_0"),
                 10f,
                 Misc.getHighlightColor(),
-                Strings.X + DEFENSE_BONUS + ""
+                Strings.X + (int) DEFENSE_BONUS + ""
         );
     }
 }
