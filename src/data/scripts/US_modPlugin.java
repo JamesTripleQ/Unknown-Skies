@@ -195,7 +195,7 @@ public class US_modPlugin extends BaseModPlugin {
             addConditionIfNeeded(planet, "US_virus");
 
             // Add ruins if needed (at least widespread)
-            if (!planet.getMarket().hasCondition(Conditions.RUINS_EXTENSIVE) && !planet.getMarket().hasCondition(Conditions.RUINS_VAST) && !planet.getMarket().hasCondition(Conditions.RUINS_WIDESPREAD)) {
+            if (!planet.getMarket().hasCondition(Conditions.RUINS_VAST) && !planet.getMarket().hasCondition(Conditions.RUINS_WIDESPREAD)) {
                 addConditionIfNeeded(planet, Conditions.RUINS_EXTENSIVE);
             }
 
@@ -250,7 +250,7 @@ public class US_modPlugin extends BaseModPlugin {
             addConditionIfNeeded(planet, "US_artificial");
 
             // Add ruins if needed (at least extensive)
-            if (!planet.getMarket().hasCondition(Conditions.RUINS_EXTENSIVE) && !planet.getMarket().hasCondition(Conditions.RUINS_VAST)) {
+            if (!planet.getMarket().hasCondition(Conditions.RUINS_VAST)) {
                 addConditionIfNeeded(planet, Conditions.RUINS_EXTENSIVE);
             }
 
