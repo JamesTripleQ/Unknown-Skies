@@ -203,7 +203,7 @@ public class US_modPlugin extends BaseModPlugin {
             virusCandidates.remove(planet);
         }
 
-        // Storm swap
+        // Windswept swap
         if (!shroomCandidates.isEmpty()) {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
