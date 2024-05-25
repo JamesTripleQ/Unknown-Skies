@@ -15,20 +15,20 @@ import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
+import org.apache.log4j.Logger;
+import org.magiclib.util.MagicSettings;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
-import org.magiclib.util.MagicSettings;
-
 import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PK_PLANET_KEY;
 import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PLANETARY_SHIELD_PLANET;
-import static data.scripts.US_utils.*;
+import static data.scripts.US_utils.addConditionIfNeeded;
+import static data.scripts.US_utils.removeConditionIfNeeded;
 
 @SuppressWarnings("unused")
 public class US_modPlugin extends BaseModPlugin {
@@ -125,7 +125,7 @@ public class US_modPlugin extends BaseModPlugin {
 
                 // Add ruins to planets with Floating Continent
                 if (p.getMarket().hasCondition("US_floating")) {
-                    addRandomConditionIfNeeded(p, RUINS.getItems(), RUINS);
+                    addConditionIfNeeded(p, RUINS.pick());
                 }
 
                 // Add Irradiated to Burnt planets
@@ -193,7 +193,6 @@ public class US_modPlugin extends BaseModPlugin {
             addConditionIfNeeded(planet, "US_virus");
 
             // Add ruins if needed (at least widespread)
-            removeConditionIfNeeded(planet, Conditions.RUINS_SCATTERED);
             if (!planet.getMarket().hasCondition(Conditions.RUINS_EXTENSIVE) && !planet.getMarket().hasCondition(Conditions.RUINS_VAST) && !planet.getMarket().hasCondition(Conditions.RUINS_WIDESPREAD)) {
                 addConditionIfNeeded(planet, Conditions.RUINS_EXTENSIVE);
             }
@@ -249,8 +248,6 @@ public class US_modPlugin extends BaseModPlugin {
             addConditionIfNeeded(planet, "US_artificial");
 
             // Add ruins if needed (at least extensive)
-            removeConditionIfNeeded(planet, Conditions.RUINS_SCATTERED);
-            removeConditionIfNeeded(planet, Conditions.RUINS_WIDESPREAD);
             if (!planet.getMarket().hasCondition(Conditions.RUINS_EXTENSIVE) && !planet.getMarket().hasCondition(Conditions.RUINS_VAST)) {
                 addConditionIfNeeded(planet, Conditions.RUINS_EXTENSIVE);
             }

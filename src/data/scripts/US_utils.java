@@ -4,14 +4,16 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
+import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
+import com.fs.starfarer.api.impl.campaign.procgen.ConditionGenDataSpec;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import com.fs.starfarer.api.util.WeightedRandomPicker;
 
 import java.awt.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class US_utils {
 
@@ -27,58 +29,75 @@ public class US_utils {
     ---- PROC-GEN UTILS ----
     ----------------------*/
 
-    public static void addRandomConditionIfNeeded(PlanetAPI p, List<String> toCheck, WeightedRandomPicker<String> picker) {
-        // Check for the unwanted conditions
-        boolean doIt = true;
-        if (!p.getMarket().getConditions().isEmpty()) {
-            for (MarketConditionAPI c : p.getMarket().getConditions()) {
-                if (toCheck.contains(c.getId())) {
-                    doIt = false;
-                    break;
+    // Modified from AddCondition.java from Console Commands
+    public static void addConditionIfNeeded(PlanetAPI planet, String toAdd) {
+        final MarketAPI market = planet.getMarket();
+        final MarketConditionSpecAPI spec = Global.getSettings().getMarketConditionSpec(toAdd);
+
+        if (spec == null) {
+            return;
+        }
+
+        // Check if condition already exists
+        final String id = spec.getId();
+
+        if (market.hasCondition(id)) {
+            return;
+        }
+
+        // Create condition and mark any existing conditions that conflict with it for later removal
+        final MarketConditionAPI condition = market.getSpecificCondition(market.addCondition(id));
+        final ConditionGenDataSpec gen = condition.getGenSpec();
+        final Set<String> toRemove = new HashSet<>();
+
+        if (gen != null) {
+            final Set<String> mutuallyExclusive = gen.getRequiresNotAny();
+            for (MarketConditionAPI otherCon : market.getConditions()) {
+                if (otherCon == condition) continue;
+
+                // Automatically remove any mutually exclusive conditions
+                final String otherId = otherCon.getId();
+                if (mutuallyExclusive.contains(otherCon.getId())) {
+                    toRemove.add(otherId);
+                    continue;
+                }
+
+                // Only allow one condition from the same condition group
+                final ConditionGenDataSpec otherGen = otherCon.getGenSpec();
+                if (otherGen != null && gen.getGroup().equals(otherGen.getGroup())) {
+                    toRemove.add(otherId);
                 }
             }
         }
 
-        // Add the condition
-        if (doIt) {
-            p.getMarket().addCondition(picker.pick());
+        // Remove all conflicting conditions
+        for (String tmp : toRemove) market.removeCondition(tmp);
+
+        // Ensure new condition is visible if market has already been surveyed
+        if (market.getSurveyLevel() == MarketAPI.SurveyLevel.FULL && condition.requiresSurveying()) {
+            condition.setSurveyed(true);
         }
+
+        market.reapplyConditions();
     }
 
-    public static void addConditionIfNeeded(PlanetAPI p, String toAdd) {
-        // Check for the unwanted conditions
-        boolean doIt = true;
-        if (!p.getMarket().getConditions().isEmpty()) {
-            for (MarketConditionAPI c : p.getMarket().getConditions()) {
-                if (c.getId().equals(toAdd)) {
-                    doIt = false;
-                    break;
-                }
-            }
+    // Modified from RemoveCondition.java from Console Commands
+    public static void removeConditionIfNeeded(PlanetAPI planet, String toRemove) {
+        final MarketAPI market = planet.getMarket();
+        final MarketConditionSpecAPI spec = Global.getSettings().getMarketConditionSpec(toRemove);
+
+        if (spec == null) {
+            return;
         }
 
-        // Add the condition
-        if (doIt) {
-            p.getMarket().addCondition(toAdd);
-        }
-    }
+        final String id = spec.getId();
 
-    public static void removeConditionIfNeeded(PlanetAPI p, String toRemove) {
-        // Check for the unwanted conditions
-        boolean doIt = false;
-        if (!p.getMarket().getConditions().isEmpty()) {
-            for (MarketConditionAPI c : p.getMarket().getConditions()) {
-                if (c.getId().equals(toRemove)) {
-                    doIt = true;
-                    break;
-                }
-            }
+        if (!market.hasCondition(id)) {
+            return;
         }
 
-        // Remove the condition
-        if (doIt) {
-            p.getMarket().removeCondition(toRemove);
-        }
+        market.removeCondition(id);
+        market.reapplyConditions();
     }
 
     /*-----------------------
