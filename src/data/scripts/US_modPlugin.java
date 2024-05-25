@@ -53,7 +53,6 @@ public class US_modPlugin extends BaseModPlugin {
         RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
         RUINS.add(Conditions.RUINS_EXTENSIVE, 3);
         RUINS.add(Conditions.RUINS_VAST, 1.5f);
-        RUINS.add(Conditions.DECIVILIZED, 0.5f);
     }
 
     @Override
@@ -126,6 +125,9 @@ public class US_modPlugin extends BaseModPlugin {
                 // Add ruins to planets with Floating Continent
                 if (p.getMarket().hasCondition("US_floating")) {
                     addConditionIfNeeded(p, RUINS.pick());
+                    if (Math.random() > 0.875f) {
+                        addConditionIfNeeded(p, Conditions.DECIVILIZED);
+                    }
                 }
 
                 // Add Irradiated to Burnt planets

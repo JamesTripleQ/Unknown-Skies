@@ -27,6 +27,7 @@ W.I.P. 1.1.0   [date]
    . Ground defense is now -40% (was -50%).
    . Population growth is now (colony size + 1) * -2 (was colony size * -3).
 - Unique conditions (Shrooms, Spores, Virus) will now prevent other US special conditions from spawning (planetary conditions and crystals are unaffected).
+- Fixed a rare bug that caused Decivilized to spawn without ruins on gas giants with Floating Continent.
 
 1.0.11   26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.
