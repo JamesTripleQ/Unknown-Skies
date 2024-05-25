@@ -1720,6 +1720,48 @@
 		],
 		"cloudRotation": -2
 	},
+	"US_waterHycean": {
+		"name": "Hycean",
+		"tilt": 35,
+		"pitch": 30,
+		"rotation": -2,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.3,
+		"atmosphereThicknessMin": 62,
+		"atmosphereColor": [
+			40,
+			150,
+			150,
+			130
+		],
+		"texture": "graphics/planets/US_planet_textureHycean.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			51,
+			162,
+			166,
+			255
+		],
+		"isStar": false,
+		"lightPosition": [
+			-10,
+			-10,
+			1
+		],
+		"cloudTexture": "graphics/planets/US_clouds_textureMedium.png",
+		"cloudColor": [
+			230,
+			230,
+			230,
+			230
+		],
+		"cloudRotation": -4
+	},
 	"US_continent": {
 		"name": "Continental",
 		"tilt": 15,
