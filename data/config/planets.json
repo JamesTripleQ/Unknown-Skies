@@ -1731,7 +1731,7 @@
 			255,
 			255
 		],
-		"atmosphereThickness": 0.3,
+		"atmosphereThickness": 0.25,
 		"atmosphereThicknessMin": 62,
 		"atmosphereColor": [
 			40,

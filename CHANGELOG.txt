@@ -15,9 +15,7 @@ TODO Hycean
 Current progress:
 Planet spec is done (along with procgen radius and color)
 
-Basic condition system works HOWEVER it does not handle no pick as an option
 WEIGHTS are not configured and several condition groups are missing
-Add a slight chance for religious to spawn
 
 What's next:
 Actual proc gen with proper spawn rates
