@@ -1,14 +1,10 @@
 package data.scripts.campaign.econ;
 
 import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
-import com.fs.starfarer.api.impl.campaign.ids.Factions;
-import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import java.awt.*;
-
-import static data.scripts.US_utils.*;
+import static data.scripts.util.US_utils.*;
 
 public class US_elevator extends BaseHazardCondition {
     private final float ACCESSIBILITY_BONUS = 50f;

@@ -27,12 +27,14 @@ import java.util.Random;
 
 import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PK_PLANET_KEY;
 import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PLANETARY_SHIELD_PLANET;
-import static data.scripts.US_utils.addConditionIfNeeded;
-import static data.scripts.US_utils.removeConditionIfNeeded;
+import static data.scripts.util.US_hyceanManager.manageHyceanConditions;
+import static data.scripts.util.US_utils.addConditionIfNeeded;
+import static data.scripts.util.US_utils.removeConditionIfNeeded;
 
 @SuppressWarnings("unused")
 public class US_modPlugin extends BaseModPlugin {
     public static Logger LOG = Global.getLogger(US_modPlugin.class);
+
     private final List<String> BG_YOUNG = new ArrayList<>();
     private final List<String> BG_AVERAGE = new ArrayList<>();
     private final List<String> BG_OLD = new ArrayList<>();
@@ -46,9 +48,9 @@ public class US_modPlugin extends BaseModPlugin {
     private List<String> VIRUS_LIST = new ArrayList<>();
     private List<String> ARTIFICIAL_LIST = new ArrayList<>();
 
-    private final WeightedRandomPicker<String> RUINS = new WeightedRandomPicker<>();
+    private static final WeightedRandomPicker<String> RUINS = new WeightedRandomPicker<>();
 
-    {
+    static {
         RUINS.add(Conditions.RUINS_SCATTERED, 1);
         RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
         RUINS.add(Conditions.RUINS_EXTENSIVE, 3);
@@ -60,6 +62,7 @@ public class US_modPlugin extends BaseModPlugin {
         // Set aquaculture planets
         Farming.AQUA_PLANETS.add("US_water");
         Farming.AQUA_PLANETS.add("US_waterB");
+        Farming.AQUA_PLANETS.add("US_waterHycean");
 
         // Set Slipsurge strength
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_red_giant", 0.6f);
@@ -133,6 +136,11 @@ public class US_modPlugin extends BaseModPlugin {
                 // Add Irradiated to Burnt planets
                 if (p.getTypeId().equals("US_burnt")) {
                     addConditionIfNeeded(p, Conditions.IRRADIATED);
+                }
+
+                // Handle Hycean planetary conditions
+                if (p.getTypeId().equals("US_waterHycean")) {
+                    manageHyceanConditions(p);
                 }
 
                 // Find Chemical Crystals candidates

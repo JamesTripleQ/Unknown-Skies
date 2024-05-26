@@ -9,7 +9,7 @@ import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_utils.*;
+import static data.scripts.util.US_utils.*;
 
 public class US_tunnels extends BaseHazardCondition implements MarketImmigrationModifier {
 

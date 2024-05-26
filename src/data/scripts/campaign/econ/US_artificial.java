@@ -6,7 +6,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Strings;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_utils.txt;
+import static data.scripts.util.US_utils.txt;
 
 public class US_artificial extends BaseHazardCondition {
     private final float DEFENSE_BONUS = 2.0f;

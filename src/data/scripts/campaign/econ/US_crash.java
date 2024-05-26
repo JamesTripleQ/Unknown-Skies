@@ -4,7 +4,7 @@ import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_utils.*;
+import static data.scripts.util.US_utils.*;
 
 public class US_crash extends BaseHazardCondition {
 

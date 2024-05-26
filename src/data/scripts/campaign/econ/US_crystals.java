@@ -7,7 +7,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
 
-import static data.scripts.US_utils.txt;
+import static data.scripts.util.US_utils.txt;
 
 public class US_crystals extends BaseHazardCondition {
     private final int CRYSTAL_BONUS = 1;
