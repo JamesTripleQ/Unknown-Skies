@@ -27,45 +27,53 @@ public class US_hyceanManager {
         groups.add("organics");
         groups.add("special");
 
-        baseWeight.put("atmosphere_no_pick", 0f);
-        baseWeight.put(Conditions.THIN_ATMOSPHERE, 0f);
-        baseWeight.put(Conditions.DENSE_ATMOSPHERE, 0f);
+        // TODO all these weights are default from the mentioned category (non-resource conditions that shouldn't appear have been removed)
+        // cat_frozen
+        baseWeight.put("atmosphere_no_pick", 10f);
+        baseWeight.put(Conditions.THIN_ATMOSPHERE, 1f);
+        baseWeight.put(Conditions.DENSE_ATMOSPHERE, 1f);
 
-        baseWeight.put("weather_no_pick", 0f);
-        baseWeight.put(Conditions.EXTREME_WEATHER, 0f);
+        // water
+        baseWeight.put("weather_no_pick", 10f);
+        baseWeight.put(Conditions.EXTREME_WEATHER, 3f);
 
-        baseWeight.put("biosphere_no_pick", 0f);
-        baseWeight.put(Conditions.INIMICAL_BIOSPHERE, 0f);
+        // water (inherited by cat_hab3)
+        baseWeight.put("biosphere_no_pick", 10f);
+        baseWeight.put(Conditions.INIMICAL_BIOSPHERE, 1f);
 
-        baseWeight.put("ore_no_pick", 0f);
-        baseWeight.put(Conditions.ORE_SPARSE, 0f);
-        baseWeight.put(Conditions.ORE_MODERATE, 0f);
-        baseWeight.put(Conditions.ORE_ABUNDANT, 0f);
-        baseWeight.put(Conditions.ORE_RICH, 0f);
-        baseWeight.put(Conditions.ORE_ULTRARICH, 0f);
+        // water (+ cat_hab3 inheritance)
+        baseWeight.put("ore_no_pick", 100f);
+        baseWeight.put(Conditions.ORE_SPARSE, 20f);
+        baseWeight.put(Conditions.ORE_MODERATE, 40f);
+        baseWeight.put(Conditions.ORE_ABUNDANT, 4f);
+        baseWeight.put(Conditions.ORE_RICH, 2f);
+        baseWeight.put(Conditions.ORE_ULTRARICH, 1f);
 
-        baseWeight.put("rare_ore_no_pick", 0f);
-        baseWeight.put(Conditions.RARE_ORE_SPARSE, 0f);
-        baseWeight.put(Conditions.RARE_ORE_MODERATE, 0f);
-        baseWeight.put(Conditions.RARE_ORE_ABUNDANT, 0f);
-        baseWeight.put(Conditions.RARE_ORE_RICH, 0f);
-        baseWeight.put(Conditions.RARE_ORE_ULTRARICH, 0f);
+        // water (inherited by cat_hab3)
+        baseWeight.put("rare_ore_no_pick", 50f);
+        baseWeight.put(Conditions.RARE_ORE_SPARSE, 10f);
+        baseWeight.put(Conditions.RARE_ORE_MODERATE, 5f);
+        baseWeight.put(Conditions.RARE_ORE_ABUNDANT, 5f);
+        baseWeight.put(Conditions.RARE_ORE_RICH, 2f);
+        baseWeight.put(Conditions.RARE_ORE_ULTRARICH, 1f);
 
-        // Weights are WIP
-        baseWeight.put("organics_no_pick", 20f);
+        // cat_frozen
+        baseWeight.put("volatiles_no_pick", 0f);
+        baseWeight.put(Conditions.VOLATILES_TRACE, 10f);
+        baseWeight.put(Conditions.VOLATILES_DIFFUSE, 20f);
+        baseWeight.put(Conditions.VOLATILES_ABUNDANT, 10f);
+        baseWeight.put(Conditions.VOLATILES_PLENTIFUL, 5f);
+
+        // water
+        baseWeight.put("organics_no_pick", 0f);
         baseWeight.put(Conditions.ORGANICS_TRACE, 0f);
         baseWeight.put(Conditions.ORGANICS_COMMON, 5f);
         baseWeight.put(Conditions.ORGANICS_ABUNDANT, 20f);
         baseWeight.put(Conditions.ORGANICS_PLENTIFUL, 10f);
 
-        baseWeight.put("volatiles_no_pick", 20f);
-        baseWeight.put(Conditions.VOLATILES_TRACE, 0f);
-        baseWeight.put(Conditions.VOLATILES_DIFFUSE, 5f);
-        baseWeight.put(Conditions.VOLATILES_ABUNDANT, 20f);
-        baseWeight.put(Conditions.VOLATILES_PLENTIFUL, 10f);
-
-        baseWeight.put("US_special_no_pick", 20f);
-        baseWeight.put("US_religious", 0f);
+        // water
+        baseWeight.put("US_special_no_pick", 10f);
+        baseWeight.put("US_religious", 2f);
     }
 
 
@@ -82,6 +90,7 @@ public class US_hyceanManager {
         }
     }
 
+    // Modified from PlanetConditionGenerator.java
     private static WeightedRandomPicker<String> getGroupPicker(PlanetAPI planet, String group) {
         Set<String> conditionsSoFar = new HashSet<>();
 
