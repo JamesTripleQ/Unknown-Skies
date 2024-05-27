@@ -4,22 +4,21 @@ Add a new Dust world variant (maybe)
 Add an extra effect to the Artificial world (maybe)
 Add Solar clouds (maybe)
 Add custom planet art from Illus.Ent to unique worlds (maybe, provided SirHartley agrees)
-Make Artificial worlds always has Ind.Evo ruins (maybe)
 Check if Lifeless and Arid Lifeless are in the correct categories
 Rework hab categories like Desertic
 Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentric has actually decent odds of spawning) might not be needed
-Swap some icons for military base
+Swap some icons for military base (maybe)
 Investigate the restoration of new procgen rings
+Organics on Methane
 
 TODO Hycean
 Current progress:
-Planet spec is done (along with procgen radius and color)
-
-WEIGHTS are not configured and several condition groups are missing
+Planet spec is done
+Condition pool framework is done
 
 What's next:
+Configure condition weights
 Actual proc gen with proper spawn rates
-Condition gen
 Description
 Check if vanilla market images in a special way for Water worlds.
 Check how Ind.Evo spawns conditions (depending on the system used to spawn the planet)

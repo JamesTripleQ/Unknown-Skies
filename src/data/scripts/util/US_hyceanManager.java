@@ -14,39 +14,42 @@ import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerato
 import static data.scripts.util.US_utils.addConditionIfNeeded;
 
 public class US_hyceanManager {
-    public static Map<String, Float> baseWeight = new HashMap<>();
-    private static final List<String> groups = new ArrayList<>();
+    public static final Map<String, Float> baseWeight = new HashMap<>();
+    public static final List<String> groups = new ArrayList<>();
 
     static {
+        groups.add("atmosphere");
+        groups.add("weather");
+        groups.add("biosphere");
+        groups.add("ore");
+        groups.add("rare_ore");
         groups.add("volatiles");
         groups.add("organics");
+        groups.add("special");
 
-        /*
         baseWeight.put("atmosphere_no_pick", 0f);
+        baseWeight.put(Conditions.THIN_ATMOSPHERE, 0f);
         baseWeight.put(Conditions.DENSE_ATMOSPHERE, 0f);
 
         baseWeight.put("weather_no_pick", 0f);
         baseWeight.put(Conditions.EXTREME_WEATHER, 0f);
-        */
 
-        /*
-        pollution_no_pick
-        pollution
+        baseWeight.put("biosphere_no_pick", 0f);
+        baseWeight.put(Conditions.INIMICAL_BIOSPHERE, 0f);
 
-        ore_no_pick
-        ore_sparse
-        ore_moderate
-        ore_abundant
-        ore_rich
-        ore_ultrarich
+        baseWeight.put("ore_no_pick", 0f);
+        baseWeight.put(Conditions.ORE_SPARSE, 0f);
+        baseWeight.put(Conditions.ORE_MODERATE, 0f);
+        baseWeight.put(Conditions.ORE_ABUNDANT, 0f);
+        baseWeight.put(Conditions.ORE_RICH, 0f);
+        baseWeight.put(Conditions.ORE_ULTRARICH, 0f);
 
-        rare_ore_no_pick
-        rare_ore_sparse
-        rare_ore_moderate
-        rare_ore_abundant
-        rare_ore_rich
-        rare_ore_ultrarich
-        */
+        baseWeight.put("rare_ore_no_pick", 0f);
+        baseWeight.put(Conditions.RARE_ORE_SPARSE, 0f);
+        baseWeight.put(Conditions.RARE_ORE_MODERATE, 0f);
+        baseWeight.put(Conditions.RARE_ORE_ABUNDANT, 0f);
+        baseWeight.put(Conditions.RARE_ORE_RICH, 0f);
+        baseWeight.put(Conditions.RARE_ORE_ULTRARICH, 0f);
 
         // Weights are WIP
         baseWeight.put("organics_no_pick", 20f);
@@ -61,10 +64,8 @@ public class US_hyceanManager {
         baseWeight.put(Conditions.VOLATILES_ABUNDANT, 20f);
         baseWeight.put(Conditions.VOLATILES_PLENTIFUL, 10f);
 
-        /*
-        US_special_no_pick
-        US_religious
-         */
+        baseWeight.put("US_special_no_pick", 20f);
+        baseWeight.put("US_religious", 0f);
     }
 
 
@@ -82,7 +83,6 @@ public class US_hyceanManager {
     }
 
     private static WeightedRandomPicker<String> getGroupPicker(PlanetAPI planet, String group) {
-
         Set<String> conditionsSoFar = new HashSet<>();
 
         for (MarketConditionAPI cond : planet.getMarket().getConditions()) {
@@ -106,7 +106,6 @@ public class US_hyceanManager {
             }
 
             if (weight <= 0) continue;
-
             if (!preconditionsMet(data.getId(), conditionsSoFar)) continue;
 
             picker.add(data.getId(), weight);
