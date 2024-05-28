@@ -18,10 +18,10 @@ TODO Hycean
 Current progress:
 Planet spec is done
 Condition pool framework is done
+Condition weights are done
 
 What's next:
-Configure condition weights
-Actual proc gen with proper spawn rates (also planet radius and how category weights are handled since cat_nothing has some defaults)
+Actual proc gen with proper spawn rates (only thing missing is the actual frequency itself, everything else is done)
 Review condition weights
 Description
 Check if vanilla market images in a special way for Water worlds.
