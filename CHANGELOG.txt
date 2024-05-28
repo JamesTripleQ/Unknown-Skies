@@ -10,6 +10,9 @@ Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentr
 Swap some icons for military base (maybe)
 Investigate the restoration of new procgen rings
 Organics on Methane
+Savannah and Alpine worlds (maybe)
+Make Windwsept always have hab/never replace cat_hab1 (you pick)
+Fix math random technically always being like 0.01 off
 
 TODO Hycean
 Current progress:
@@ -18,7 +21,8 @@ Condition pool framework is done
 
 What's next:
 Configure condition weights
-Actual proc gen with proper spawn rates
+Actual proc gen with proper spawn rates (also planet radius and how category weights are handled since cat_nothing has some defaults)
+Review condition weights
 Description
 Check if vanilla market images in a special way for Water worlds.
 Check how Ind.Evo spawns conditions (depending on the system used to spawn the planet)

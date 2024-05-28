@@ -18,62 +18,49 @@ public class US_hyceanManager {
     public static final List<String> groups = new ArrayList<>();
 
     static {
-        groups.add("atmosphere");
+        //groups.add("atmosphere");
         groups.add("weather");
         groups.add("biosphere");
         groups.add("ore");
         groups.add("rare_ore");
         groups.add("volatiles");
         groups.add("organics");
-        groups.add("special");
 
-        // TODO all these weights are default from the mentioned category (non-resource conditions that shouldn't appear have been removed)
-        // cat_frozen
+        // TODO cat_frozen
         baseWeight.put("atmosphere_no_pick", 10f);
         baseWeight.put(Conditions.THIN_ATMOSPHERE, 1f);
         baseWeight.put(Conditions.DENSE_ATMOSPHERE, 1f);
 
-        // water
+        // Weather
         baseWeight.put("weather_no_pick", 10f);
-        baseWeight.put(Conditions.EXTREME_WEATHER, 3f);
+        baseWeight.put(Conditions.EXTREME_WEATHER, 4f);
 
-        // water (inherited by cat_hab3)
+        // Biosphere
         baseWeight.put("biosphere_no_pick", 10f);
         baseWeight.put(Conditions.INIMICAL_BIOSPHERE, 1f);
 
-        // water (+ cat_hab3 inheritance)
+        // Ores
         baseWeight.put("ore_no_pick", 100f);
-        baseWeight.put(Conditions.ORE_SPARSE, 20f);
-        baseWeight.put(Conditions.ORE_MODERATE, 40f);
+        baseWeight.put(Conditions.ORE_SPARSE, 30f);
+        baseWeight.put(Conditions.ORE_MODERATE, 30f);
         baseWeight.put(Conditions.ORE_ABUNDANT, 4f);
-        baseWeight.put(Conditions.ORE_RICH, 2f);
-        baseWeight.put(Conditions.ORE_ULTRARICH, 1f);
+        baseWeight.put(Conditions.ORE_RICH, 1f);
 
-        // water (inherited by cat_hab3)
+        // Rare Ores
         baseWeight.put("rare_ore_no_pick", 50f);
         baseWeight.put(Conditions.RARE_ORE_SPARSE, 10f);
         baseWeight.put(Conditions.RARE_ORE_MODERATE, 5f);
         baseWeight.put(Conditions.RARE_ORE_ABUNDANT, 5f);
-        baseWeight.put(Conditions.RARE_ORE_RICH, 2f);
-        baseWeight.put(Conditions.RARE_ORE_ULTRARICH, 1f);
+        baseWeight.put(Conditions.RARE_ORE_RICH, 1f);
 
-        // cat_frozen
-        baseWeight.put("volatiles_no_pick", 0f);
-        baseWeight.put(Conditions.VOLATILES_TRACE, 10f);
-        baseWeight.put(Conditions.VOLATILES_DIFFUSE, 20f);
-        baseWeight.put(Conditions.VOLATILES_ABUNDANT, 10f);
-        baseWeight.put(Conditions.VOLATILES_PLENTIFUL, 5f);
+        // Volatiles
+        baseWeight.put(Conditions.VOLATILES_ABUNDANT, 20f);
+        baseWeight.put(Conditions.VOLATILES_PLENTIFUL, 15f);
 
-        // water
-        baseWeight.put("organics_no_pick", 0f);
-        baseWeight.put(Conditions.ORGANICS_TRACE, 0f);
-        baseWeight.put(Conditions.ORGANICS_COMMON, 5f);
-        baseWeight.put(Conditions.ORGANICS_ABUNDANT, 20f);
-        baseWeight.put(Conditions.ORGANICS_PLENTIFUL, 10f);
-
-        // water
-        baseWeight.put("US_special_no_pick", 10f);
-        baseWeight.put("US_religious", 2f);
+        // Organics
+        baseWeight.put(Conditions.ORGANICS_TRACE, 5f);
+        baseWeight.put(Conditions.ORGANICS_COMMON, 20f);
+        baseWeight.put(Conditions.ORGANICS_ABUNDANT, 5f);
     }
 
 
@@ -84,19 +71,21 @@ public class US_hyceanManager {
             WeightedRandomPicker<String> picker = getGroupPicker(planet, group);
             String condition = picker.pick();
 
+            if (condition == null) continue;
+
             if (!condition.endsWith(ConditionGenDataSpec.NO_PICK_SUFFIX)) {
                 addConditionIfNeeded(planet, condition);
             }
+        }
+
+        if (preconditionsMet("US_religious", getConditionsSoFar(planet)) && Math.random() > 0.8f) {
+            addConditionIfNeeded(planet, "US_religious");
         }
     }
 
     // Modified from PlanetConditionGenerator.java
     private static WeightedRandomPicker<String> getGroupPicker(PlanetAPI planet, String group) {
-        Set<String> conditionsSoFar = new HashSet<>();
-
-        for (MarketConditionAPI cond : planet.getMarket().getConditions()) {
-            conditionsSoFar.add(cond.getId());
-        }
+        Set<String> conditionsSoFar = getConditionsSoFar(planet);
 
         WeightedRandomPicker<String> picker = new WeightedRandomPicker<>(StarSystemGenerator.random);
         List<ConditionGenDataSpec> groupData = getDataForGroup(group);
@@ -121,5 +110,16 @@ public class US_hyceanManager {
         }
 
         return picker;
+    }
+
+    // Returns a Set with all condition IDs
+    private static Set<String> getConditionsSoFar(PlanetAPI planet) {
+        Set<String> conditionsSoFar = new HashSet<>();
+
+        for (MarketConditionAPI cond : planet.getMarket().getConditions()) {
+            conditionsSoFar.add(cond.getId());
+        }
+
+        return conditionsSoFar;
     }
 }

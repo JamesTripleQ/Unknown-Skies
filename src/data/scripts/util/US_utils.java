@@ -122,8 +122,10 @@ public class US_utils {
             Color dark = base.darker().darker().darker().darker();
             Color bright = base.brighter().brighter().brighter().brighter();
 
-            if (market.getFactionId() != null) {
-                if (!market.getFactionId().equals(Factions.NEUTRAL)) {
+            String faction = market.getFactionId();
+
+            if (faction != null) {
+                if (!faction.equals(Factions.NEUTRAL)) {
                     base = market.getFaction().getBaseUIColor();
                     dark = market.getFaction().getDarkUIColor();
                     bright = market.getFaction().getBrightUIColor();
