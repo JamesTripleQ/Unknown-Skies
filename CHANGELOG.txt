@@ -15,17 +15,8 @@ Make Windwsept always have hab/never replace cat_hab1 (you pick)
 Fix math random technically always being like 0.01 off
 
 TODO Hycean
-Current progress:
-Planet spec is done
-Condition pool framework is done
-Condition weights are done
-
 What's next:
-Actual proc gen with proper spawn rates (only thing missing is the actual frequency itself, everything else is done)
-Review condition weights
 Description
-Check if vanilla market images in a special way for Water worlds.
-Check how Ind.Evo spawns conditions (depending on the system used to spawn the planet)
 
 W.I.P. 1.1.0   [date]
 - Minor text fixes.

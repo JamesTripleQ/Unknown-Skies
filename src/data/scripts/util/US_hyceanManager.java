@@ -72,7 +72,8 @@ public class US_hyceanManager {
 
         // Atmosphere
         baseWeight.put("atmosphere_no_pick", 10f);
-        baseWeight.put(Conditions.THIN_ATMOSPHERE, 2f);
+        baseWeight.put(Conditions.THIN_ATMOSPHERE, 1f);
+        baseWeight.put(Conditions.DENSE_ATMOSPHERE, 1f);
 
         // Weather
         baseWeight.put("weather_no_pick", 10f);
@@ -84,15 +85,15 @@ public class US_hyceanManager {
 
         // Ores
         baseWeight.put("ore_no_pick", 100f);
-        baseWeight.put(Conditions.ORE_SPARSE, 15f);
-        baseWeight.put(Conditions.ORE_MODERATE, 20f);
+        baseWeight.put(Conditions.ORE_SPARSE, 10f);
+        baseWeight.put(Conditions.ORE_MODERATE, 15f);
         baseWeight.put(Conditions.ORE_ABUNDANT, 4f);
         baseWeight.put(Conditions.ORE_RICH, 1f);
 
         // Rare Ores
         baseWeight.put("rare_ore_no_pick", 100f);
-        baseWeight.put(Conditions.RARE_ORE_SPARSE, 10f);
-        baseWeight.put(Conditions.RARE_ORE_MODERATE, 15f);
+        baseWeight.put(Conditions.RARE_ORE_SPARSE, 5f);
+        baseWeight.put(Conditions.RARE_ORE_MODERATE, 10f);
         baseWeight.put(Conditions.RARE_ORE_ABUNDANT, 4f);
         baseWeight.put(Conditions.RARE_ORE_RICH, 1f);
 
