@@ -12,11 +12,7 @@ Investigate the restoration of new procgen rings
 Organics on Methane
 Savannah and Alpine worlds (maybe)
 Make Windwsept always have hab/never replace cat_hab1 (you pick)
-Fix math random technically always being like 0.01 off
-
-TODO Hycean
-What's next:
-Description
+Fix math random technically always being like 0.01 off (or just switch to a better random)
 
 W.I.P. 1.1.0   [date]
 - Minor text fixes.
@@ -29,6 +25,7 @@ W.I.P. 1.1.0   [date]
    . Population growth is now (colony size + 1) * -2 (was colony size * -3).
 - Unique conditions (Shrooms, Spores, Virus) will now prevent other US special conditions from spawning (planetary conditions and crystals are unaffected).
 - Fixed a rare bug that caused Decivilized to spawn without ruins on gas giants with Floating Continent.
+- Added Hycean worlds.
 
 1.0.11   26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.
