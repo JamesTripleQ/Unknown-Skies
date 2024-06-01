@@ -138,7 +138,7 @@ public class US_modPlugin extends BaseModPlugin {
                     addConditionIfNeeded(p, Conditions.IRRADIATED);
                 }
 
-                // Handle Hycean planetary conditions
+                // Hycean planets are handled in US_hyceanManager.java
                 if (p.getTypeId().equals("US_waterHycean")) {
                     manageHyceanConditions(p);
                 }

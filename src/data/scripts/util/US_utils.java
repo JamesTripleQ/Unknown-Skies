@@ -7,13 +7,20 @@ import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.procgen.ConditionGenDataSpec;
+import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
+import com.fs.starfarer.api.util.WeightedRandomPicker;
 
 import java.awt.*;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.getDataForGroup;
+import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.preconditionsMet;
 
 public class US_utils {
 
@@ -98,6 +105,53 @@ public class US_utils {
 
         market.removeCondition(id);
         market.reapplyConditions();
+    }
+
+    /*--------------------
+    ---- PICKER UTILS ----
+    --------------------*/
+
+    // Modified from PlanetConditionGenerator.java
+    // Returns a picker with all the conditions of a given group
+    public static WeightedRandomPicker<String> getGroupPicker(PlanetAPI planet, String group, Map<String, Float> baseWeights) {
+        Set<String> conditionsSoFar = getConditionsSoFar(planet);
+
+        WeightedRandomPicker<String> picker = new WeightedRandomPicker<>(StarSystemGenerator.random);
+        List<ConditionGenDataSpec> groupData = getDataForGroup(group);
+
+        for (ConditionGenDataSpec data : groupData) {
+            float weight = 0f;
+
+            // Assigns the corresponding baseWeight value
+            if (baseWeights.get(data.getId()) != null) {
+                weight = baseWeights.get(data.getId());
+            }
+
+            // Applies multipliers
+            for (String cid : conditionsSoFar) {
+                if (data.hasMultiplier(cid)) {
+                    weight *= data.getMultiplier(cid);
+                }
+            }
+
+            if (weight <= 0) continue;
+            if (!preconditionsMet(data.getId(), conditionsSoFar)) continue;
+
+            picker.add(data.getId(), weight);
+        }
+
+        return picker;
+    }
+
+    // Returns a Set with all condition IDs
+    public static Set<String> getConditionsSoFar(PlanetAPI planet) {
+        Set<String> conditionsSoFar = new HashSet<>();
+
+        for (MarketConditionAPI cond : planet.getMarket().getConditions()) {
+            conditionsSoFar.add(cond.getId());
+        }
+
+        return conditionsSoFar;
     }
 
     /*-----------------------

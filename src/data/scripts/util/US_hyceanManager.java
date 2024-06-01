@@ -1,23 +1,26 @@
 package data.scripts.util;
 
 import com.fs.starfarer.api.campaign.PlanetAPI;
-import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.procgen.ConditionGenDataSpec;
-import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.getDataForGroup;
 import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.preconditionsMet;
-import static data.scripts.util.US_utils.addConditionIfNeeded;
-import static data.scripts.util.US_utils.removeConditionIfNeeded;
+import static data.scripts.util.US_utils.*;
 
 public class US_hyceanManager {
-    public static final Map<String, Float> baseWeight = new HashMap<>();
+    // The base weight for a condition, equivalent to a non-multiplier entry in condition_gen_data.csv
+    // If a condition isn't entered then it will default to a weight of 0
+    public static final Map<String, Float> baseWeights = new HashMap<>();
+    // All condition groups that need to be applied
     public static final List<String> groups = new ArrayList<>();
-    public static final List <String> REMOVED_CONDITIONS = new ArrayList<>();
+    // All conditions that need to be removed
+    public static final List<String> REMOVED_CONDITIONS = new ArrayList<>();
 
     static {
         REMOVED_CONDITIONS.add(Conditions.HABITABLE);
@@ -71,103 +74,66 @@ public class US_hyceanManager {
         groups.add("organics");
 
         // Atmosphere
-        baseWeight.put("atmosphere_no_pick", 10f);
-        baseWeight.put(Conditions.THIN_ATMOSPHERE, 1f);
-        baseWeight.put(Conditions.DENSE_ATMOSPHERE, 1f);
+        baseWeights.put("atmosphere_no_pick", 10f);
+        baseWeights.put(Conditions.THIN_ATMOSPHERE, 1f);
+        baseWeights.put(Conditions.DENSE_ATMOSPHERE, 1f);
 
         // Weather
-        baseWeight.put("weather_no_pick", 10f);
-        baseWeight.put(Conditions.EXTREME_WEATHER, 4f);
+        baseWeights.put("weather_no_pick", 10f);
+        baseWeights.put(Conditions.EXTREME_WEATHER, 4f);
 
         // Biosphere
-        baseWeight.put("biosphere_no_pick", 10f);
-        baseWeight.put(Conditions.INIMICAL_BIOSPHERE, 1f);
+        baseWeights.put("biosphere_no_pick", 10f);
+        baseWeights.put(Conditions.INIMICAL_BIOSPHERE, 1f);
 
         // Ores
-        baseWeight.put("ore_no_pick", 100f);
-        baseWeight.put(Conditions.ORE_SPARSE, 10f);
-        baseWeight.put(Conditions.ORE_MODERATE, 15f);
-        baseWeight.put(Conditions.ORE_ABUNDANT, 4f);
-        baseWeight.put(Conditions.ORE_RICH, 1f);
+        baseWeights.put("ore_no_pick", 100f);
+        baseWeights.put(Conditions.ORE_SPARSE, 10f);
+        baseWeights.put(Conditions.ORE_MODERATE, 15f);
+        baseWeights.put(Conditions.ORE_ABUNDANT, 4f);
+        baseWeights.put(Conditions.ORE_RICH, 1f);
 
         // Rare Ores
-        baseWeight.put("rare_ore_no_pick", 100f);
-        baseWeight.put(Conditions.RARE_ORE_SPARSE, 5f);
-        baseWeight.put(Conditions.RARE_ORE_MODERATE, 10f);
-        baseWeight.put(Conditions.RARE_ORE_ABUNDANT, 4f);
-        baseWeight.put(Conditions.RARE_ORE_RICH, 1f);
+        baseWeights.put("rare_ore_no_pick", 100f);
+        baseWeights.put(Conditions.RARE_ORE_SPARSE, 5f);
+        baseWeights.put(Conditions.RARE_ORE_MODERATE, 10f);
+        baseWeights.put(Conditions.RARE_ORE_ABUNDANT, 4f);
+        baseWeights.put(Conditions.RARE_ORE_RICH, 1f);
 
         // Volatiles
-        baseWeight.put(Conditions.VOLATILES_ABUNDANT, 20f);
-        baseWeight.put(Conditions.VOLATILES_PLENTIFUL, 15f);
+        baseWeights.put(Conditions.VOLATILES_ABUNDANT, 20f);
+        baseWeights.put(Conditions.VOLATILES_PLENTIFUL, 15f);
 
         // Organics
-        baseWeight.put(Conditions.ORGANICS_TRACE, 5f);
-        baseWeight.put(Conditions.ORGANICS_COMMON, 20f);
-        baseWeight.put(Conditions.ORGANICS_ABUNDANT, 5f);
+        baseWeights.put(Conditions.ORGANICS_TRACE, 5f);
+        baseWeights.put(Conditions.ORGANICS_COMMON, 20f);
+        baseWeights.put(Conditions.ORGANICS_ABUNDANT, 5f);
     }
 
-
     public static void manageHyceanConditions(PlanetAPI planet) {
-        for (String condition : REMOVED_CONDITIONS){
+        // Removes conditions
+        for (String condition : REMOVED_CONDITIONS) {
             removeConditionIfNeeded(planet, condition);
         }
 
+        // Adds Water-covered Surface
         addConditionIfNeeded(planet, Conditions.WATER_SURFACE);
 
+        // Picks a condition for each group
         for (String group : groups) {
-            WeightedRandomPicker<String> picker = getGroupPicker(planet, group);
+            WeightedRandomPicker<String> picker = getGroupPicker(planet, group, baseWeights);
             String condition = picker.pick();
 
             if (condition == null) continue;
+            // If a "no_pick" condition is picked then it will add nothing
+            if (condition.endsWith(ConditionGenDataSpec.NO_PICK_SUFFIX)) continue;
 
-            if (!condition.endsWith(ConditionGenDataSpec.NO_PICK_SUFFIX)) {
-                addConditionIfNeeded(planet, condition);
-            }
+            addConditionIfNeeded(planet, condition);
         }
 
+        // Chance to add Ancient Religious Landmark if conditions are met
         if (preconditionsMet("US_religious", getConditionsSoFar(planet)) && Math.random() > 0.8f) {
             addConditionIfNeeded(planet, "US_religious");
         }
-    }
-
-    // Modified from PlanetConditionGenerator.java
-    private static WeightedRandomPicker<String> getGroupPicker(PlanetAPI planet, String group) {
-        Set<String> conditionsSoFar = getConditionsSoFar(planet);
-
-        WeightedRandomPicker<String> picker = new WeightedRandomPicker<>(StarSystemGenerator.random);
-        List<ConditionGenDataSpec> groupData = getDataForGroup(group);
-
-        for (ConditionGenDataSpec data : groupData) {
-            float weight = 0f;
-
-            if (baseWeight.get(data.getId()) != null) {
-                weight = baseWeight.get(data.getId());
-            }
-
-            for (String cid : conditionsSoFar) {
-                if (data.hasMultiplier(cid)) {
-                    weight *= data.getMultiplier(cid);
-                }
-            }
-
-            if (weight <= 0) continue;
-            if (!preconditionsMet(data.getId(), conditionsSoFar)) continue;
-
-            picker.add(data.getId(), weight);
-        }
-
-        return picker;
-    }
-
-    // Returns a Set with all condition IDs
-    private static Set<String> getConditionsSoFar(PlanetAPI planet) {
-        Set<String> conditionsSoFar = new HashSet<>();
-
-        for (MarketConditionAPI cond : planet.getMarket().getConditions()) {
-            conditionsSoFar.add(cond.getId());
-        }
-
-        return conditionsSoFar;
     }
 }
