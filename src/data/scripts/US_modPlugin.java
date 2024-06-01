@@ -48,13 +48,18 @@ public class US_modPlugin extends BaseModPlugin {
     private List<String> VIRUS_LIST = new ArrayList<>();
     private List<String> ARTIFICIAL_LIST = new ArrayList<>();
 
-    private static final WeightedRandomPicker<String> RUINS = new WeightedRandomPicker<>();
+    private static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
+    private static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
 
     static {
-        RUINS.add(Conditions.RUINS_SCATTERED, 1);
-        RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
-        RUINS.add(Conditions.RUINS_EXTENSIVE, 3);
-        RUINS.add(Conditions.RUINS_VAST, 1.5f);
+        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_SCATTERED, 1);
+        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
+        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_EXTENSIVE, 3);
+        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_VAST, 1.5f);
+
+        METHANE_ORGANICS.add(Conditions.ORGANICS_COMMON, 5f);
+        METHANE_ORGANICS.add(Conditions.ORGANICS_ABUNDANT, 20f);
+        METHANE_ORGANICS.add(Conditions.ORGANICS_PLENTIFUL, 10f);
     }
 
     @Override
@@ -125,12 +130,17 @@ public class US_modPlugin extends BaseModPlugin {
             for (PlanetAPI p : s.getPlanets()) {
                 if (p.isStar()) continue;
 
-                // Add ruins to planets with Floating Continent
+                // Add Ruins to planets with Floating Continent
                 if (p.getMarket().hasCondition("US_floating")) {
-                    addConditionIfNeeded(p, RUINS.pick());
+                    addConditionIfNeeded(p, FLOATING_CONTINENT_RUINS.pick());
                     if (Math.random() > 0.875f) {
                         addConditionIfNeeded(p, Conditions.DECIVILIZED);
                     }
+                }
+
+                // Add Organics to Methane planets
+                if (p.getTypeId().equals("US_purple")) {
+                    addConditionIfNeeded(p, METHANE_ORGANICS.pick());
                 }
 
                 // Add Irradiated to Burnt planets
