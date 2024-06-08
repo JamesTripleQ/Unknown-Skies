@@ -1918,5 +1918,58 @@
 			200
 		],
 		"cloudRotation": -8
+	},
+	"US_fluorescent": {
+		"name": "Fluorescent Giant",
+		"aOrAn": "a",
+		"tilt": -15,
+		"pitch": 15,
+		"rotation": -3,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.25,
+		"atmosphereThicknessMin": 62,
+		"atmosphereColor": [
+			39,
+			20,
+			211,
+			100
+		],
+		"texture": "graphics/planets/US_planet_textureFluorescent.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			93,
+			46,
+			247,
+			255
+		],
+		"isStar": false,
+		"isGasGiant": true,
+		"lightPosition": [
+			5,
+			-2,
+			3
+		],
+		"glowTexture": "graphics/planets/US_planet_textureFluorescent.jpg",
+		"glowColor": [
+			255,
+			255,
+			255,
+			200
+		],
+		"useReverseLightForGlow": false,
+		"doNotShowInCombat": true,
+		"cloudTexture": "graphics/planets/US_clouds_textureGiant.png",
+		"cloudColor": [
+			107,
+			112,
+			253,
+			100
+		],
+		"cloudRotation": -2
 	}
 }

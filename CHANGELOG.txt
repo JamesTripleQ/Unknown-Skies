@@ -1,5 +1,4 @@
 TODO
-Add the Fluorescent Giant
 Add a new Dust world variant (maybe)
 Add an extra effect to the Artificial world (maybe)
 Add Solar clouds (maybe)
@@ -11,6 +10,12 @@ Savannah and Alpine worlds (maybe)
 Make Windwsept always have hab/never replace cat_hab1 (you pick)
 Fix math random technically always being like 0.01 off (or just switch to a better random) int stars = (int) Math.round(getNormalRandom(1, 7));
 Add LunaLib Version Checker params
+Consider placing 0 in the planet data csv for hycean
+
+TODO fluo
+planet spec is done
+
+do swap, condition, csv and desc
 
 W.I.P. Version 1.1.0 - [date]
 - Minor text fixes.
