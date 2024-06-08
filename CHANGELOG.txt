@@ -6,76 +6,74 @@ Add Solar clouds (maybe)
 Add custom planet art from Illus.Ent to unique worlds (maybe, provided SirHartley agrees)
 Check if Lifeless and Arid Lifeless are in the correct categories
 Rework hab categories like Desertic
-Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentric has actually decent odds of spawning) might not be needed
-Swap some icons for military base (maybe)
-Investigate the restoration of new procgen rings
+Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentric has actually decent odds of spawning)
 Savannah and Alpine worlds (maybe)
 Make Windwsept always have hab/never replace cat_hab1 (you pick)
 Fix math random technically always being like 0.01 off (or just switch to a better random) int stars = (int) Math.round(getNormalRandom(1, 7));
-Fix the poles on heavy clouds (maybe)
+Add LunaLib Version Checker params
 
-W.I.P. 1.1.0   [date]
+W.I.P. Version 1.1.0 - [date]
 - Minor text fixes.
 - Externalized table strings.
 - Tables now show which stat is scaling.
 - Planetary conditions (Artificial, Magnetic, Windswept) are now always the rightmost.
 - Buffed Military Virus:
-   . Weapon production is now +4 (was +3).
-   . Ground defense is now -40% (was -50%).
-   . Population growth is now (colony size + 1) * -2 (was colony size * -3).
+    . Weapon production is now +4 (was +3).
+    . Ground defense is now -40% (was -50%).
+    . Population growth is now (colony size + 1) * -2 (was colony size * -3).
 - Unique conditions (Shrooms, Spores, Virus) will now prevent other US special conditions from spawning (planetary conditions and crystals are unaffected).
 - Fixed a rare bug that caused Decivilized to spawn without ruins on gas giants with Floating Continent.
 - Added Hycean worlds (special thanks to TouchOfVanilla for the original idea and lots of feedback).
 - Methane worlds now always have organics.
 
-1.0.11   26/04/2024
+Version 1.0.11 - 26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.
 - Conditions that scale with market size now have a scaling cap:
-   . Markets of size 2 and lower will always have the size 3 effect.
-   . Markets of size 7 and higher will always have the size 6 effect.
+    . Markets of size 2 and lower will always have the size 3 effect.
+    . Markets of size 7 and higher will always have the size 6 effect.
 - Added the vanilla condition images used by the mod to the files in case they get removed in the future.
 - Unique planets and conditions can no longer spawn on the Planet Killer and Planetary Shield planets.
 - Unique planets now have the proper TypeId.
 - Minor text rewording.
 - Added a new easter egg name.
 
-1.0.10   22/04/2024
+Version 1.0.10 - 22/04/2024
 - Added MagicLib dependency.
 - Loading settings is now handled by MagicLib making the mod more stable with it in the future.
 
-1.0.9   15/04/2024
+Version 1.0.9 - 15/04/2024
 - Fixed some text inconsistencies.
 - Tweaked some of the easter egg names.
 
-1.0.8   05/04/2024
+Version 1.0.8 - 05/04/2024
 - Added proper Slipsurge support to US stars.
 - Windswept world can no longer spawns with no atmosphere (it couldn't happen anyway but just to be sure it's properly dealt with now).
 - Reverted Artificial worlds being able to spawn in Hypershunt systems without ruins (it didn't make sense).
 - Optimized some internal code.
 
-1.0.7   01/04/2024
+Version 1.0.7 - 01/04/2024
 - Fixed US_star_browndwarf spawning too frequently and having some incorrect stats.
 
-1.0.6   30/03/2024
+Version 1.0.6 - 30/03/2024
 - Rewrote most condition effects to be more in line with vanilla.
 - Increased Underground Network scaling (was -3/4/5/6, now -6/8/10/12).
 - Fixed Old Space Accelerator not properly scaling with market size (was +50/49/48/47, now +50/40/30/20).
 - Psychoactive Fungus now only provides its drug production buff on planets with free port.
 - Fixed Crashed Terraforming Drone showing an additional hazard reduction as its effect.
 
-1.0.5   27/03/2024
+Version 1.0.5 - 27/03/2024
 - Fixed an issue present in the original mod which caused Archipelago worlds to not be able to build aquaculture.
 
-1.0.4   25/03/2024
+Version 1.0.4 - 25/03/2024
 - Reduced the defense debuff from Military Virus to -50% (was -75%).
 - Fixed Military Virus' production buff not applying to Orbital Works.
 - Minor text change to Ancient Religious Landmark to specify that it involves Luddic immigrants.
 
-1.0.3   23/03/2024
+Version 1.0.3 - 23/03/2024
 - Fixed a major bug that prevented the US_star_orange from spawning.
 - Added a few easter egg names for stars and planets, most of them references to other games but subtle enough you probably won't notice.
 
-1.0.2   23/03/2024
+Version 1.0.2 - 23/03/2024
 - Reverted back to the original Artificial texture due to the new one not scaling well on larger planets.
 - Magnetic Crust now properly applies its flat defense buff.
 - Unique planets and conditions can no longer spawn on the solar array planet.
@@ -86,7 +84,7 @@ W.I.P. 1.1.0   [date]
 - addConditionIfNeeded and removeConditionIfNeeded functions are now public for anyone using Unknown Skies for custom systems.
 - Massive internal refactoring.
 
-1.0.1   16/03/2024
+Version 1.0.1 - 16/03/2024
 - Updated for 0.97a
 - Added a new Artificial planet texture courtesy of Draconis13.
 - Unique planets and conditions can no longer spawn in the Abyss.
@@ -107,44 +105,41 @@ W.I.P. 1.1.0   [date]
 --- ORIGINAL CHANGELOG ---
 --------------------------
 
-1.0
-
-[RC2] 
+Version 1.0-RC2
 - Fixed Underground Tunnels tooltip.
 - Added save patching code to re-assign the new backgrounds to existing systems. 
  > Interestingly, this means US can be added mid-playthrough and it will add the new backgrounds.
 
-[RC1]
-
+Version 1.0-RC1
 - Reworked backgrounds: 
-   . Now includes 69 backdrops (from 27),
-   . They are somewhat more consistent in art-style and darker as to not disrupt gameplay.
+    . Now includes 69 backdrops (from 27),
+    . They are somewhat more consistent in art-style and darker as to not disrupt gameplay.
 
 - Background list can be expanded through modSettings.json entries with third-party sub-mods,
 - All strings have been externalized for ease of translation,
 - Very rare planets types and conditions have been made unique, often with stronger effects. (Artificial, Magnetic and Perpetual Storm planets, Parasitic Spores, Xeno-fungus and Lingering Virus conditions),
 - Added "Chemical Crystals" uncommon condition that can show up on toxic worlds to give them *some* colonization value from time to time.
 
-0.43
+Version 0.43
 - Compatibility patch for 0.95a
 
-0.42
+Version 0.42
 - Removed 0.9a workarounds
 - All planet types have the proper conditions generated
 - Special planets in non proc-gen system now get the proper special conditions 
 
-0.41
+Version 0.41
 - Fixed effect scaling with Magnetic Crust effect
 
-0.40
+Version 0.40
 - Added two more rare planet types
 - Added rare planetary conditions
 
-0.21
+Version 0.21
 - Procgen adjustments
 
-0.20
+Version 0.20
 - Added 12 new planet types
 
-0.10
+Version 0.10
 - Initial release
