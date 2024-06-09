@@ -13,9 +13,7 @@ Add LunaLib Version Checker params
 Consider placing 0 in the planet data csv for hycean
 
 TODO fluo
-planet spec is done
-
-do swap, condition, csv and desc
+do condition, and desc, check if darkness decrease should apply on black holes, consider a higher volatile upgrade
 
 W.I.P. Version 1.1.0 - [date]
 - Minor text fixes.

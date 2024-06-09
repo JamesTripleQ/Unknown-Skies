@@ -2,6 +2,7 @@ package data.scripts;
 
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
+import com.fs.starfarer.api.campaign.OrbitAPI;
 import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
@@ -15,6 +16,7 @@ import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
+import com.fs.starfarer.combat.entities.terrain.Planet;
 import org.apache.log4j.Logger;
 import org.magiclib.util.MagicSettings;
 
@@ -47,6 +49,7 @@ public class US_modPlugin extends BaseModPlugin {
     private List<String> SHROOM_LIST = new ArrayList<>();
     private List<String> VIRUS_LIST = new ArrayList<>();
     private List<String> ARTIFICIAL_LIST = new ArrayList<>();
+    private List<String> FLUORESCENT_LIST = new ArrayList<>();
 
     private static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
     private static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
@@ -78,6 +81,7 @@ public class US_modPlugin extends BaseModPlugin {
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_browndwarf", 0.1f);
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giant", 0f);
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giantB", 0f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_fluorescent", 0f);
     }
 
     @Override
@@ -120,6 +124,7 @@ public class US_modPlugin extends BaseModPlugin {
         List<PlanetAPI> shroomCandidates = new ArrayList<>();
         List<PlanetAPI> virusCandidates = new ArrayList<>();
         List<PlanetAPI> artificialCandidates = new ArrayList<>();
+        List<PlanetAPI> fluorescentCandidates = new ArrayList<>();
 
         // Seed planetary conditions
         for (StarSystemAPI s : Global.getSector().getStarSystems()) {
@@ -171,6 +176,8 @@ public class US_modPlugin extends BaseModPlugin {
                         if (p.getStarSystem().hasTag(Tags.THEME_DERELICT) || p.getStarSystem().hasTag(Tags.THEME_RUINS)) {
                             artificialCandidates.add(p);
                         }
+                    } else if (FLUORESCENT_LIST.contains(p.getTypeId())) {
+                        fluorescentCandidates.add(p);
                     }
                 }
             }
@@ -274,6 +281,37 @@ public class US_modPlugin extends BaseModPlugin {
 
             // Setup for future picks
             artificialCandidates.remove(planet);
+        }
+
+        // Fluorescent swap
+        if (!fluorescentCandidates.isEmpty()) {
+            PlanetAPI planet = fluorescentCandidates.get(new Random().nextInt(fluorescentCandidates.size()));
+            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Fluorescent Giant");
+            planet.changeType("US_fluorescent", StarSystemGenerator.random);
+            // TODO addConditionIfNeeded(planet, "US_fluorescent");
+            removeConditionIfNeeded(planet, Conditions.POOR_LIGHT);
+            removeConditionIfNeeded(planet, Conditions.DARK);
+
+            // Decrease darkness level of moons by 1
+            for (PlanetAPI moon : planet.getStarSystem().getPlanets()) {
+                if (!moon.isMoon()) continue;
+
+                if (moon.getOrbitFocus().getId().equals(planet.getId())) {
+                    if (moon.hasCondition(Conditions.DARK)) {
+                        addConditionIfNeeded(moon, Conditions.POOR_LIGHT);
+                    } else {
+                        removeConditionIfNeeded(moon, Conditions.POOR_LIGHT);
+                    }
+                }
+            }
+
+            // Upgrade volatiles if needed (at least diffuse)
+            if (!planet.getMarket().hasCondition(Conditions.VOLATILES_PLENTIFUL) && !planet.getMarket().hasCondition(Conditions.VOLATILES_ABUNDANT)) {
+                addConditionIfNeeded(planet, Conditions.VOLATILES_DIFFUSE);
+            }
+
+            // Setup for future picks
+            fluorescentCandidates.remove(planet);
         }
 
         cleanupSettings();
@@ -382,6 +420,7 @@ public class US_modPlugin extends BaseModPlugin {
         SHROOM_LIST = MagicSettings.getList(modId, "shroom_type");
         VIRUS_LIST = MagicSettings.getList(modId, "virus_type");
         ARTIFICIAL_LIST = MagicSettings.getList(modId, "artificial_type");
+        FLUORESCENT_LIST = MagicSettings.getList(modId, "fluorescent_type");
     }
 
     // Cleanup
@@ -397,5 +436,6 @@ public class US_modPlugin extends BaseModPlugin {
         SHROOM_LIST.clear();
         VIRUS_LIST.clear();
         ARTIFICIAL_LIST.clear();
+        FLUORESCENT_LIST.clear();
     }
 }

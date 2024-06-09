@@ -51,6 +51,13 @@
 			"US_barrenE",
 			"US_barrenF",
 		],
+		
+		"fluorescent_type":[
+			"gas_giant",
+			"ice_giant",
+			"US_gas_giant",
+			"US_gas_giantB",
+		],
 
         "backgrounds":{
             # "path" : "age",
