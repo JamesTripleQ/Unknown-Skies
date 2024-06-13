@@ -2,7 +2,6 @@ package data.scripts;
 
 import com.fs.starfarer.api.BaseModPlugin;
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.OrbitAPI;
 import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
@@ -16,7 +15,6 @@ import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
-import com.fs.starfarer.combat.entities.terrain.Planet;
 import org.apache.log4j.Logger;
 import org.magiclib.util.MagicSettings;
 
@@ -289,6 +287,7 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Fluorescent Giant");
             planet.changeType("US_fluorescent", StarSystemGenerator.random);
             // TODO addConditionIfNeeded(planet, "US_fluorescent");
+            addConditionIfNeeded(planet, Conditions.DENSE_ATMOSPHERE);
             removeConditionIfNeeded(planet, Conditions.POOR_LIGHT);
             removeConditionIfNeeded(planet, Conditions.DARK);
 

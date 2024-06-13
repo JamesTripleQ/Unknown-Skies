@@ -3,6 +3,7 @@ Add a new Dust world variant (maybe)
 Add an extra effect to the Artificial world (maybe)
 Add Solar clouds (maybe)
 Add custom planet art from Illus.Ent to unique worlds (maybe, provided SirHartley agrees)
+Update icon for military base
 Check if Lifeless and Arid Lifeless are in the correct categories
 Rework hab categories like Desertic
 Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentric has actually decent odds of spawning)
@@ -13,7 +14,7 @@ Add LunaLib Version Checker params
 Consider placing 0 in the planet data csv for hycean
 
 TODO fluo
-do condition, and desc, check if darkness decrease should apply on black holes, consider a higher volatile upgrade
+do condition
 
 W.I.P. Version 1.1.0 - [date]
 - Minor text fixes.
