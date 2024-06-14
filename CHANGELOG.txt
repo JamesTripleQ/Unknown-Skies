@@ -10,7 +10,6 @@ Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentr
 Savannah and Alpine worlds (maybe)
 Make Windwsept always have hab/never replace cat_hab1 (you pick)
 Fix math random technically always being like 0.01 off (or just switch to a better random) int stars = (int) Math.round(getNormalRandom(1, 7));
-Add LunaLib Version Checker params
 Consider placing 0 in the planet data csv for hycean
 
 W.I.P. Version 1.1.0 - [date]
@@ -26,6 +25,8 @@ W.I.P. Version 1.1.0 - [date]
 - Fixed a rare bug that caused Decivilized to spawn without ruins on gas giants with Floating Continent.
 - Added Hycean worlds (special thanks to TouchOfVanilla for the original idea and lots of feedback).
 - Methane worlds now always have organics.
+- Added a new unique planet: Fluorescent Giant.
+- Added LunaLib Version Checker params.
 
 Version 1.0.11 - 26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.

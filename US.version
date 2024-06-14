@@ -8,11 +8,7 @@
 		"minor": 0,
 		"patch": 11
 	},
-	
-	# TODO
-	# Link towards a direct download, fetched from the online version file
-	# "directDownloadURL": "TODO https://github.com/Lukas22041/LunaLib/releases/latest/download/LunaLib.zip",
-	# Link towards a directly accessible text file, which can be used to display a changelog in-game, is fetched from the online version file.
-	# The menu will highlight any line that begins with "Version"
-	# "changelogURL": "TODO https://raw.githubusercontent.com/Lukas22041/LunaLib/main/changelog.txt",
+
+	"directDownloadURL": "https://github.com/JamesTripleQ/Unknown-Skies/releases/latest/download/Unknown.Skies.zip",
+	"changelogURL": "https://raw.githubusercontent.com/JamesTripleQ/Unknown-Skies/master/CHANGELOG.txt",
 }
