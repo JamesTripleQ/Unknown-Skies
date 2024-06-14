@@ -25,7 +25,7 @@
 		"accelerator":"Old space accelerator",
 		"accelerator_0":"%s accessibility (based on colony size)",
 
-		"fluorescent":"Fluorescent gasses",
+		"fluorescent":"Luminescent clouds",
 		"fluorescent_0":"%s volatiles production (Mining)",
 		"fluorescent_1":"%s volatiles demand (Fuel Production)",
 		"fluorescent_2":"Nullifies",

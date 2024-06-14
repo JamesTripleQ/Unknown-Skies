@@ -287,7 +287,7 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Fluorescent Giant");
             planet.changeType("US_fluorescent", StarSystemGenerator.random);
             addConditionIfNeeded(planet, "US_fluorescent");
-            addConditionIfNeeded(planet, Conditions.DENSE_ATMOSPHERE);
+            addConditionIfNeeded(planet, Conditions.EXTREME_WEATHER);
             removeConditionIfNeeded(planet, Conditions.POOR_LIGHT);
             removeConditionIfNeeded(planet, Conditions.DARK);
 
