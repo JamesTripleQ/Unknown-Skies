@@ -25,6 +25,11 @@
 		"accelerator":"Old space accelerator",
 		"accelerator_0":"%s accessibility (based on colony size)",
 
+		"fluorescent":"Fluorescent gasses",
+		"fluorescent_0":"%s volatiles production (Mining)",
+		"fluorescent_1":"%s volatiles demand (Fuel Production)",
+		"fluorescent_2":"Nullifies",
+
 		"magnet":"Magnetic crust",
 		"magnet_0":"%s ground defense strength",
 		"magnet_1":"%s population growth (based on colony size)",
