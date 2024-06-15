@@ -16,7 +16,7 @@ import static data.scripts.util.US_utils.*;
 public class US_hyceanManager {
     // The base weight for a condition, equivalent to a non-multiplier entry in condition_gen_data.csv
     // If a condition isn't entered then it will default to a weight of 0
-    public static final Map<String, Float> baseWeights = new HashMap<>();
+    public static final Map<String, Float> hyceanWeights = new HashMap<>();
     // All condition groups that need to be applied
     public static final List<String> groups = new ArrayList<>();
     // All conditions that need to be removed
@@ -74,40 +74,40 @@ public class US_hyceanManager {
         groups.add("organics");
 
         // Atmosphere
-        baseWeights.put("atmosphere_no_pick", 10f);
-        baseWeights.put(Conditions.THIN_ATMOSPHERE, 1f);
-        baseWeights.put(Conditions.DENSE_ATMOSPHERE, 1f);
+        hyceanWeights.put("atmosphere_no_pick", 10f);
+        hyceanWeights.put(Conditions.THIN_ATMOSPHERE, 1f);
+        hyceanWeights.put(Conditions.DENSE_ATMOSPHERE, 1f);
 
         // Weather
-        baseWeights.put("weather_no_pick", 10f);
-        baseWeights.put(Conditions.EXTREME_WEATHER, 4f);
+        hyceanWeights.put("weather_no_pick", 10f);
+        hyceanWeights.put(Conditions.EXTREME_WEATHER, 4f);
 
         // Biosphere
-        baseWeights.put("biosphere_no_pick", 10f);
-        baseWeights.put(Conditions.INIMICAL_BIOSPHERE, 1f);
+        hyceanWeights.put("biosphere_no_pick", 10f);
+        hyceanWeights.put(Conditions.INIMICAL_BIOSPHERE, 1f);
 
         // Ores
-        baseWeights.put("ore_no_pick", 100f);
-        baseWeights.put(Conditions.ORE_SPARSE, 10f);
-        baseWeights.put(Conditions.ORE_MODERATE, 15f);
-        baseWeights.put(Conditions.ORE_ABUNDANT, 4f);
-        baseWeights.put(Conditions.ORE_RICH, 1f);
+        hyceanWeights.put("ore_no_pick", 100f);
+        hyceanWeights.put(Conditions.ORE_SPARSE, 10f);
+        hyceanWeights.put(Conditions.ORE_MODERATE, 15f);
+        hyceanWeights.put(Conditions.ORE_ABUNDANT, 4f);
+        hyceanWeights.put(Conditions.ORE_RICH, 1f);
 
         // Rare Ores
-        baseWeights.put("rare_ore_no_pick", 100f);
-        baseWeights.put(Conditions.RARE_ORE_SPARSE, 5f);
-        baseWeights.put(Conditions.RARE_ORE_MODERATE, 10f);
-        baseWeights.put(Conditions.RARE_ORE_ABUNDANT, 4f);
-        baseWeights.put(Conditions.RARE_ORE_RICH, 1f);
+        hyceanWeights.put("rare_ore_no_pick", 100f);
+        hyceanWeights.put(Conditions.RARE_ORE_SPARSE, 5f);
+        hyceanWeights.put(Conditions.RARE_ORE_MODERATE, 10f);
+        hyceanWeights.put(Conditions.RARE_ORE_ABUNDANT, 4f);
+        hyceanWeights.put(Conditions.RARE_ORE_RICH, 1f);
 
         // Volatiles
-        baseWeights.put(Conditions.VOLATILES_ABUNDANT, 20f);
-        baseWeights.put(Conditions.VOLATILES_PLENTIFUL, 15f);
+        hyceanWeights.put(Conditions.VOLATILES_ABUNDANT, 20f);
+        hyceanWeights.put(Conditions.VOLATILES_PLENTIFUL, 15f);
 
         // Organics
-        baseWeights.put(Conditions.ORGANICS_TRACE, 5f);
-        baseWeights.put(Conditions.ORGANICS_COMMON, 20f);
-        baseWeights.put(Conditions.ORGANICS_ABUNDANT, 5f);
+        hyceanWeights.put(Conditions.ORGANICS_TRACE, 5f);
+        hyceanWeights.put(Conditions.ORGANICS_COMMON, 20f);
+        hyceanWeights.put(Conditions.ORGANICS_ABUNDANT, 5f);
     }
 
     public static void manageHyceanConditions(PlanetAPI planet) {
@@ -121,7 +121,7 @@ public class US_hyceanManager {
 
         // Picks a condition for each group
         for (String group : groups) {
-            WeightedRandomPicker<String> picker = getGroupPicker(planet, group, baseWeights);
+            WeightedRandomPicker<String> picker = getGroupPicker(planet, group, hyceanWeights);
             String condition = picker.pick();
 
             if (condition == null) continue;

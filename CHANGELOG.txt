@@ -7,10 +7,18 @@ Update icon for military base
 Check if Lifeless and Arid Lifeless are in the correct categories
 Rework hab categories like Desertic
 Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentric has actually decent odds of spawning)
-Savannah and Alpine worlds (maybe)
 Make Windwsept always have hab/never replace cat_hab1 (you pick)
 Fix math random technically always being like 0.01 off (or just switch to a better random) int stars = (int) Math.round(getNormalRandom(1, 7));
 Consider placing 0 in the planet data csv for hycean
+Consider swappin hyceans to cat toxic (this will nullify the previous point)
+
+TODO extra planets
+NOTE: implement the planets as skins first, then implement skin swapping, then given them custom pools
+
+Savannah:
+desc and farmreduction
+Alpine:
+everything
 
 W.I.P. Version 1.1.0 - [date]
 - Minor text fixes.
