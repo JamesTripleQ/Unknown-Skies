@@ -1674,6 +1674,48 @@
 		],
 		"cloudRotation": -5
 	},
+	"US_alpine": {
+		"name": "Alpine",
+		"tilt": 20,
+		"pitch": 15,
+		"rotation": -3,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.1,
+		"atmosphereThicknessMin": 40,
+		"atmosphereColor": [
+			125,
+			185,
+			210,
+			140
+		],
+		"texture": "graphics/planets/US_planet_textureAlpine.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			50,
+			82,
+			56,
+			255
+		],
+		"isStar": false,
+		"lightPosition": [
+			1,
+			-3,
+			8
+		],
+		"cloudTexture": "graphics/planets/US_clouds_textureSoft.png",
+		"cloudColor": [
+			170,
+			180,
+			190,
+			240
+		],
+		"cloudRotation": -5
+	},
 	"US_water": {
 		"name": "Archipelago",
 		"descriptionId": "US_archipelago",
