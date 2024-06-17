@@ -1,23 +1,21 @@
 TODO
-Add a new Dust world variant (maybe)
+Hostile Megafauna condition
 Add an extra effect to the Artificial world (maybe)
 Add Solar clouds (maybe)
 Add custom planet art from Illus.Ent to unique worlds (maybe, provided SirHartley agrees)
-Update icon for military base
 Check if Lifeless and Arid Lifeless are in the correct categories
-Rework hab categories like Desertic
-Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentric has actually decent odds of spawning; are Aurics actually just Arid skins???)
-Make Windwsept always have hab/never replace cat_hab1 (you pick)
+Rework hab categories like Desertic (maybe)
+Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentric has actually decent odds of spawning)
 Fix math random technically always being like 0.01 off (or just switch to a better random) int stars = (int) Math.round(getNormalRandom(1, 7));
-Consider placing 0 in the planet data csv for hycean
-Consider swappin hyceans to cat toxic (this will nullify the previous point)
+Consider swapping hyceans to cat toxic
 Rework the shroom & windswept swap
 
 TODO extra planets
-NOTE: implement the planets as skins first, then implement skin swapping, then given them custom pools
+Consider using a different scaling algorithm for images to better separate land and sea
+NOTE: implement the planets as skins first (done), then implement skin swapping, then given them custom pools
 
 Savannah & Alpine:
-desc and farmreduction
+farming changes
 
 W.I.P. Version 1.1.0 - [date]
 - Minor text fixes.
