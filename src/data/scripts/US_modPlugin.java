@@ -8,6 +8,7 @@ import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.impl.campaign.abilities.GenerateSlipsurgeAbility;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
+import com.fs.starfarer.api.impl.campaign.ids.Planets;
 import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.ids.Terrain;
 import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationType;
@@ -132,6 +133,20 @@ public class US_modPlugin extends BaseModPlugin {
 
             for (PlanetAPI p : s.getPlanets()) {
                 if (p.isStar()) continue;
+
+                // lava to US_lava swap
+                if (p.getTypeId().equals(Planets.PLANET_LAVA)) {
+                    if (new Random().nextBoolean()) {
+                        p.changeType("US_lava", StarSystemGenerator.random);
+                    }
+                }
+
+                // lava_minor to US_volcanic swap
+                if (p.getTypeId().equals(Planets.PLANET_LAVA_MINOR)) {
+                    if (new Random().nextBoolean()) {
+                        p.changeType("US_volcanic", StarSystemGenerator.random);
+                    }
+                }
 
                 // Add Ruins to planets with Floating Continent
                 if (p.getMarket().hasCondition("US_floating")) {

@@ -9,6 +9,11 @@ Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentr
 Fix math random technically always being like 0.01 off (or just switch to a better random) int stars = (int) Math.round(getNormalRandom(1, 7));
 Consider swapping hyceans to cat toxic
 Rework the shroom & windswept swap
+Change the icon colors of arci worlds
+
+TODO proc gen fixes
+done until cat_toxic included
+US_green is not made into a toxic_cold skin as explicitly declared by the description
 
 TODO extra planets
 Consider using a different scaling algorithm for images to better separate land and sea
@@ -32,6 +37,8 @@ W.I.P. Version 1.1.0 - [date]
 - Methane worlds now always have organics.
 - Added a new unique planet: Fluorescent Giant.
 - Added LunaLib Version Checker params.
+- Completely restructured the spawn system for certain planets:
+    . Fixed US_volcanic having the stats of lava instead of lava_minor
 
 Version 1.0.11 - 26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.
