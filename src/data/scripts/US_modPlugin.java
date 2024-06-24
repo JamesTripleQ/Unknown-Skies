@@ -8,7 +8,6 @@ import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.impl.campaign.abilities.GenerateSlipsurgeAbility;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
-import com.fs.starfarer.api.impl.campaign.ids.Planets;
 import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.ids.Terrain;
 import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationType;
@@ -135,14 +134,14 @@ public class US_modPlugin extends BaseModPlugin {
                 if (p.isStar()) continue;
 
                 // lava to US_lava swap
-                if (p.getTypeId().equals(Planets.PLANET_LAVA)) {
+                if (p.getTypeId().equals("lava")) {
                     if (new Random().nextBoolean()) {
                         p.changeType("US_lava", StarSystemGenerator.random);
                     }
                 }
 
                 // lava_minor to US_volcanic swap
-                if (p.getTypeId().equals(Planets.PLANET_LAVA_MINOR)) {
+                if (p.getTypeId().equals("lava_minor")) {
                     if (new Random().nextBoolean()) {
                         p.changeType("US_volcanic", StarSystemGenerator.random);
                     }
@@ -151,7 +150,7 @@ public class US_modPlugin extends BaseModPlugin {
                 // Add Ruins to planets with Floating Continent
                 if (p.getMarket().hasCondition("US_floating")) {
                     addConditionIfNeeded(p, FLOATING_CONTINENT_RUINS.pick());
-                    if (Math.random() > 0.875f) {
+                    if (new Random().nextInt(8) == 0) {
                         addConditionIfNeeded(p, Conditions.DECIVILIZED);
                     }
                 }
@@ -199,7 +198,7 @@ public class US_modPlugin extends BaseModPlugin {
         // Crystal placement
         if (!crystalCandidates.isEmpty()) {
             for (PlanetAPI planet : crystalCandidates) {
-                if (Math.random() > 0.75f) {
+                if (new Random().nextInt(4) == 0) {
                     LOG.info("Adding Chemical Crystals to " + planet.getName() + " in " + planet.getStarSystem().getName());
                     addConditionIfNeeded(planet, "US_crystals");
                 }

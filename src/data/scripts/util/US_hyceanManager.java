@@ -5,10 +5,7 @@ import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.procgen.ConditionGenDataSpec;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.preconditionsMet;
 import static data.scripts.util.US_utils.*;
@@ -132,7 +129,7 @@ public class US_hyceanManager {
         }
 
         // Chance to add Ancient Religious Landmark if conditions are met
-        if (preconditionsMet("US_religious", getConditionsSoFar(planet)) && Math.random() > 0.8f) {
+        if (preconditionsMet("US_religious", getConditionsSoFar(planet)) && new Random().nextInt(5) == 0) {
             addConditionIfNeeded(planet, "US_religious");
         }
     }
