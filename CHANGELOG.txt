@@ -9,14 +9,7 @@ Change the icon colors of arci and methane worlds
 Consider changing temp on US_green
 Read descs and consider interesting changes
 
-TODO proc gen fixes
-done until cat_hab3 included
-US_green is not made into a toxic_cold skin as explicitly declared by the description
-
 TODO extra planets
-Consider using a different scaling algorithm for images to better separate land and sea
-NOTE: implement the planets as skins first (done), then implement skin swapping, then given them custom pools
-
 Savannah & Alpine:
 farming changes
 
