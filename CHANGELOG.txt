@@ -8,13 +8,13 @@ Rework hab categories like Desertic (maybe)
 Make Jungle worlds a swap as to not inflate the sector with Jungles (and Eccentric has actually decent odds of spawning)
 Consider swapping hyceans to cat toxic
 Rework the shroom & windswept swap
-Change the icon colors of arci worlds
+Change the icon colors of arci and methane worlds
 Consider changing temp on US_green
 Read descs and consider interesting changes
 Synthetik easter egg name
 
 TODO proc gen fixes
-done until cat_hab4 included
+done until cat_hab3 included
 US_green is not made into a toxic_cold skin as explicitly declared by the description
 
 TODO extra planets
@@ -41,6 +41,7 @@ W.I.P. Version 1.1.0 - [date]
 - Added LunaLib Version Checker params.
 - Completely restructured the spawn system for certain planets:
     . Fixed US_volcanic having the stats of lava instead of lava_minor
+    . Fixed cat_hab3 being a mess (Terran Eccentric worlds now have actually fair spawn chances again)
 
 Version 1.0.11 - 26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.

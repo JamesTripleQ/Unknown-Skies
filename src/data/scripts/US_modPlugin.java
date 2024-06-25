@@ -147,6 +147,43 @@ public class US_modPlugin extends BaseModPlugin {
                     }
                 }
 
+                // tundra to US_alkali or US_alpine swap (except Sentinel)
+                if (p.getTypeId().equals("tundra") && !p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY)) {
+                    int pick = new Random().nextInt(3);
+                    switch (pick) {
+                        case 0:
+                            p.changeType("US_alkali", StarSystemGenerator.random);
+                            break;
+                        case 1:
+                            p.changeType("US_alpine", StarSystemGenerator.random);
+                            break;
+                    }
+                }
+
+                // jungle to US_jungle or US_savannah swap
+                if (p.getTypeId().equals("jungle")) {
+                    int pick = new Random().nextInt(3);
+                    switch (pick) {
+                        case 0:
+                            p.changeType("US_jungle", StarSystemGenerator.random);
+                            break;
+                        case 1:
+                            p.changeType("US_savannah", StarSystemGenerator.random);
+                            break;
+                    }
+                }
+
+                // arid to US_auric or US_auricCloudy swap
+                if (p.getTypeId().equals("arid")) {
+                    if (new Random().nextBoolean()) {
+                        if (new Random().nextBoolean()) {
+                            p.changeType("US_auric", StarSystemGenerator.random);
+                        } else {
+                            p.changeType("US_auricCloudy", StarSystemGenerator.random);
+                        }
+                    }
+                }
+
                 // Add Ruins to planets with Floating Continent
                 if (p.getMarket().hasCondition("US_floating")) {
                     addConditionIfNeeded(p, FLOATING_CONTINENT_RUINS.pick());
