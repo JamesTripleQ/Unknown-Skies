@@ -1289,7 +1289,7 @@
 		"cloudRotation": -5
 	},
 	"US_lifelessArid": {
-		"name": "Arid Lifeless",
+		"name": "Lifeless",
 		"descriptionId": "US_lifeless",
 		"aOrAn": "an",
 		"tilt": 10,
