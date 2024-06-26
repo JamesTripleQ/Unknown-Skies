@@ -103,6 +103,8 @@ public class US_modPlugin extends BaseModPlugin {
 
     @Override
     public void onNewGameAfterProcGen() {
+        LOG.info("Unknown Skies onNewGameAfterProcGen() START");
+
         // Read the background list
         if (BG_YOUNG.isEmpty()) {
             loadSettings();
@@ -234,7 +236,6 @@ public class US_modPlugin extends BaseModPlugin {
         if (!crystalCandidates.isEmpty()) {
             for (PlanetAPI planet : crystalCandidates) {
                 if (new Random().nextInt(4) == 0) {
-                    LOG.info("Adding Chemical Crystals to " + planet.getName() + " in " + planet.getStarSystem().getName());
                     addConditionIfNeeded(planet, "US_crystals");
                 }
             }
@@ -278,7 +279,7 @@ public class US_modPlugin extends BaseModPlugin {
         // Windswept swap
         if (!shroomCandidates.isEmpty()) {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
-            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
+            LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
             planet.changeType("US_storm", StarSystemGenerator.random);
             addConditionIfNeeded(planet, "US_storm");
             removeConditionIfNeeded(planet, Conditions.NO_ATMOSPHERE);
@@ -292,7 +293,7 @@ public class US_modPlugin extends BaseModPlugin {
         // Magnetic swap
         if (!sporeCandidates.isEmpty()) {
             PlanetAPI planet = sporeCandidates.get(new Random().nextInt(sporeCandidates.size()));
-            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Magnetic");
+            LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Magnetic");
             planet.changeType("US_magnetic", StarSystemGenerator.random);
             addConditionIfNeeded(planet, "US_magnetic");
             SectorEntityToken magField = planet.getStarSystem().addTerrain(
@@ -317,7 +318,7 @@ public class US_modPlugin extends BaseModPlugin {
         // Artificial swap
         if (!artificialCandidates.isEmpty()) {
             PlanetAPI planet = artificialCandidates.get(new Random().nextInt(artificialCandidates.size()));
-            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Artificial");
+            LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Artificial");
             planet.changeType("US_artificial", StarSystemGenerator.random);
             addConditionIfNeeded(planet, "US_artificial");
 
@@ -333,7 +334,7 @@ public class US_modPlugin extends BaseModPlugin {
         // Fluorescent swap
         if (!fluorescentCandidates.isEmpty()) {
             PlanetAPI planet = fluorescentCandidates.get(new Random().nextInt(fluorescentCandidates.size()));
-            LOG.info("Changing planet " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Fluorescent Giant");
+            LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Fluorescent Giant");
             planet.changeType("US_fluorescent", StarSystemGenerator.random);
             addConditionIfNeeded(planet, "US_fluorescent");
             addConditionIfNeeded(planet, Conditions.EXTREME_WEATHER);
@@ -363,6 +364,7 @@ public class US_modPlugin extends BaseModPlugin {
         }
 
         cleanupSettings();
+        LOG.info("Unknown Skies onNewGameAfterProcGen() END");
     }
 
     private void replaceBackground(StarSystemAPI system) {
