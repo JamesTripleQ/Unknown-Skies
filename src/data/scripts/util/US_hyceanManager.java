@@ -147,7 +147,7 @@ public class US_hyceanManager {
         }
 
         // Chance to add Ancient Religious Landmark if conditions are met
-        if (preconditionsMet("US_religious", getConditionsSoFar(planet)) && new Random().nextInt(5) == 0) {
+        if (preconditionsMet("US_religious", getConditionsSoFar(planet)) && new Random().nextInt(6) == 0) {
             addConditionIfNeeded(planet, "US_religious");
         }
     }

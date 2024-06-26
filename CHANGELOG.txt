@@ -2,7 +2,6 @@ TODO
 Hostile Megafauna condition
 Add an extra effect to the Artificial world (maybe)
 Add Solar clouds (maybe)
-Add custom planet art from Illus.Ent to unique worlds
 Rework the shroom & windswept swap
 Change the icon colors of arci and methane worlds
 Consider changing temp on US_green
