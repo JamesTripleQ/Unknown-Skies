@@ -54,6 +54,11 @@ public class US_hyceanManager {
         REMOVED_CONDITIONS.add(Conditions.FARMLAND_ADEQUATE);
         REMOVED_CONDITIONS.add(Conditions.FARMLAND_RICH);
         REMOVED_CONDITIONS.add(Conditions.FARMLAND_BOUNTIFUL);
+        REMOVED_CONDITIONS.add(Conditions.RUINS_SCATTERED);
+        REMOVED_CONDITIONS.add(Conditions.RUINS_WIDESPREAD);
+        REMOVED_CONDITIONS.add(Conditions.RUINS_EXTENSIVE);
+        REMOVED_CONDITIONS.add(Conditions.RUINS_VAST);
+        REMOVED_CONDITIONS.add(Conditions.DECIVILIZED);
         REMOVED_CONDITIONS.add("US_bedrock");
         REMOVED_CONDITIONS.add("US_tunnels");
         REMOVED_CONDITIONS.add("US_religious");
@@ -69,6 +74,8 @@ public class US_hyceanManager {
         groups.add("rare_ore");
         groups.add("volatiles");
         groups.add("organics");
+        groups.add("ruins");
+        groups.add("decivilized");
 
         // Atmosphere
         hyceanWeights.put("atmosphere_no_pick", 10f);
@@ -105,6 +112,17 @@ public class US_hyceanManager {
         hyceanWeights.put(Conditions.ORGANICS_TRACE, 5f);
         hyceanWeights.put(Conditions.ORGANICS_COMMON, 20f);
         hyceanWeights.put(Conditions.ORGANICS_ABUNDANT, 5f);
+
+        // Ruins
+        hyceanWeights.put("ruins_no_pick", 20f);
+        hyceanWeights.put(Conditions.RUINS_SCATTERED, 10f);
+        hyceanWeights.put(Conditions.RUINS_WIDESPREAD, 5f);
+        hyceanWeights.put(Conditions.RUINS_EXTENSIVE, 3f);
+        hyceanWeights.put(Conditions.RUINS_VAST, 1f);
+
+        // Decivilized
+        hyceanWeights.put("decivilized_no_pick", 100f);
+        hyceanWeights.put(Conditions.DECIVILIZED, 30f);
     }
 
     public static void manageHyceanConditions(PlanetAPI planet) {
