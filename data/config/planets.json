@@ -388,7 +388,8 @@
 			255,
 			255
 		],
-		"useReverseLightForGlow": false
+		"useReverseLightForGlow": false,
+		"doNotShowInCombat": true
 	},
 	"US_volcanic": {
 		"name": "Volcanic",
@@ -431,7 +432,8 @@
 			255,
 			255
 		],
-		"useReverseLightForGlow": false
+		"useReverseLightForGlow": false,
+		"doNotShowInCombat": true
 	},
 	"US_iceA": {
 		"name": "Frozen",
