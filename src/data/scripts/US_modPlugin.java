@@ -133,21 +133,21 @@ public class US_modPlugin extends BaseModPlugin {
             for (PlanetAPI p : s.getPlanets()) {
                 if (p.isStar()) continue;
 
-                // lava to US_lava swap
+                // Swap lava to US_lava
                 if (p.getTypeId().equals("lava")) {
                     if (new Random().nextBoolean()) {
                         p.changeType("US_lava", StarSystemGenerator.random);
                     }
                 }
 
-                // lava_minor to US_volcanic swap
+                // Swap lava_minor to US_volcanic
                 if (p.getTypeId().equals("lava_minor")) {
                     if (new Random().nextBoolean()) {
                         p.changeType("US_volcanic", StarSystemGenerator.random);
                     }
                 }
 
-                // tundra to US_alkali or US_alpine swap (except Sentinel)
+                // Swap tundra to US_alkali or US_alpine (except Sentinel)
                 if (p.getTypeId().equals("tundra") && !p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY)) {
                     int pick = new Random().nextInt(3);
                     switch (pick) {
@@ -160,7 +160,7 @@ public class US_modPlugin extends BaseModPlugin {
                     }
                 }
 
-                // jungle to US_jungle or US_savannah swap
+                // Swap jungle to US_jungle or US_savannah
                 if (p.getTypeId().equals("jungle")) {
                     int pick = new Random().nextInt(3);
                     switch (pick) {
@@ -173,7 +173,7 @@ public class US_modPlugin extends BaseModPlugin {
                     }
                 }
 
-                // arid to US_auric or US_auricCloudy swap
+                // Swap arid to US_auric or US_auricCloudy (balanced out to have 50% arid and 50% US_auric/US_auricCloudy)
                 if (p.getTypeId().equals("arid")) {
                     if (new Random().nextBoolean()) {
                         if (new Random().nextBoolean()) {
@@ -187,7 +187,7 @@ public class US_modPlugin extends BaseModPlugin {
                 // Add Ruins to planets with Floating Continent
                 if (p.getMarket().hasCondition("US_floating")) {
                     addConditionIfNeeded(p, FLOATING_CONTINENT_RUINS.pick());
-                    if (new Random().nextInt(8) == 0) {
+                    if (new Random().nextInt(15) == 0) {
                         addConditionIfNeeded(p, Conditions.DECIVILIZED);
                     }
                 }

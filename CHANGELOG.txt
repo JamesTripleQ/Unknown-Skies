@@ -7,10 +7,6 @@ Change the icon colors of arci and methane worlds
 Consider changing temp on US_green
 Read descs and consider interesting changes
 
-TODO extra planets
-Savannah & Alpine:
-farming changes
-
 W.I.P. Version 2.0.0 - [date]
 - Minor text fixes.
 - Externalized table strings.
@@ -33,6 +29,7 @@ W.I.P. Version 2.0.0 - [date]
     . Swapped categories for US_lifeless and US_crimson
     . Renamed Arid Lifeless to Lifeless (since it's the same as US_lifeless now)
     . Fixed US_crimson not matching the spawn weights of US_lifeless
+- Added Savannah and Alpine worlds (TexturesForPlanets).
 
 Version 1.0.11 - 26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.
