@@ -33,6 +33,15 @@
 			"US_desertB",
 			"US_desertC"
 		],
+
+		"cryosanctum_type": [
+			"frozen",
+			"frozen1",
+			"frozen2",
+			"frozen3",
+			"US_iceA",
+			"US_iceB"
+		],
 		
 		"artificial_type": [
 			"barren",

@@ -162,6 +162,13 @@ public class US_utils {
         return Math.min(Math.max(size, 3), 6);
     }
 
+    public static boolean isMarketColonized(MarketAPI market) {
+        return !market.getMemoryWithoutUpdate().getBoolean("$isPlanetConditionMarketOnly")
+                && !market.isPlanetConditionMarketOnly()
+                && market.getFaction() != null
+                && !market.getFactionId().equals("neutral");
+    }
+
     public static void addScalingTable(MarketAPI market, TooltipMakerAPI tooltip, boolean expanded, int type, String effect3, String effect4, String effect5, String effect6) {
         if (!expanded) {
             tooltip.addPara(txt("tooltip_hint"), Misc.getGrayColor(), 10f);

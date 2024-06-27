@@ -45,6 +45,7 @@ public class US_modPlugin extends BaseModPlugin {
     private List<String> SPORE_LIST = new ArrayList<>();
     private List<String> SHROOM_LIST = new ArrayList<>();
     private List<String> VIRUS_LIST = new ArrayList<>();
+    private List<String> CRYOSANCTUM_LIST = new ArrayList<>();
     private List<String> ARTIFICIAL_LIST = new ArrayList<>();
     private List<String> FLUORESCENT_LIST = new ArrayList<>();
 
@@ -132,6 +133,7 @@ public class US_modPlugin extends BaseModPlugin {
         List<PlanetAPI> sporeCandidates = new ArrayList<>();
         List<PlanetAPI> shroomCandidates = new ArrayList<>();
         List<PlanetAPI> virusCandidates = new ArrayList<>();
+        List<PlanetAPI> cryosanctumCandidates = new ArrayList<>();
         List<PlanetAPI> artificialCandidates = new ArrayList<>();
         List<PlanetAPI> fluorescentCandidates = new ArrayList<>();
 
@@ -258,6 +260,8 @@ public class US_modPlugin extends BaseModPlugin {
                         shroomCandidates.add(p);
                     } else if (VIRUS_LIST.contains(p.getTypeId())) {
                         virusCandidates.add(p);
+                    } else if (CRYOSANCTUM_LIST.contains(p.getTypeId())) {
+                        cryosanctumCandidates.add(p);
                     } else if (ARTIFICIAL_LIST.contains(p.getTypeId())) {
                         if (p.getStarSystem().hasTag(Tags.THEME_DERELICT) || p.getStarSystem().hasTag(Tags.THEME_RUINS)) {
                             artificialCandidates.add(p);
@@ -323,6 +327,37 @@ public class US_modPlugin extends BaseModPlugin {
 
             // Setup for future picks
             virusCandidates.remove(planet);
+        }
+
+        // Cryosanctum placement
+        if (!cryosanctumCandidates.isEmpty()) {
+            PlanetAPI planet = cryosanctumCandidates.get(new Random().nextInt(cryosanctumCandidates.size()));
+            LOG.info("Adding cryo to " + planet.getName() + " in " + planet.getStarSystem().getName());
+            addConditionIfNeeded(planet, "US_cryosanctum");
+            addConditionIfNeeded(planet, Conditions.POLLUTION);
+            removeConditionIfNeeded(planet, Conditions.RARE_ORE_SPARSE);
+            removeConditionIfNeeded(planet, Conditions.RARE_ORE_MODERATE);
+            removeConditionIfNeeded(planet, Conditions.RARE_ORE_ABUNDANT);
+            removeConditionIfNeeded(planet, Conditions.RARE_ORE_RICH);
+            removeConditionIfNeeded(planet, Conditions.RARE_ORE_ULTRARICH);
+
+            // Nerf ores if needed (at most moderate)
+            if (planet.getMarket().hasCondition(Conditions.ORE_ABUNDANT) || planet.getMarket().hasCondition(Conditions.ORE_RICH) || planet.getMarket().hasCondition(Conditions.ORE_ULTRARICH)) {
+                addConditionIfNeeded(planet, Conditions.ORE_MODERATE);
+            }
+
+            // Add Thin Atmosphere if needed (unless Dense Atmosphere or Toxic Atmosphere is present)
+            if (!planet.getMarket().hasCondition(Conditions.DENSE_ATMOSPHERE) && !planet.getMarket().hasCondition(Conditions.TOXIC_ATMOSPHERE)) {
+                addConditionIfNeeded(planet, Conditions.THIN_ATMOSPHERE);
+            }
+
+            // Add ruins if needed (at least extensive)
+            if (!planet.getMarket().hasCondition(Conditions.RUINS_VAST)) {
+                addConditionIfNeeded(planet, Conditions.RUINS_EXTENSIVE);
+            }
+
+            // Setup for future picks
+            cryosanctumCandidates.remove(planet);
         }
 
         // Windswept swap
@@ -518,6 +553,7 @@ public class US_modPlugin extends BaseModPlugin {
         SPORE_LIST = MagicSettings.getList(modId, "spore_type");
         SHROOM_LIST = MagicSettings.getList(modId, "shroom_type");
         VIRUS_LIST = MagicSettings.getList(modId, "virus_type");
+        CRYOSANCTUM_LIST = MagicSettings.getList(modId, "cryosanctum_type");
         ARTIFICIAL_LIST = MagicSettings.getList(modId, "artificial_type");
         FLUORESCENT_LIST = MagicSettings.getList(modId, "fluorescent_type");
     }
@@ -534,6 +570,7 @@ public class US_modPlugin extends BaseModPlugin {
         SPORE_LIST.clear();
         SHROOM_LIST.clear();
         VIRUS_LIST.clear();
+        CRYOSANCTUM_LIST.clear();
         ARTIFICIAL_LIST.clear();
         FLUORESCENT_LIST.clear();
     }
