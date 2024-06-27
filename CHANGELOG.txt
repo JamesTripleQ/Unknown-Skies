@@ -1,7 +1,5 @@
 TODO
 Domain cryosanctum condition
-Add an extra effect to the Artificial world (maybe)
-Rework the shroom & windswept swap
 
 W.I.P. Version 2.0.0 - [date]
 - Minor text fixes.
@@ -28,6 +26,8 @@ W.I.P. Version 2.0.0 - [date]
 - Added Savannah and Alpine worlds (TexturesForPlanets).
 - Added solar clouds
 - Fixed icon color of Archipelago and Methane worlds.
+- cat_hab4 planets can no longer be turned into Magnetic worlds
+- Fixed shrooms spawining on lifeless worlds
 
 Version 1.0.11 - 26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.

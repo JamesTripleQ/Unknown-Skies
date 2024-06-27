@@ -234,6 +234,11 @@ public class US_modPlugin extends BaseModPlugin {
                     addConditionIfNeeded(p, Conditions.IRRADIATED);
                 }
 
+                // Remove Inimical Biosphere from Lifeless and Lifeless-Bombarded planets
+                if (p.getTypeId().equals("US_lifelessArid") || p.getTypeId().equals("US_lifeless") || p.getTypeId().equals("US_crimson")) {
+                    removeConditionIfNeeded(p, Conditions.INIMICAL_BIOSPHERE);
+                }
+
                 // Hycean planets are handled in US_hyceanManager.java
                 if (p.getTypeId().equals("US_waterHycean")) {
                     manageHyceanConditions(p);

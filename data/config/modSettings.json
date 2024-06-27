@@ -3,30 +3,26 @@
 		"crystal_types": [
 			"toxic",
 			"toxic_cold",
-			"US_green",
 			"US_acid",
 			"US_acidRain",
-			"US_acidWind"
+			"US_acidWind",
+			"US_green"
 		],
 		
 		"spore_type": [
 			"jungle",
-			"terran",
-			"US_continent",
-			"US_alkali",
-			"US_jungle",
 			"US_auric",
 			"US_auricCloudy",
+			"US_jungle",
 			"US_savannah"
 		],
 		
 		"shroom_type": [
-			"terran-eccentric",
 			"arid",
 			"tundra",
-			"US_arid",
-			"US_lifeless",
-			"US_alpine"
+			"US_alkali",
+			"US_alpine",
+			"US_arid"
 		],
 		
 		"virus_type": [
@@ -40,9 +36,9 @@
 		
 		"artificial_type": [
 			"barren",
-			"barren_castiron",
 			"barren2",
 			"barren3",
+			"barren_castiron",
 			"rocky_metallic",
 			"US_barrenA",
 			"US_barrenB",
