@@ -14,13 +14,14 @@ import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationTyp
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
+import com.fs.starfarer.api.util.Pair;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.apache.log4j.Logger;
 import org.magiclib.util.MagicSettings;
 
 import java.awt.*;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
 
 import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PK_PLANET_KEY;
@@ -50,6 +51,8 @@ public class US_modPlugin extends BaseModPlugin {
     private static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
     private static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
 
+    public static final Map<String, Pair<String, Color>> starClouds = new HashMap<>();
+
     static {
         FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_SCATTERED, 1);
         FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
@@ -59,6 +62,12 @@ public class US_modPlugin extends BaseModPlugin {
         METHANE_ORGANICS.add(Conditions.ORGANICS_COMMON, 5f);
         METHANE_ORGANICS.add(Conditions.ORGANICS_ABUNDANT, 20f);
         METHANE_ORGANICS.add(Conditions.ORGANICS_PLENTIFUL, 10f);
+
+        starClouds.put("US_star_yellow", new Pair<>("Yellow", new Color(255, 255, 255)));
+        starClouds.put("US_star_orange", new Pair<>("Yellow", new Color(255, 125, 90)));
+        starClouds.put("US_star_red_giant", new Pair<>("Yellow", new Color(255, 200, 160)));
+        starClouds.put("US_star_blue_giant", new Pair<>("Blue", new Color(255, 255, 255)));
+        starClouds.put("US_star_white", new Pair<>("White", new Color(255, 255, 255)));
     }
 
     @Override
@@ -117,6 +126,8 @@ public class US_modPlugin extends BaseModPlugin {
             }
         }
 
+        List<PlanetAPI> starCloudsCandidates = new ArrayList<>();
+
         List<PlanetAPI> crystalCandidates = new ArrayList<>();
         List<PlanetAPI> sporeCandidates = new ArrayList<>();
         List<PlanetAPI> shroomCandidates = new ArrayList<>();
@@ -129,6 +140,27 @@ public class US_modPlugin extends BaseModPlugin {
             if (s == null) continue;
             if (!s.isProcgen()) continue;
             if (s.getPlanets().isEmpty()) continue;
+
+            PlanetAPI star = s.getStar();
+            if (star != null) {
+                if (starClouds.containsKey(star.getTypeId())) {
+                    starCloudsCandidates.add(star);
+                }
+            }
+
+            star = s.getSecondary();
+            if (star != null) {
+                if (starClouds.containsKey(star.getTypeId())) {
+                    starCloudsCandidates.add(star);
+                }
+            }
+
+            star = s.getTertiary();
+            if (star != null) {
+                if (starClouds.containsKey(star.getTypeId())) {
+                    starCloudsCandidates.add(star);
+                }
+            }
 
             for (PlanetAPI p : s.getPlanets()) {
                 if (p.isStar()) continue;
@@ -228,6 +260,18 @@ public class US_modPlugin extends BaseModPlugin {
                     } else if (FLUORESCENT_LIST.contains(p.getTypeId())) {
                         fluorescentCandidates.add(p);
                     }
+                }
+            }
+        }
+
+        // Star cloud placement
+        if (!starCloudsCandidates.isEmpty()) {
+            for (PlanetAPI star : starCloudsCandidates) {
+                if (new Random().nextBoolean()) {
+                    star.getSpec().setCloudTexture(Global.getSettings().getSpriteName("clouds", "US_clouds_textureStar" + starClouds.get(star.getTypeId()).one));
+                    star.getSpec().setCloudRotation(star.getSpec().getRotation() - 3);
+                    star.getSpec().setCloudColor(starClouds.get(star.getTypeId()).two);
+                    star.applySpecChanges();
                 }
             }
         }

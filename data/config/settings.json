@@ -1,0 +1,9 @@
+{
+	"graphics": {
+		"clouds": {
+			"US_clouds_textureStarBlue": "graphics/planets/US_clouds_textureStarBlue.png",
+			"US_clouds_textureStarWhite": "graphics/planets/US_clouds_textureStarWhite.png",
+			"US_clouds_textureStarYellow": "graphics/planets/US_clouds_textureStarYellow.png"
+		}
+	}
+}
