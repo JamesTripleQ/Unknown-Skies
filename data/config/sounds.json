@@ -1,8 +1,16 @@
 {
-	"US_debris":[
-		{"file":"sounds/sfx_terrain/US_debris.ogg","pitch":1,"volume":0.2},
+	"US_debris": [
+		{
+			"file": "sounds/sfx_terrain/US_debris.ogg",
+			"pitch": 1,
+			"volume": 0.2
+		}
 	],
-	"US_ring":[
-		{"file":"sounds/sfx_terrain/US_asteroid_ice.ogg","pitch":1,"volume":0.2},
-	],
+	"US_ring": [
+		{
+			"file": "sounds/sfx_terrain/US_asteroid_ice.ogg",
+			"pitch": 1,
+			"volume": 0.2
+		}
+	]
 }

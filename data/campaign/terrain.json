@@ -1,10 +1,10 @@
 {
-	"ring":{
-		"loopOne":"US_ring",
-		"musicSuppression":0.75,
+	"ring": {
+		"loopOne": "US_ring",
+		"musicSuppression": 0.75
 	},
-	"debris_field":{
-		"loopOne":"US_debris",
-		"musicSuppression":0.25,
-	},
+	"debris_field": {
+		"loopOne": "US_debris",
+		"musicSuppression": 0.25
+	}
 }

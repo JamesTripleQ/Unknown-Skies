@@ -2,7 +2,6 @@ TODO
 Domain cryosanctum condition
 Add an extra effect to the Artificial world (maybe)
 Rework the shroom & windswept swap
-Change the icon colors of arci and methane worlds
 
 W.I.P. Version 2.0.0 - [date]
 - Minor text fixes.
@@ -28,6 +27,7 @@ W.I.P. Version 2.0.0 - [date]
     . Fixed US_crimson not matching the spawn weights of US_lifeless
 - Added Savannah and Alpine worlds (TexturesForPlanets).
 - Added solar clouds
+- Fixed icon color of Archipelago and Methane worlds.
 
 Version 1.0.11 - 26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.

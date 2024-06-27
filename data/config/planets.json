@@ -586,9 +586,9 @@
 		"texture": "graphics/planets/US_planet_textureCimmerian.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			255,
-			235,
-			100,
+			84,
+			47,
+			102,
 			255
 		],
 		"isStar": false,
@@ -1742,9 +1742,9 @@
 		"texture": "graphics/planets/US_planet_textureCyanic.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			45,
-			98,
-			174,
+			1,
+			122,
+			122,
 			255
 		],
 		"isStar": false,
@@ -1786,9 +1786,9 @@
 		"texture": "graphics/planets/US_planet_textureWater.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			45,
-			98,
-			174,
+			10,
+			100,
+			160,
 			255
 		],
 		"isStar": false,
