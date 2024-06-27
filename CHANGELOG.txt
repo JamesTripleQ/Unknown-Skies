@@ -1,31 +1,32 @@
 W.I.P. Version 2.0.0 - [date]
-- Minor text fixes.
-- Externalized table strings.
-- Tables now show which stat is scaling.
-- Unique planetary conditions (Artificial, Magnetic, Windswept) are now always the rightmost.
+- Added 4 new planets:
+    . Hycean worlds with a unique condition pool (special thanks to TouchOfVanilla for the original idea and lots of feedback).
+    . The Fluorescent Giant, a new unique planet that spawns once per sector (image source: Tartiflette's Texture Pack).
+    . Savannah and Alpine world, two new variants for Jungle and Tundra worlds (image source: TextureForPlanets).
+- Added a new unique condition: Pre-Collapse Cryosanctum (special thanks to SirHartley for help with the implementation).
+- Added stellar clouds (purely cosmetic, image source: Tartiflette's Texture Pack).
+- Added organics to Methane worlds.
+- Overhauled the spawn system for certain planets:
+    . US_volcanic now has the stats of lava_minor instead of lava (as originally intended).
+    . Reorganized cat_hab3 fixing Terran Eccentric worlds having extremely low spawn rates.
+    . Fixed US_lifeless and US_crimson having swapped categories.
+    . Renamed Arid Lifeless to Lifeless (since they're the same now).
+    . Fixed US_crimson not matching the spawn weights of US_lifeless.
 - Buffed Military Virus:
     . Weapon production is now +4 (was +3).
     . Ground defense is now -40% (was -50%).
     . Population growth is now (colony size + 1) * -2 (was colony size * -3).
-- Unique conditions (Shrooms, Spores, Virus) will now prevent other US special conditions from spawning (planetary conditions and crystals are unaffected).
+- Terran and Continental worlds can no longer have Spores or be turned into Magnetic worlds.
+- Unique planetary conditions are now always the rightmost ones.
+- Unique conditions (Cryosanctum, Shrooms, Spores, Virus) will now prevent other US special conditions from spawning (planetary conditions and crystals are unaffected).
+- Fixed Shrooms spawning on Lifeless worlds when they weren't supposed to.
 - Fixed a rare bug that caused Decivilized to spawn without ruins on gas giants with Floating Continent.
-- Added Hycean worlds (special thanks to TouchOfVanilla for the original idea and lots of feedback).
-- Methane worlds now always have organics.
-- Added a new unique planet: Fluorescent Giant.
-- Added LunaLib Version Checker params.
-- Added new easter egg name.
-- Completely restructured the spawn system for certain planets:
-    . Fixed US_volcanic having the stats of lava instead of lava_minor
-    . Fixed cat_hab3 being a mess (Terran Eccentric worlds now have actually fair spawn chances again)
-    . Swapped categories for US_lifeless and US_crimson
-    . Renamed Arid Lifeless to Lifeless (since it's the same as US_lifeless now)
-    . Fixed US_crimson not matching the spawn weights of US_lifeless
-- Added Savannah and Alpine worlds (TexturesForPlanets).
-- Added solar clouds
 - Fixed icon color of Archipelago and Methane worlds.
-- cat_hab4 planets can no longer be turned into Magnetic worlds
-- Fixed shrooms spawining on lifeless worlds
-- Added Pre-Collapse Cryosanctum
+- Added LunaLib Version Checker links.
+- Added a few new easter egg names.
+- Condition tables now show which stat is scaling.
+- Externalized condition table strings.
+- Minor text fixes.
 
 Version 1.0.11 - 26/04/2024
 - Added an expandable tooltip to conditions with scaling that shows the strength of the effect at the various market sizes.
