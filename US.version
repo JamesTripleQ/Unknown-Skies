@@ -3,9 +3,9 @@
 	"modName": "Unknown Skies",
 	"modThreadId": "29876",
 	"modVersion": {
-		"major": 1,
+		"major": 2,
 		"minor": 0,
-		"patch": 11
+		"patch": 0
 	},
 
 	"directDownloadURL": "https://github.com/JamesTripleQ/Unknown-Skies/releases/latest/download/Unknown.Skies.zip",

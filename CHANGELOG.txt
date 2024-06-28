@@ -1,4 +1,4 @@
-W.I.P. Version 2.0.0 - [date]
+Version 2.0.0 - 28/06/2024
 - Added 4 new planets:
     . Hycean worlds with a unique condition pool (special thanks to TouchOfVanilla for the original idea and lots of feedback).
     . The Fluorescent Giant, a new unique planet that spawns once per sector (image source: Tartiflette's Texture Pack).
