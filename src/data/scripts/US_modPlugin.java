@@ -341,14 +341,12 @@ public class US_modPlugin extends BaseModPlugin {
             removeConditionIfNeeded(planet, Conditions.RARE_ORE_RICH);
             removeConditionIfNeeded(planet, Conditions.RARE_ORE_ULTRARICH);
 
-            // Nerf ores if needed (at most moderate)
-            if (planet.getMarket().hasCondition(Conditions.ORE_ABUNDANT) || planet.getMarket().hasCondition(Conditions.ORE_RICH) || planet.getMarket().hasCondition(Conditions.ORE_ULTRARICH)) {
-                addConditionIfNeeded(planet, Conditions.ORE_MODERATE);
+            // Nerf ores if needed (at most abundant)
+            if (planet.getMarket().hasCondition(Conditions.ORE_ULTRARICH)) {
+                addConditionIfNeeded(planet, Conditions.ORE_ABUNDANT);
             }
-
-            // Add Thin Atmosphere if needed (unless Dense Atmosphere or Toxic Atmosphere is present)
-            if (!planet.getMarket().hasCondition(Conditions.DENSE_ATMOSPHERE) && !planet.getMarket().hasCondition(Conditions.TOXIC_ATMOSPHERE)) {
-                addConditionIfNeeded(planet, Conditions.THIN_ATMOSPHERE);
+            if (planet.getMarket().hasCondition(Conditions.ORE_RICH)) {
+                addConditionIfNeeded(planet, Conditions.ORE_MODERATE);
             }
 
             // Add ruins if needed (at least extensive)

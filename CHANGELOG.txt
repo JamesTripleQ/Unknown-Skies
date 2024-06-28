@@ -22,7 +22,7 @@ W.I.P. Version 2.0.0 - [date]
 - Fixed Shrooms spawning on Lifeless worlds when they weren't supposed to.
 - Fixed a rare bug that caused Decivilized to spawn without ruins on gas giants with Floating Continent.
 - Fixed icon color of Archipelago and Methane worlds.
-- Added LunaLib Version Checker links.
+- Added LunaLib Version Checker links and updated thread ID.
 - Added a few new easter egg names.
 - Condition tables now show which stat is scaling.
 - Externalized condition table strings.
