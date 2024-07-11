@@ -236,6 +236,11 @@ public class US_modPlugin extends BaseModPlugin {
                     addConditionIfNeeded(p, Conditions.IRRADIATED);
                 }
 
+                // Add Thin Atmosphere to Dust planets
+                if (p.getTypeId().equals("US_dust")) {
+                    addConditionIfNeeded(p, Conditions.THIN_ATMOSPHERE);
+                }
+
                 // Remove Inimical Biosphere from Lifeless and Lifeless-Bombarded planets
                 if (p.getTypeId().equals("US_lifelessArid") || p.getTypeId().equals("US_lifeless") || p.getTypeId().equals("US_crimson")) {
                     removeConditionIfNeeded(p, Conditions.INIMICAL_BIOSPHERE);
