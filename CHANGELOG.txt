@@ -1,4 +1,4 @@
-Version 2.0.1 - date
+Version 2.0.1 - 11/07/2024
 - Added Thin Atmosphere to Dust worlds to match their description.
 - Pre-Collapse Cryosanctum now reduces max industries by 1.
 - Added a new easter egg name.

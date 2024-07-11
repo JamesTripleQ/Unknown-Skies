@@ -2,7 +2,7 @@
 	"id": "US",
 	"name": "Unknown Skies",
 	"author": "Tartiflette, maintained by JamesTripleQ",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "Enhance your journey into the unknown with a vastly expanded variety of planets and environments.",
 	"gameVersion": "0.97a-RC11",
 	"jars":["jars/US.jar"],
