@@ -337,7 +337,7 @@ public class US_modPlugin extends BaseModPlugin {
         // Cryosanctum placement
         if (!cryosanctumCandidates.isEmpty()) {
             PlanetAPI planet = cryosanctumCandidates.get(new Random().nextInt(cryosanctumCandidates.size()));
-            LOG.info("Adding cryo to " + planet.getName() + " in " + planet.getStarSystem().getName());
+            LOG.info("Adding Pre-Collapse Cryosanctum to " + planet.getName() + " in " + planet.getStarSystem().getName());
             addConditionIfNeeded(planet, "US_cryosanctum");
             addConditionIfNeeded(planet, Conditions.POLLUTION);
             removeConditionIfNeeded(planet, Conditions.RARE_ORE_SPARSE);

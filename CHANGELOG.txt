@@ -1,3 +1,13 @@
+TODO
+- fix procgen in core worlds
+- add a system for modders to autogenerate conditions if they use post new game procgen
+- all the 3.0 planet shit
+
+
+Version 2.0.2
+- minor logging tweaks
+- nerfed fluo giant from +3 to +2
+
 Version 2.0.1 - 11/07/2024
 - Added Thin Atmosphere to Dust worlds to match their description.
 - Pre-Collapse Cryosanctum now reduces max industries by 1.

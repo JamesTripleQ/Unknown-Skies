@@ -10,7 +10,7 @@ import com.fs.starfarer.api.util.Misc;
 import static data.scripts.util.US_utils.txt;
 
 public class US_fluorescent extends BaseHazardCondition {
-    private final int VOLATILE_BONUS = 3;
+    private final int VOLATILE_BONUS = 2;
 
     @Override
     public void apply(String id) {
