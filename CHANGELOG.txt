@@ -7,6 +7,7 @@ TODO
 Version 2.0.2
 - minor logging tweaks
 - nerfed fluo giant from +3 to +2
+- reduced hycean spawn chance
 
 Version 2.0.1 - 11/07/2024
 - Added Thin Atmosphere to Dust worlds to match their description.
