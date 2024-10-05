@@ -340,18 +340,20 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info("Adding Pre-Collapse Cryosanctum to " + planet.getName() + " in " + planet.getStarSystem().getName());
             addConditionIfNeeded(planet, "US_cryosanctum");
             addConditionIfNeeded(planet, Conditions.POLLUTION);
-            removeConditionIfNeeded(planet, Conditions.RARE_ORE_SPARSE);
-            removeConditionIfNeeded(planet, Conditions.RARE_ORE_MODERATE);
-            removeConditionIfNeeded(planet, Conditions.RARE_ORE_ABUNDANT);
-            removeConditionIfNeeded(planet, Conditions.RARE_ORE_RICH);
-            removeConditionIfNeeded(planet, Conditions.RARE_ORE_ULTRARICH);
 
             // Nerf ores if needed (at most abundant)
             if (planet.getMarket().hasCondition(Conditions.ORE_ULTRARICH)) {
                 addConditionIfNeeded(planet, Conditions.ORE_ABUNDANT);
-            }
-            if (planet.getMarket().hasCondition(Conditions.ORE_RICH)) {
+            } else if (planet.getMarket().hasCondition(Conditions.ORE_RICH)) {
                 addConditionIfNeeded(planet, Conditions.ORE_MODERATE);
+            }
+
+            // Nerf rare ores if needed (at most moderate)
+            removeConditionIfNeeded(planet, Conditions.RARE_ORE_SPARSE);
+            if (planet.getMarket().hasCondition(Conditions.RARE_ORE_ULTRARICH) || planet.getMarket().hasCondition(Conditions.RARE_ORE_RICH)) {
+                addConditionIfNeeded(planet, Conditions.RARE_ORE_MODERATE);
+            } else if (planet.getMarket().hasCondition(Conditions.RARE_ORE_ABUNDANT) || planet.getMarket().hasCondition(Conditions.RARE_ORE_MODERATE)) {
+                addConditionIfNeeded(planet, Conditions.RARE_ORE_SPARSE);
             }
 
             // Add ruins if needed (at least extensive)

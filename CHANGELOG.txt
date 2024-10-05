@@ -2,14 +2,13 @@ TODO
 - fix procgen in core worlds
 - add a system for modders to autogenerate conditions if they use post new game procgen
 - all the 3.0 planet shit
-- analyize effects of reduced hyceans
 - add custom archipelago cond pool
-- allow rare ores on sanctum planet
 
-Version 2.0.2
+WIP Version 2.0.2
 - minor logging tweaks
 - nerfed fluo giant from +3 to +2
 - reduced hycean spawn chance
+- allow rare ores on sanctum planet
 
 Version 2.0.1 - 11/07/2024
 - Added Thin Atmosphere to Dust worlds to match their description.
@@ -20,7 +19,7 @@ Version 2.0.0 - 28/06/2024
 - Added 4 new planets:
     . Hycean worlds with a unique condition pool (special thanks to TouchOfVanilla for the original idea and lots of feedback).
     . The Fluorescent Giant, a new unique planet that spawns once per sector (image source: Tartiflette's Texture Pack).
-    . Savannah and Alpine world, two new variants for Jungle and Tundra worlds (image source: TextureForPlanets).
+    . Savannah and Alpine worlds, two new variants for Jungle and Tundra worlds (image source: TextureForPlanets).
 - Added a new unique condition: Pre-Collapse Cryosanctum (special thanks to SirHartley for help with the implementation).
 - Added stellar clouds (purely cosmetic, image source: Tartiflette's Texture Pack).
 - Added organics to Methane worlds.
