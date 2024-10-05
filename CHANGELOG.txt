@@ -2,7 +2,9 @@ TODO
 - fix procgen in core worlds
 - add a system for modders to autogenerate conditions if they use post new game procgen
 - all the 3.0 planet shit
-
+- analyize effects of reduced hyceans
+- add custom archipelago cond pool
+- allow rare ores on sanctum planet
 
 Version 2.0.2
 - minor logging tweaks
