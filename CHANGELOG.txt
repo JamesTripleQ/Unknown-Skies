@@ -1,10 +1,15 @@
 TODO
-- fix procgen in core worlds
-- add a system for modders to autogenerate conditions if they use post new game procgen
 - all the 3.0 planet shit
 - add custom archipelago cond pool
+- new colony item for aqui
+- carbon world
+- more gas giants
+- rewrite luminescent clouds desc
+- sakura world because pink is a cool color
 
 WIP Version 2.0.2
+- fix procgen in core worlds
+- add a system for modders to autogenerate conditions if they use post new game procgen
 - minor logging tweaks
 - nerfed fluo giant from +3 to +2
 - reduced hycean spawn chance

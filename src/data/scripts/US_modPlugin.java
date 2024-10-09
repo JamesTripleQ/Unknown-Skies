@@ -27,6 +27,8 @@ import java.util.Map.Entry;
 import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PK_PLANET_KEY;
 import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PLANETARY_SHIELD_PLANET;
 import static data.scripts.util.US_hyceanManager.manageHyceanConditions;
+import static data.scripts.util.US_manualSystemFixer.US_SKIP_SYSTEM;
+import static data.scripts.util.US_manualSystemFixer.fixSystem;
 import static data.scripts.util.US_utils.addConditionIfNeeded;
 import static data.scripts.util.US_utils.removeConditionIfNeeded;
 
@@ -49,8 +51,8 @@ public class US_modPlugin extends BaseModPlugin {
     private List<String> ARTIFICIAL_LIST = new ArrayList<>();
     private List<String> FLUORESCENT_LIST = new ArrayList<>();
 
-    private static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
-    private static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
+    public static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
+    public static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
 
     public static final Map<String, Pair<String, Color>> starClouds = new HashMap<>();
 
@@ -140,7 +142,12 @@ public class US_modPlugin extends BaseModPlugin {
         // Seed planetary conditions
         for (StarSystemAPI s : Global.getSector().getStarSystems()) {
             if (s == null) continue;
-            if (!s.isProcgen()) continue;
+            if (!s.isProcgen()) {
+                if (!s.hasTag(US_SKIP_SYSTEM)) {
+                    fixSystem(s, true, true);
+                }
+                continue;
+            }
             if (s.getPlanets().isEmpty()) continue;
 
             PlanetAPI star = s.getStar();
