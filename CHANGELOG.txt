@@ -2,10 +2,7 @@ TODO
 - all the 3.0 planet shit
 - add custom archipelago cond pool
 - new colony item for aqui
-- carbon world
-- more gas giants
-- rewrite luminescent clouds desc
-- sakura world because pink is a cool color
+
 
 WIP Version 2.0.2
 - fix procgen in core worlds
@@ -14,6 +11,8 @@ WIP Version 2.0.2
 - nerfed fluo giant from +3 to +2
 - reduced hycean spawn chance
 - allow rare ores on sanctum planet
+- typo
+- minor rewrite
 
 Version 2.0.1 - 11/07/2024
 - Added Thin Atmosphere to Dust worlds to match their description.
