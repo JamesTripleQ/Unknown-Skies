@@ -1,18 +1,10 @@
-TODO
-- all the 3.0 planet shit
-- add custom archipelago cond pool
-- new colony item for aqui
-
-
-WIP Version 2.0.2
-- fix procgen in core worlds
-- add a system for modders to autogenerate conditions if they use post new game procgen
-- minor logging tweaks
-- nerfed fluo giant from +3 to +2
-- reduced hycean spawn chance
-- allow rare ores on sanctum planet
-- typo
-- minor rewrite
+Version 2.0.2 - 19/10/2024
+- Added a helper for modders who have certain US planets in their system or that generate procgen systems after a game has started.
+- Fixed certain US planet types not spawning with the correct conditions in the Core-Worlds.
+- Nerfed Luminescent Clouds, Volatiles production is now +2 (was +3).
+- Fixed Hycean planets having a higher spawn chance than intended.
+- The Pre-Collapse Cryosanctum can now rarely spawn with Rare Ores.
+- Minor text tweaks.
 
 Version 2.0.1 - 11/07/2024
 - Added Thin Atmosphere to Dust worlds to match their description.
