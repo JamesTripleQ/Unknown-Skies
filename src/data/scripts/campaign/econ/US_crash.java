@@ -19,7 +19,7 @@ public class US_crash extends BaseHazardCondition {
     }
 
     private float getHazardBonus(int size) {
-        return -0.5f + Math.min(0.5f, Math.max(0, getFixedMarketSize(size) - 4) / 10f);
+        return (getFixedMarketSize(size) - 8) / 10f;
     }
 
     @Override

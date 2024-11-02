@@ -7,7 +7,6 @@ import com.fs.starfarer.api.util.Misc;
 import static data.scripts.util.US_utils.*;
 
 public class US_elevator extends BaseHazardCondition {
-    private final float ACCESSIBILITY_BONUS = 50f;
 
     @Override
     public void apply(String id) {
@@ -20,7 +19,7 @@ public class US_elevator extends BaseHazardCondition {
     }
 
     private float getAccessibilityBonus(int size) {
-        return Math.max(0, ACCESSIBILITY_BONUS - (Math.max(0, getFixedMarketSize(size) - 3) * 10));
+        return (getFixedMarketSize(size) - 8) * -10f;
     }
 
     @Override
