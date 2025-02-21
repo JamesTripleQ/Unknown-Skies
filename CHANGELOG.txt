@@ -1,7 +1,8 @@
 WIP
 fixed crash drone having higher reduction per level than intended
 optimized some stat calculation to avoid weird rounding errors
-hycean rebalance
+hycean rebalance (slightly worse ores, slightly rarer ruins, worse organics, worse atmosphere, slightly rarer)
+reverted military virus prod from +4 to +3
 
 Version 2.0.2 - 19/10/2024
 - Added a helper for modders who have certain US planets in their system or that generate procgen systems after a game has started.

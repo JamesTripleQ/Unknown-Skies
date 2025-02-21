@@ -13,7 +13,7 @@ import static data.scripts.util.US_utils.*;
 
 public class US_virus extends BaseHazardCondition implements MarketImmigrationModifier {
     private final float DEFENSE_MALUS = 0.6f;
-    private final int WEAPON_BONUS = 4;
+    private final int WEAPON_BONUS = 3;
     private final float STABILITY_MALUS = -2f;
 
     @Override
