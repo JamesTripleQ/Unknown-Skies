@@ -78,8 +78,8 @@ public class US_hyceanManager {
         groups.add("decivilized");
 
         // Atmosphere
-        hyceanWeights.put("atmosphere_no_pick", 10f);
-        hyceanWeights.put(Conditions.THIN_ATMOSPHERE, 1f);
+        hyceanWeights.put("atmosphere_no_pick", 5f);
+        hyceanWeights.put(Conditions.THIN_ATMOSPHERE, 10f);
         hyceanWeights.put(Conditions.DENSE_ATMOSPHERE, 1f);
 
         // Weather
@@ -99,22 +99,21 @@ public class US_hyceanManager {
 
         // Rare Ores
         hyceanWeights.put("rare_ore_no_pick", 100f);
-        hyceanWeights.put(Conditions.RARE_ORE_SPARSE, 5f);
+        hyceanWeights.put(Conditions.RARE_ORE_SPARSE, 10f);
         hyceanWeights.put(Conditions.RARE_ORE_MODERATE, 10f);
-        hyceanWeights.put(Conditions.RARE_ORE_ABUNDANT, 4f);
-        hyceanWeights.put(Conditions.RARE_ORE_RICH, 1f);
+        hyceanWeights.put(Conditions.RARE_ORE_ABUNDANT, 5f);
 
         // Volatiles
         hyceanWeights.put(Conditions.VOLATILES_ABUNDANT, 20f);
         hyceanWeights.put(Conditions.VOLATILES_PLENTIFUL, 15f);
 
         // Organics
+        hyceanWeights.put("organics_no_pick", 5f);
         hyceanWeights.put(Conditions.ORGANICS_TRACE, 5f);
-        hyceanWeights.put(Conditions.ORGANICS_COMMON, 20f);
-        hyceanWeights.put(Conditions.ORGANICS_ABUNDANT, 5f);
+        hyceanWeights.put(Conditions.ORGANICS_COMMON, 5f);
 
         // Ruins
-        hyceanWeights.put("ruins_no_pick", 20f);
+        hyceanWeights.put("ruins_no_pick", 30f);
         hyceanWeights.put(Conditions.RUINS_SCATTERED, 10f);
         hyceanWeights.put(Conditions.RUINS_WIDESPREAD, 5f);
         hyceanWeights.put(Conditions.RUINS_EXTENSIVE, 3f);
