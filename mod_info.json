@@ -4,7 +4,7 @@
 	"author": "Tartiflette, maintained by JamesTripleQ",
 	"version": "2.0.2",
 	"description": "Enhance your journey into the unknown with a vastly expanded variety of planets and environments.",
-	"gameVersion": "0.97a-RC11",
+	"gameVersion": "0.98a-RC7",
 	"jars":["jars/US.jar"],
 	"dependencies": [
 		{
