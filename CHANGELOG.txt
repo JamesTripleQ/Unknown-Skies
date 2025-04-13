@@ -1,12 +1,17 @@
-make us stars always have clouds
-pixel stars
+TODO
 pixel backgrounds
-use existing stars for stuff like red dwarf
+pixel should send me the updated/new stars/planets
 green star?
+codex support
+planet filter
+unfuck the planet weights for good
 
 WIP
 not save compatible
 reworked star gen system, the sector is now just like vanilla
+all old US stars have clouds
+added US star variants for red dwarf, red super giant, orange giant, blue super giant
+tweaked star coronas to better match
 
 Version 2.1.0 - 06/04/2025
 - Updated to version 0.98.
