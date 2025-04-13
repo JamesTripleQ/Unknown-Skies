@@ -14,7 +14,6 @@ import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationTyp
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
-import com.fs.starfarer.api.util.Pair;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.apache.log4j.Logger;
 import org.magiclib.util.MagicSettings;
@@ -29,8 +28,7 @@ import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThe
 import static data.scripts.util.US_hyceanManager.manageHyceanConditions;
 import static data.scripts.util.US_manualSystemFixer.US_SKIP_SYSTEM;
 import static data.scripts.util.US_manualSystemFixer.fixSystem;
-import static data.scripts.util.US_utils.addConditionIfNeeded;
-import static data.scripts.util.US_utils.removeConditionIfNeeded;
+import static data.scripts.util.US_utils.*;
 
 @SuppressWarnings("unused")
 public class US_modPlugin extends BaseModPlugin {
@@ -54,8 +52,6 @@ public class US_modPlugin extends BaseModPlugin {
     public static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
     public static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
 
-    public static final Map<String, Pair<String, Color>> starClouds = new HashMap<>();
-
     static {
         FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_SCATTERED, 1);
         FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
@@ -65,12 +61,6 @@ public class US_modPlugin extends BaseModPlugin {
         METHANE_ORGANICS.add(Conditions.ORGANICS_COMMON, 5f);
         METHANE_ORGANICS.add(Conditions.ORGANICS_ABUNDANT, 20f);
         METHANE_ORGANICS.add(Conditions.ORGANICS_PLENTIFUL, 10f);
-
-        starClouds.put("US_star_yellow", new Pair<>("Yellow", new Color(255, 255, 255)));
-        starClouds.put("US_star_orange", new Pair<>("Yellow", new Color(255, 125, 90)));
-        starClouds.put("US_star_red_giant", new Pair<>("Yellow", new Color(255, 200, 160)));
-        starClouds.put("US_star_blue_giant", new Pair<>("Blue", new Color(255, 255, 255)));
-        starClouds.put("US_star_white", new Pair<>("White", new Color(255, 255, 255)));
     }
 
     @Override
@@ -81,12 +71,6 @@ public class US_modPlugin extends BaseModPlugin {
         Farming.AQUA_PLANETS.add("US_waterHycean");
 
         // Set Slipsurge strength
-        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_red_giant", 0.6f);
-        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_blue_giant", 0.6f);
-        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_orange", 0.4f);
-        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_yellow", 0.4f);
-        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_white", 0.25f);
-        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_star_browndwarf", 0.1f);
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giant", 0f);
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giantB", 0f);
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_fluorescent", 0f);
@@ -129,8 +113,6 @@ public class US_modPlugin extends BaseModPlugin {
             }
         }
 
-        List<PlanetAPI> starCloudsCandidates = new ArrayList<>();
-
         List<PlanetAPI> crystalCandidates = new ArrayList<>();
         List<PlanetAPI> sporeCandidates = new ArrayList<>();
         List<PlanetAPI> shroomCandidates = new ArrayList<>();
@@ -150,26 +132,9 @@ public class US_modPlugin extends BaseModPlugin {
             }
             if (s.getPlanets().isEmpty()) continue;
 
-            PlanetAPI star = s.getStar();
-            if (star != null) {
-                if (starClouds.containsKey(star.getTypeId())) {
-                    starCloudsCandidates.add(star);
-                }
-            }
-
-            star = s.getSecondary();
-            if (star != null) {
-                if (starClouds.containsKey(star.getTypeId())) {
-                    starCloudsCandidates.add(star);
-                }
-            }
-
-            star = s.getTertiary();
-            if (star != null) {
-                if (starClouds.containsKey(star.getTypeId())) {
-                    starCloudsCandidates.add(star);
-                }
-            }
+            swapStar(s.getStar());
+            swapStar(s.getSecondary());
+            swapStar(s.getTertiary());
 
             for (PlanetAPI p : s.getPlanets()) {
                 if (p.isStar()) continue;
@@ -190,8 +155,7 @@ public class US_modPlugin extends BaseModPlugin {
 
                 // Swap tundra to US_alkali or US_alpine (except Sentinel)
                 if (p.getTypeId().equals("tundra") && !p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY)) {
-                    int pick = new Random().nextInt(3);
-                    switch (pick) {
+                    switch (new Random().nextInt(3)) {
                         case 0:
                             p.changeType("US_alkali", StarSystemGenerator.random);
                             break;
@@ -203,8 +167,7 @@ public class US_modPlugin extends BaseModPlugin {
 
                 // Swap jungle to US_jungle or US_savannah
                 if (p.getTypeId().equals("jungle")) {
-                    int pick = new Random().nextInt(3);
-                    switch (pick) {
+                    switch (new Random().nextInt(3)) {
                         case 0:
                             p.changeType("US_jungle", StarSystemGenerator.random);
                             break;
@@ -281,18 +244,6 @@ public class US_modPlugin extends BaseModPlugin {
                     } else if (FLUORESCENT_LIST.contains(p.getTypeId())) {
                         fluorescentCandidates.add(p);
                     }
-                }
-            }
-        }
-
-        // Star cloud placement
-        if (!starCloudsCandidates.isEmpty()) {
-            for (PlanetAPI star : starCloudsCandidates) {
-                if (new Random().nextBoolean()) {
-                    star.getSpec().setCloudTexture(Global.getSettings().getSpriteName("clouds", "US_clouds_textureStar" + starClouds.get(star.getTypeId()).one));
-                    star.getSpec().setCloudRotation(star.getSpec().getRotation() - 3);
-                    star.getSpec().setCloudColor(starClouds.get(star.getTypeId()).two);
-                    star.applySpecChanges();
                 }
             }
         }

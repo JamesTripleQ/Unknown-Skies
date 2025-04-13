@@ -1,3 +1,13 @@
+make us stars always have clouds
+pixel stars
+pixel backgrounds
+use existing stars for stuff like red dwarf
+green star?
+
+WIP
+not save compatible
+reworked star gen system, the sector is now just like vanilla
+
 Version 2.1.0 - 06/04/2025
 - Updated to version 0.98.
 - Rebalanced hycean worlds to be much more in line with vanilla planets:
