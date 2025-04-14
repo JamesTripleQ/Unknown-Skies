@@ -1,0 +1,9 @@
+Original credits:
+- Tartiflette: original mod author
+- Serenitis: some planet maps
+
+Updated credits:
+- JamesTripleQ: maintainer/developer
+- TouchOfVanilla: original Hycean planet concept, tons and tons of feedback on balance and writing
+- SirHartley: some Pre-Collapse Cryosanctum code
+- pixel_rice_bowl: some Star textures
