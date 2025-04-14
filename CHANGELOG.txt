@@ -7,6 +7,7 @@ planet filter
 unfuck the planet weights for good
 remove the old ass save patching code since this update is a breaking point anyway
 achra?
+arti retexture
 
 WIP
 not save compatible

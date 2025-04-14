@@ -114,7 +114,7 @@ public class US_utils {
         switch (star.getTypeId()) {
             case "star_blue_giant":
             case "star_blue_supergiant":
-                switch (new Random().nextInt(3)) {
+                switch (new Random().nextInt(4)) {
                     case 0:
                         star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_blue_giant"));
                         star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_intense"));
@@ -128,10 +128,14 @@ public class US_utils {
                         star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_intense"));
                         star.applySpecChanges();
                         break;
+                    case 2:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_blue_giant_3"));
+                        star.applySpecChanges();
+                        break;
                 }
                 break;
             case "star_yellow":
-                switch (new Random().nextInt(3)) {
+                switch (new Random().nextInt(4)) {
                     case 0:
                         star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_yellow"));
                         star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_unstable"));
@@ -143,6 +147,10 @@ public class US_utils {
                     case 1:
                         star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_yellow_2"));
                         star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_unstable"));
+                        star.applySpecChanges();
+                        break;
+                    case 2:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_yellow_3"));
                         star.applySpecChanges();
                         break;
                 }

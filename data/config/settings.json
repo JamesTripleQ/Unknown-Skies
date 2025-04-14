@@ -3,8 +3,10 @@
 		"stars": {
 			"US_star_blue_giant": "graphics/planets/US_star_textureCustomBlue.jpg",
 			"US_star_blue_giant_2": "graphics/planets/US_star_textureCustomBlue_2.jpg",
+			"US_star_blue_giant_3": "graphics/planets/US_star_textureCustomBlue_3.jpg",
 			"US_star_yellow": "graphics/planets/US_star_textureCustomYellow.jpg",
 			"US_star_yellow_2": "graphics/planets/US_star_textureCustomYellow_2.jpg",
+			"US_star_yellow_3": "graphics/planets/US_star_textureCustomYellow_3.jpg",
 			"US_star_orange": "graphics/planets/US_star_textureCustomOrange.jpg",
 			"US_star_orange_2": "graphics/planets/US_star_textureCustomOrange_2.jpg",
 			"US_star_red_giant": "graphics/planets/US_star_textureCustomRed.jpg",
