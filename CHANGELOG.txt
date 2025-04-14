@@ -7,7 +7,6 @@ planet filter
 unfuck the planet weights for good
 remove the old ass save patching code since this update is a breaking point anyway
 achra?
-arti retexture
 
 WIP
 not save compatible
@@ -17,6 +16,7 @@ added US star variants for red dwarf, red super giant, orange giant, blue super 
 tweaked star coronas to better match
 new blue, orange, yellow, red stars by pixel
 credits file
+arti retexture
 
 Version 2.1.0 - 06/04/2025
 - Updated to version 0.98.

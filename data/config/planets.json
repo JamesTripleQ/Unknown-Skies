@@ -1690,9 +1690,9 @@
 		"texture": "graphics/planets/US_planet_textureArtificial.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			150,
-			115,
-			95,
+			109,
+			86,
+			79,
 			255
 		],
 		"isStar": false,
@@ -1700,7 +1700,15 @@
 			-10,
 			0,
 			7
-		]
+		],
+		"glowTexture": "graphics/planets/US_planet_textureArtificial_light.png",
+		"glowColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"useReverseLightForGlow": false
 	},
 	"US_storm": {
 		"name": "Windswept",

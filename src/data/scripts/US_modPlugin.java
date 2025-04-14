@@ -49,10 +49,18 @@ public class US_modPlugin extends BaseModPlugin {
     private List<String> ARTIFICIAL_LIST = new ArrayList<>();
     private List<String> FLUORESCENT_LIST = new ArrayList<>();
 
+    private static final List<Color> artificialLights = new ArrayList<>();
+
     public static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
     public static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
 
     static {
+        artificialLights.add(new Color(35, 194, 236));
+        artificialLights.add(new Color(53, 233, 49));
+        artificialLights.add(new Color(233, 66, 49));
+        artificialLights.add(new Color(162, 37, 211));
+        artificialLights.add(new Color(233, 228, 84));
+
         FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_SCATTERED, 1);
         FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
         FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_EXTENSIVE, 3);
@@ -367,6 +375,8 @@ public class US_modPlugin extends BaseModPlugin {
             PlanetAPI planet = artificialCandidates.get(new Random().nextInt(artificialCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Artificial");
             planet.changeType("US_artificial", StarSystemGenerator.random);
+            planet.getSpec().setGlowColor(artificialLights.get(new Random().nextInt(artificialLights.size())));
+            planet.applySpecChanges();
             addConditionIfNeeded(planet, "US_artificial");
 
             // Add ruins if needed (at least extensive)
