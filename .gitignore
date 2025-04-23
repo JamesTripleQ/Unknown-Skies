@@ -192,3 +192,6 @@ nbdist/
 .idea/vcs.xml
 
 .idea/csv-editor.xml
+
+# Developer file
+TODO.txt
