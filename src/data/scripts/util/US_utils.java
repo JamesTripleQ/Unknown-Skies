@@ -7,6 +7,7 @@ import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.procgen.ConditionGenDataSpec;
+import com.fs.starfarer.api.impl.campaign.procgen.PlanetGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.getDataForGroup;
 import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.preconditionsMet;
+import static com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator.*;
 
 public class US_utils {
 
@@ -208,6 +210,52 @@ public class US_utils {
                 }
                 break;
         }
+    }
+
+    // Modified AddPlanet from StarSystemGenerator
+    public static void changePlanetType(PlanetAPI planet, String type) {
+        planet.changeType(type, random);
+        PlanetGenDataSpec planetData = (PlanetGenDataSpec) Global.getSettings().getSpec(PlanetGenDataSpec.class, planet.getSpec().getPlanetType(), false);
+
+        Color color = getColor(planetData.getMinColor(), planetData.getMaxColor());
+        planet.getSpec().setPlanetColor(color);
+
+        if (planet.getSpec().getAtmosphereThickness() > 0) {
+            Color atmosphereColor = Misc.interpolateColor(planet.getSpec().getAtmosphereColor(), color, 0.25f);
+            atmosphereColor = Misc.setAlpha(atmosphereColor, planet.getSpec().getAtmosphereColor().getAlpha());
+            planet.getSpec().setAtmosphereColor(atmosphereColor);
+
+            if (planet.getSpec().getCloudTexture() != null) {
+                Color cloudColor = Misc.interpolateColor(planet.getSpec().getCloudColor(), color, 0.25f);
+                cloudColor = Misc.setAlpha(cloudColor, planet.getSpec().getCloudColor().getAlpha());
+                planet.getSpec().setCloudColor(cloudColor);
+            }
+        }
+
+        float tilt = planet.getSpec().getTilt();
+        float pitch = planet.getSpec().getPitch();
+
+        float sign = Math.signum(random.nextFloat() - 0.5f);
+        double r = random.nextFloat();
+
+        if (sign > 0) {
+            tilt += (float) (r * TILT_MAX);
+        } else {
+            tilt += (float) (r * TILT_MIN);
+        }
+
+        sign = Math.signum(random.nextFloat() - 0.5f);
+        r = random.nextFloat();
+
+        if (sign > 0) {
+            pitch += (float) (r * PITCH_MAX);
+        } else {
+            tilt += (float) (r * PITCH_MIN);
+        }
+
+        planet.getSpec().setTilt(tilt);
+        planet.getSpec().setPitch(pitch);
+        planet.applySpecChanges();
     }
 
     /*--------------------

@@ -12,7 +12,6 @@ import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.ids.Terrain;
 import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationType;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
-import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
 import org.apache.log4j.Logger;
@@ -150,14 +149,14 @@ public class US_modPlugin extends BaseModPlugin {
                 // Swap lava to US_lava
                 if (p.getTypeId().equals("lava")) {
                     if (new Random().nextBoolean()) {
-                        p.changeType("US_lava", StarSystemGenerator.random);
+                        changePlanetType(p, "US_lava");
                     }
                 }
 
                 // Swap lava_minor to US_volcanic
                 if (p.getTypeId().equals("lava_minor")) {
                     if (new Random().nextBoolean()) {
-                        p.changeType("US_volcanic", StarSystemGenerator.random);
+                        changePlanetType(p, "US_volcanic");
                     }
                 }
 
@@ -165,10 +164,10 @@ public class US_modPlugin extends BaseModPlugin {
                 if (p.getTypeId().equals("tundra") && !p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY)) {
                     switch (new Random().nextInt(3)) {
                         case 0:
-                            p.changeType("US_alkali", StarSystemGenerator.random);
+                            changePlanetType(p, "US_alkali");
                             break;
                         case 1:
-                            p.changeType("US_alpine", StarSystemGenerator.random);
+                            changePlanetType(p, "US_alpine");
                             break;
                     }
                 }
@@ -177,10 +176,10 @@ public class US_modPlugin extends BaseModPlugin {
                 if (p.getTypeId().equals("jungle")) {
                     switch (new Random().nextInt(3)) {
                         case 0:
-                            p.changeType("US_jungle", StarSystemGenerator.random);
+                            changePlanetType(p, "US_jungle");
                             break;
                         case 1:
-                            p.changeType("US_savannah", StarSystemGenerator.random);
+                            changePlanetType(p, "US_savannah");
                             break;
                     }
                 }
@@ -189,9 +188,9 @@ public class US_modPlugin extends BaseModPlugin {
                 if (p.getTypeId().equals("arid")) {
                     if (new Random().nextBoolean()) {
                         if (new Random().nextBoolean()) {
-                            p.changeType("US_auric", StarSystemGenerator.random);
+                            changePlanetType(p, "US_auric");
                         } else {
-                            p.changeType("US_auricCloudy", StarSystemGenerator.random);
+                            changePlanetType(p, "US_auricCloudy");
                         }
                     }
                 }
@@ -335,7 +334,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!shroomCandidates.isEmpty()) {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
-            planet.changeType("US_storm", StarSystemGenerator.random);
+            changePlanetType(planet, "US_storm");
             addConditionIfNeeded(planet, "US_storm");
             removeConditionIfNeeded(planet, Conditions.NO_ATMOSPHERE);
             removeConditionIfNeeded(planet, Conditions.EXTREME_WEATHER);
@@ -349,7 +348,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!sporeCandidates.isEmpty()) {
             PlanetAPI planet = sporeCandidates.get(new Random().nextInt(sporeCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Magnetic");
-            planet.changeType("US_magnetic", StarSystemGenerator.random);
+            changePlanetType(planet,"US_magnetic");
             addConditionIfNeeded(planet, "US_magnetic");
             SectorEntityToken magField = planet.getStarSystem().addTerrain(
                     Terrain.MAGNETIC_FIELD,
@@ -374,7 +373,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!artificialCandidates.isEmpty()) {
             PlanetAPI planet = artificialCandidates.get(new Random().nextInt(artificialCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Artificial");
-            planet.changeType("US_artificial", StarSystemGenerator.random);
+            changePlanetType(planet, "US_artificial");
             planet.getSpec().setGlowColor(artificialLights.get(new Random().nextInt(artificialLights.size())));
             planet.applySpecChanges();
             addConditionIfNeeded(planet, "US_artificial");
@@ -392,7 +391,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!fluorescentCandidates.isEmpty()) {
             PlanetAPI planet = fluorescentCandidates.get(new Random().nextInt(fluorescentCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Fluorescent Giant");
-            planet.changeType("US_fluorescent", StarSystemGenerator.random);
+            changePlanetType(planet, "US_fluorescent");
             addConditionIfNeeded(planet, "US_fluorescent");
             addConditionIfNeeded(planet, Conditions.EXTREME_WEATHER);
             removeConditionIfNeeded(planet, Conditions.POOR_LIGHT);
