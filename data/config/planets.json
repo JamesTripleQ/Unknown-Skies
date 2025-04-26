@@ -1672,7 +1672,8 @@
 			170,
 			240
 		],
-		"cloudRotation": -2
+		"cloudRotation": -2,
+		"tags":["codex_unlockable"]
 	},
 	"US_artificial": {
 		"name": "Artificial",
@@ -1708,7 +1709,8 @@
 			255,
 			255
 		],
-		"useReverseLightForGlow": false
+		"useReverseLightForGlow": false,
+		"tags":["codex_unlockable"]
 	},
 	"US_storm": {
 		"name": "Windswept",
@@ -1752,7 +1754,8 @@
 			160,
 			200
 		],
-		"cloudRotation": -8
+		"cloudRotation": -8,
+		"tags":["codex_unlockable"]
 	},
 	"US_fluorescent": {
 		"name": "Fluorescent Giant",
@@ -1805,6 +1808,7 @@
 			253,
 			100
 		],
-		"cloudRotation": -2
+		"cloudRotation": -2,
+		"tags":["codex_unlockable"]
 	}
 }

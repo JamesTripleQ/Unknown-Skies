@@ -8,6 +8,7 @@ import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.impl.campaign.abilities.GenerateSlipsurgeAbility;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
+import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.ids.Terrain;
 import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationType;
@@ -24,6 +25,7 @@ import java.util.Map.Entry;
 
 import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PK_PLANET_KEY;
 import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PLANETARY_SHIELD_PLANET;
+import static com.fs.starfarer.api.impl.codex.CodexDataV2.*;
 import static data.scripts.util.US_hyceanManager.manageHyceanConditions;
 import static data.scripts.util.US_manualSystemFixer.US_SKIP_SYSTEM;
 import static data.scripts.util.US_manualSystemFixer.fixSystem;
@@ -81,6 +83,55 @@ public class US_modPlugin extends BaseModPlugin {
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giant", 0f);
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giantB", 0f);
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_fluorescent", 0f);
+    }
+
+    @Override
+    public void onCodexDataGenerated() {
+        // Chemical Crystals
+        makeRelated(getConditionEntryId("US_crystals"), getPlanetEntryId("toxic"));
+        makeRelated(getConditionEntryId("US_crystals"), getPlanetEntryId("toxic_cold"));
+        makeRelated(getConditionEntryId("US_crystals"), getPlanetEntryId("US_acid"));
+        makeRelated(getConditionEntryId("US_crystals"), getPlanetEntryId("US_acidRain"));
+        makeRelated(getConditionEntryId("US_crystals"), getPlanetEntryId("US_acidWind"));
+        makeRelated(getConditionEntryId("US_crystals"), getPlanetEntryId("US_green"));
+        // Military Virus
+        makeRelated(getConditionEntryId("US_virus"), getPlanetEntryId("barren-desert"));
+        makeRelated(getConditionEntryId("US_virus"), getPlanetEntryId("desert"));
+        makeRelated(getConditionEntryId("US_virus"), getPlanetEntryId("desert1"));
+        makeRelated(getConditionEntryId("US_virus"), getPlanetEntryId("US_desertA"));
+        makeRelated(getConditionEntryId("US_virus"), getPlanetEntryId("US_desertB"));
+        makeRelated(getConditionEntryId("US_virus"), getPlanetEntryId("US_desertC"));
+        // Parasitic Spores
+        makeRelated(getConditionEntryId("US_mind"), getPlanetEntryId("jungle"));
+        makeRelated(getConditionEntryId("US_mind"), getPlanetEntryId("US_jungle"));
+        makeRelated(getConditionEntryId("US_mind"), getPlanetEntryId("US_auric"));
+        makeRelated(getConditionEntryId("US_mind"), getPlanetEntryId("US_auricCloudy"));
+        makeRelated(getConditionEntryId("US_mind"), getPlanetEntryId("US_savannah"));
+        // Psychoactive Fungus
+        makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("arid"));
+        makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("US_arid"));
+        makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("tundra"));
+        makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("US_alkali"));
+        makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("US_alpine"));
+        // Pre-Collapse Cryosanctum
+        makeRelated(getConditionEntryId("US_cryosanctum"), getPlanetEntryId("frozen"));
+        makeRelated(getConditionEntryId("US_cryosanctum"), getPlanetEntryId("frozen1"));
+        makeRelated(getConditionEntryId("US_cryosanctum"), getPlanetEntryId("frozen2"));
+        makeRelated(getConditionEntryId("US_cryosanctum"), getPlanetEntryId("frozen3"));
+        makeRelated(getConditionEntryId("US_cryosanctum"), getPlanetEntryId("US_iceA"));
+        makeRelated(getConditionEntryId("US_cryosanctum"), getPlanetEntryId("US_iceB"));
+        // Unique planets
+        makeRelated(getConditionEntryId("US_magnetic"), getPlanetEntryId("US_magnetic"));
+        makeRelated(getConditionEntryId("US_artificial"), getPlanetEntryId("US_artificial"));
+        makeRelated(getConditionEntryId("US_storm"), getPlanetEntryId("US_storm"));
+        makeRelated(getConditionEntryId("US_fluorescent"), getPlanetEntryId("US_fluorescent"));
+        // Water planets
+        makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_water"));
+        makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_water"));
+        makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_waterB"));
+        makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_waterB"));
+        makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_waterHycean"));
+        makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_waterHycean"));
     }
 
     @Override
@@ -332,7 +383,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!sporeCandidates.isEmpty()) {
             PlanetAPI planet = sporeCandidates.get(new Random().nextInt(sporeCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Magnetic");
-            changePlanetType(planet,"US_magnetic");
+            changePlanetType(planet, "US_magnetic");
             addConditionIfNeeded(planet, "US_magnetic");
             addConditionIfNeeded(planet, "US_unique_filter");
             SectorEntityToken magField = planet.getStarSystem().addTerrain(
