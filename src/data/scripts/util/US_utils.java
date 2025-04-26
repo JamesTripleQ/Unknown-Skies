@@ -213,22 +213,24 @@ public class US_utils {
     }
 
     // Modified AddPlanet from StarSystemGenerator
-    public static void changePlanetType(PlanetAPI planet, String type) {
+    public static void changePlanetType(PlanetAPI planet, String type, boolean skipRandomColorVariation) {
         planet.changeType(type, random);
         PlanetGenDataSpec planetData = (PlanetGenDataSpec) Global.getSettings().getSpec(PlanetGenDataSpec.class, planet.getSpec().getPlanetType(), false);
 
-        Color color = getColor(planetData.getMinColor(), planetData.getMaxColor());
-        planet.getSpec().setPlanetColor(color);
+        if (!skipRandomColorVariation) {
+            Color color = getColor(planetData.getMinColor(), planetData.getMaxColor());
+            planet.getSpec().setPlanetColor(color);
 
-        if (planet.getSpec().getAtmosphereThickness() > 0) {
-            Color atmosphereColor = Misc.interpolateColor(planet.getSpec().getAtmosphereColor(), color, 0.25f);
-            atmosphereColor = Misc.setAlpha(atmosphereColor, planet.getSpec().getAtmosphereColor().getAlpha());
-            planet.getSpec().setAtmosphereColor(atmosphereColor);
+            if (planet.getSpec().getAtmosphereThickness() > 0) {
+                Color atmosphereColor = Misc.interpolateColor(planet.getSpec().getAtmosphereColor(), color, 0.25f);
+                atmosphereColor = Misc.setAlpha(atmosphereColor, planet.getSpec().getAtmosphereColor().getAlpha());
+                planet.getSpec().setAtmosphereColor(atmosphereColor);
 
-            if (planet.getSpec().getCloudTexture() != null) {
-                Color cloudColor = Misc.interpolateColor(planet.getSpec().getCloudColor(), color, 0.25f);
-                cloudColor = Misc.setAlpha(cloudColor, planet.getSpec().getCloudColor().getAlpha());
-                planet.getSpec().setCloudColor(cloudColor);
+                if (planet.getSpec().getCloudTexture() != null) {
+                    Color cloudColor = Misc.interpolateColor(planet.getSpec().getCloudColor(), color, 0.25f);
+                    cloudColor = Misc.setAlpha(cloudColor, planet.getSpec().getCloudColor().getAlpha());
+                    //planet.getSpec().setCloudColor(cloudColor); Disabled to keep consistency with a vanilla bug
+                }
             }
         }
 
@@ -256,6 +258,10 @@ public class US_utils {
         planet.getSpec().setTilt(tilt);
         planet.getSpec().setPitch(pitch);
         planet.applySpecChanges();
+    }
+
+    public static void changePlanetType(PlanetAPI planet, String type) {
+        changePlanetType(planet, type, false);
     }
 
     /*--------------------

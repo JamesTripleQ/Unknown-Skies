@@ -5,5 +5,5 @@ Original credits:
 Updated credits:
 - JamesTripleQ: maintainer/developer
 - TouchOfVanilla: original Hycean planet concept, tons and tons of feedback on balance and writing
-- SirHartley: some Pre-Collapse Cryosanctum code
+- SirHartley: some Pre-Collapse Cryosanctum code and some Illustrated.Entities images
 - pixel_rice_bowl: some Star textures

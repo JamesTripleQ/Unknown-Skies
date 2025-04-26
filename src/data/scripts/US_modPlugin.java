@@ -368,7 +368,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!shroomCandidates.isEmpty()) {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
-            changePlanetType(planet, "US_storm");
+            changePlanetType(planet, "US_storm", true);
             addConditionIfNeeded(planet, "US_storm");
             addConditionIfNeeded(planet, "US_unique_filter");
             removeConditionIfNeeded(planet, Conditions.NO_ATMOSPHERE);
@@ -383,7 +383,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!sporeCandidates.isEmpty()) {
             PlanetAPI planet = sporeCandidates.get(new Random().nextInt(sporeCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Magnetic");
-            changePlanetType(planet, "US_magnetic");
+            changePlanetType(planet, "US_magnetic", true);
             addConditionIfNeeded(planet, "US_magnetic");
             addConditionIfNeeded(planet, "US_unique_filter");
             SectorEntityToken magField = planet.getStarSystem().addTerrain(
@@ -409,7 +409,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!artificialCandidates.isEmpty()) {
             PlanetAPI planet = artificialCandidates.get(new Random().nextInt(artificialCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Artificial");
-            changePlanetType(planet, "US_artificial");
+            changePlanetType(planet, "US_artificial", true);
             planet.getSpec().setGlowColor(artificialLights.get(new Random().nextInt(artificialLights.size())));
             planet.applySpecChanges();
             addConditionIfNeeded(planet, "US_artificial");
@@ -428,7 +428,7 @@ public class US_modPlugin extends BaseModPlugin {
         if (!fluorescentCandidates.isEmpty()) {
             PlanetAPI planet = fluorescentCandidates.get(new Random().nextInt(fluorescentCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Fluorescent Giant");
-            changePlanetType(planet, "US_fluorescent");
+            changePlanetType(planet, "US_fluorescent", true);
             addConditionIfNeeded(planet, "US_fluorescent");
             addConditionIfNeeded(planet, "US_unique_filter");
             addConditionIfNeeded(planet, Conditions.EXTREME_WEATHER);
