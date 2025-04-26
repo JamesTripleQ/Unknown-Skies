@@ -84,27 +84,6 @@ public class US_modPlugin extends BaseModPlugin {
     }
 
     @Override
-    public void onNewGame() {
-        // Store mod version for save patching
-        Global.getSector().getMemoryWithoutUpdate().set("$unknownSkies_version", 1.00f);
-    }
-
-    @Override
-    public void onGameLoad(boolean newGame) {
-        // Save patching code
-        if (Global.getSector().getMemoryWithoutUpdate().getFloat("$unknownSkies_version") < 1.00f) {
-            Global.getSector().getMemoryWithoutUpdate().set("$unknownSkies_version", 1.00f);
-            for (StarSystemAPI s : Global.getSector().getStarSystems()) {
-                if (s != null && s.isProcgen() && s.getConstellation() != null) {
-                    loadSettings();
-                    replaceBackground(s);
-                    cleanupSettings();
-                }
-            }
-        }
-    }
-
-    @Override
     public void onNewGameAfterProcGen() {
         LOG.info("Unknown Skies onNewGameAfterProcGen() START");
 
@@ -269,6 +248,7 @@ public class US_modPlugin extends BaseModPlugin {
             PlanetAPI planet = sporeCandidates.get(new Random().nextInt(sporeCandidates.size()));
             LOG.info("Adding Parasitic Spores to " + planet.getName() + " in " + planet.getStarSystem().getName());
             addConditionIfNeeded(planet, "US_mind");
+            addConditionIfNeeded(planet, "US_unique_filter");
 
             // Setup for future picks
             sporeCandidates.remove(planet);
@@ -279,6 +259,7 @@ public class US_modPlugin extends BaseModPlugin {
             PlanetAPI planet = shroomCandidates.get(new Random().nextInt(shroomCandidates.size()));
             LOG.info("Adding Psychoactive Fungus to " + planet.getName() + " in " + planet.getStarSystem().getName());
             addConditionIfNeeded(planet, "US_shrooms");
+            addConditionIfNeeded(planet, "US_unique_filter");
 
             // Setup for future picks
             shroomCandidates.remove(planet);
@@ -289,6 +270,7 @@ public class US_modPlugin extends BaseModPlugin {
             PlanetAPI planet = virusCandidates.get(new Random().nextInt(virusCandidates.size()));
             LOG.info("Adding Military Virus to " + planet.getName() + " in " + planet.getStarSystem().getName());
             addConditionIfNeeded(planet, "US_virus");
+            addConditionIfNeeded(planet, "US_unique_filter");
 
             // Add ruins if needed (at least widespread)
             if (!planet.getMarket().hasCondition(Conditions.RUINS_VAST) && !planet.getMarket().hasCondition(Conditions.RUINS_WIDESPREAD)) {
@@ -304,6 +286,7 @@ public class US_modPlugin extends BaseModPlugin {
             PlanetAPI planet = cryosanctumCandidates.get(new Random().nextInt(cryosanctumCandidates.size()));
             LOG.info("Adding Pre-Collapse Cryosanctum to " + planet.getName() + " in " + planet.getStarSystem().getName());
             addConditionIfNeeded(planet, "US_cryosanctum");
+            addConditionIfNeeded(planet, "US_unique_filter");
             addConditionIfNeeded(planet, Conditions.POLLUTION);
 
             // Nerf ores if needed (at most abundant)
@@ -336,6 +319,7 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Windswept");
             changePlanetType(planet, "US_storm");
             addConditionIfNeeded(planet, "US_storm");
+            addConditionIfNeeded(planet, "US_unique_filter");
             removeConditionIfNeeded(planet, Conditions.NO_ATMOSPHERE);
             removeConditionIfNeeded(planet, Conditions.EXTREME_WEATHER);
             removeConditionIfNeeded(planet, Conditions.MILD_CLIMATE);
@@ -350,6 +334,7 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Magnetic");
             changePlanetType(planet,"US_magnetic");
             addConditionIfNeeded(planet, "US_magnetic");
+            addConditionIfNeeded(planet, "US_unique_filter");
             SectorEntityToken magField = planet.getStarSystem().addTerrain(
                     Terrain.MAGNETIC_FIELD,
                     new MagneticFieldTerrainPlugin.MagneticFieldParams(
@@ -377,6 +362,7 @@ public class US_modPlugin extends BaseModPlugin {
             planet.getSpec().setGlowColor(artificialLights.get(new Random().nextInt(artificialLights.size())));
             planet.applySpecChanges();
             addConditionIfNeeded(planet, "US_artificial");
+            addConditionIfNeeded(planet, "US_unique_filter");
 
             // Add ruins if needed (at least extensive)
             if (!planet.getMarket().hasCondition(Conditions.RUINS_VAST)) {
@@ -393,6 +379,7 @@ public class US_modPlugin extends BaseModPlugin {
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Fluorescent Giant");
             changePlanetType(planet, "US_fluorescent");
             addConditionIfNeeded(planet, "US_fluorescent");
+            addConditionIfNeeded(planet, "US_unique_filter");
             addConditionIfNeeded(planet, Conditions.EXTREME_WEATHER);
             removeConditionIfNeeded(planet, Conditions.POOR_LIGHT);
             removeConditionIfNeeded(planet, Conditions.DARK);
