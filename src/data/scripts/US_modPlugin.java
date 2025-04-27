@@ -7,10 +7,7 @@ import com.fs.starfarer.api.campaign.SectorEntityToken;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.impl.campaign.abilities.GenerateSlipsurgeAbility;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
-import com.fs.starfarer.api.impl.campaign.ids.Conditions;
-import com.fs.starfarer.api.impl.campaign.ids.Industries;
-import com.fs.starfarer.api.impl.campaign.ids.Tags;
-import com.fs.starfarer.api.impl.campaign.ids.Terrain;
+import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationType;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
@@ -94,6 +91,8 @@ public class US_modPlugin extends BaseModPlugin {
         makeRelated(getConditionEntryId("US_crystals"), getPlanetEntryId("US_acidRain"));
         makeRelated(getConditionEntryId("US_crystals"), getPlanetEntryId("US_acidWind"));
         makeRelated(getConditionEntryId("US_crystals"), getPlanetEntryId("US_green"));
+        makeRelated(getConditionEntryId("US_crystals"), getIndustryEntryId(Industries.LIGHTINDUSTRY));
+        makeRelated(getConditionEntryId("US_crystals"), getCommodityEntryId(Commodities.LUXURY_GOODS));
         // Military Virus
         makeRelated(getConditionEntryId("US_virus"), getPlanetEntryId("barren-desert"));
         makeRelated(getConditionEntryId("US_virus"), getPlanetEntryId("desert"));
