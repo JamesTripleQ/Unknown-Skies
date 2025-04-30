@@ -61,9 +61,7 @@
 			"gas_giant",
 			"ice_giant",
 			"US_gas_giant",
-			"US_gas_giantB",
-			"US_gas_giantC",
-			"US_gas_giantD"
+			"US_gas_giantB"
 		],
 		
 		"backgrounds": {

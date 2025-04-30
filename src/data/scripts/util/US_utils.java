@@ -226,12 +226,11 @@ public class US_utils {
                 atmosphereColor = Misc.setAlpha(atmosphereColor, planet.getSpec().getAtmosphereColor().getAlpha());
                 planet.getSpec().setAtmosphereColor(atmosphereColor);
 
-                /* Disabled to keep consistency with a vanilla bug
                 if (planet.getSpec().getCloudTexture() != null) {
                     Color cloudColor = Misc.interpolateColor(planet.getSpec().getCloudColor(), color, 0.25f);
                     cloudColor = Misc.setAlpha(cloudColor, planet.getSpec().getCloudColor().getAlpha());
-                    planet.getSpec().setCloudColor(cloudColor);
-                }*/
+                    //planet.getSpec().setCloudColor(cloudColor); Disabled to keep consistency with a vanilla bug
+                }
             }
         }
 
