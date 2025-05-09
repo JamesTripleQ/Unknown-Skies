@@ -1389,17 +1389,17 @@
 		"atmosphereThickness": 0.2,
 		"atmosphereThicknessMin": 40,
 		"atmosphereColor": [
-			130,
-			180,
-			220,
+			60,
+			160,
+			215,
 			160
 		],
 		"texture": "graphics/planets/US_planet_textureSavannah.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			164,
-			163,
-			51,
+			196,
+			202,
+			78,
 			255
 		],
 		"isStar": false,
@@ -1431,16 +1431,16 @@
 		"atmosphereThickness": 0.1,
 		"atmosphereThicknessMin": 40,
 		"atmosphereColor": [
-			125,
-			185,
-			210,
+			60,
+			160,
+			215,
 			140
 		],
 		"texture": "graphics/planets/US_planet_textureAlpine.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			50,
-			82,
+			62,
+			95,
 			56,
 			255
 		],
@@ -1452,9 +1452,9 @@
 		],
 		"cloudTexture": "graphics/planets/US_clouds_textureSoft.png",
 		"cloudColor": [
-			170,
-			180,
-			190,
+			230,
+			230,
+			230,
 			240
 		],
 		"cloudRotation": -5
