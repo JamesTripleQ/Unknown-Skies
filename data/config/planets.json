@@ -842,8 +842,8 @@
 		"cloudRotation": -3
 	},
 	"US_desertA": {
-		"name": "Desertic",
-		"descriptionId": "desert",
+		"name": "Barren-Desert",
+		"descriptionId": "barren-desert",
 		"tilt": 20,
 		"pitch": 0,
 		"rotation": -3,
@@ -877,8 +877,8 @@
 		]
 	},
 	"US_desertB": {
-		"name": "Desertic",
-		"descriptionId": "desert",
+		"name": "Barren-Desert",
+		"descriptionId": "barren-desert",
 		"tilt": 10,
 		"pitch": 0,
 		"rotation": -3,
@@ -912,8 +912,8 @@
 		]
 	},
 	"US_desertC": {
-		"name": "Desertic",
-		"descriptionId": "desert",
+		"name": "Barren-Desert",
+		"descriptionId": "barren-desert",
 		"tilt": 15,
 		"pitch": 0,
 		"rotation": -3,
