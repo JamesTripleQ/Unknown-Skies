@@ -8,6 +8,7 @@ import com.fs.starfarer.api.util.WeightedRandomPicker;
 import java.util.*;
 
 import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.preconditionsMet;
+import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.LOCR_MINERS;
 import static data.scripts.util.US_utils.*;
 
 public class US_hyceanManager {
@@ -148,6 +149,11 @@ public class US_hyceanManager {
         // Chance to add Ancient Religious Landmark if conditions are met
         if (preconditionsMet("US_religious", getConditionsSoFar(planet)) && new Random().nextInt(6) == 0) {
             addConditionIfNeeded(planet, "US_religious");
+        }
+
+        // Fix for a super rare bug with the vanilla miner colony event
+        if (planet.getMemoryWithoutUpdate().getBoolean(LOCR_MINERS)) {
+            addConditionIfNeeded(planet, Conditions.VOLATILES_PLENTIFUL);
         }
     }
 }
