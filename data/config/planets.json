@@ -1268,9 +1268,9 @@
 		"texture": "graphics/planets/US_planet_textureJungle.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			120,
-			220,
-			145,
+			70,
+			133,
+			17,
 			255
 		],
 		"isStar": false,
@@ -1279,7 +1279,7 @@
 			-3,
 			8
 		],
-		"cloudTexture": "graphics/planets/US_clouds_textureHeavy.png",
+		"cloudTexture": "graphics/planets/US_clouds_textureMedium.png",
 		"cloudColor": [
 			190,
 			180,
@@ -1631,6 +1631,56 @@
 		],
 		"cloudRotation": -3
 	},
+
+
+
+	"US_terran": {
+		"name": "Terran",
+		"descriptionId": "terran",
+		"tilt": 20,
+		"pitch": 30,
+		"rotation": -3,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.25,
+		"atmosphereThicknessMin": 40,
+		"atmosphereColor": [
+			60,
+			160,
+			215,
+			160
+		],
+		"texture": "graphics/planets/US_planet_textureTerran.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			155,
+			185,
+			255,
+			255
+		],
+		"isStar": false,
+		"lightPosition": [
+			4,
+			-1,
+			8
+		],
+		"cloudTexture": "graphics/planets/US_clouds_textureMedium.png",
+		"cloudColor": [
+			235,
+			240,
+			250,
+			240
+		],
+		"cloudRotation": -5
+	},
+
+
+
+
 	"US_magnetic": {
 		"name": "Magnetic",
 		"aOrAn": "a",

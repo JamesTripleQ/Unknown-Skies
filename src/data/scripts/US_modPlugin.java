@@ -189,6 +189,18 @@ public class US_modPlugin extends BaseModPlugin {
                     }
                 }
 
+                // Swap terran to US_continental or US_terran
+                if (p.getTypeId().equals("terran")) {
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            changePlanetType(p, "US_continent");
+                            break;
+                        case 1:
+                            changePlanetType(p, "US_terran");
+                            break;
+                    }
+                }
+
                 // Swap tundra to US_alkali or US_alpine (except Sentinel)
                 if (p.getTypeId().equals("tundra") && !p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY)) {
                     switch (new Random().nextInt(3)) {

@@ -5,5 +5,12 @@ Original credits:
 Updated credits:
 - JamesTripleQ: maintainer/developer
 - TouchOfVanilla: original Hycean planet concept, tons and tons of feedback on balance and writing
-- SirHartley: some Pre-Collapse Cryosanctum code
-- pixel_rice_bowl: some Star textures, Artificial retexture
+- Smaug: many new textures and retextures
+- pixel_rice_bowl: many Star textures, Artificial world retexture
+- SirHartley: Pre-Collapse Cryosanctum code, Fluorescent Giant condition texture
+
+Additional assets credits:
+- Savannah texture by astral-requin (modified by Smaug)
+- Alpine texture by ICOMDESIGN
+- Jungle texture from Stars in Shadows (modified by Smaug) https://stars-in-shadow.com/artwork_license.html
+- Terran texture by astral-requin (commissioned omnoproxyl337, modified by Smaug) https://www.deviantart.com/astral-requin/art/Ein-World-Comission-424223086, https://www.deviantart.com/omnoproxyl337
