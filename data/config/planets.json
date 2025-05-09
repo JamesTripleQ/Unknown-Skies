@@ -1631,9 +1631,6 @@
 		],
 		"cloudRotation": -3
 	},
-
-
-
 	"US_terran": {
 		"name": "Terran",
 		"descriptionId": "terran",
@@ -1677,10 +1674,6 @@
 		],
 		"cloudRotation": -5
 	},
-
-
-
-
 	"US_magnetic": {
 		"name": "Magnetic",
 		"aOrAn": "a",
