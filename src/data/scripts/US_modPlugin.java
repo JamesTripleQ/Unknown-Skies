@@ -149,7 +149,6 @@ public class US_modPlugin extends BaseModPlugin {
             }
         }
 
-        List<PlanetAPI> crystalCandidates = new ArrayList<>();
         List<PlanetAPI> sporeCandidates = new ArrayList<>();
         List<PlanetAPI> shroomCandidates = new ArrayList<>();
         List<PlanetAPI> virusCandidates = new ArrayList<>();
@@ -264,14 +263,21 @@ public class US_modPlugin extends BaseModPlugin {
                     removeConditionIfNeeded(p, Conditions.INIMICAL_BIOSPHERE);
                 }
 
+                // Add Hybrid Production to Archipelago planets
+                if (p.getTypeId().equals("US_water") || p.getTypeId().equals("US_waterB")) {
+                    addConditionIfNeeded(p, "US_hybrid");
+                }
+
                 // Hycean planets are handled in US_hyceanManager.java
                 if (p.getTypeId().equals("US_waterHycean")) {
                     manageHyceanConditions(p);
                 }
 
-                // Find Chemical Crystals candidates
+                // Add Chemical Crystals to the appropriate planets
                 if (CRYSTAL_LIST.contains(p.getTypeId())) {
-                    crystalCandidates.add(p);
+                    if (new Random().nextInt(4) == 0) {
+                        addConditionIfNeeded(p, "US_crystals");
+                    }
                 }
 
                 // Find unique condition candidates
@@ -292,15 +298,6 @@ public class US_modPlugin extends BaseModPlugin {
                     } else if (FLUORESCENT_LIST.contains(p.getTypeId())) {
                         fluorescentCandidates.add(p);
                     }
-                }
-            }
-        }
-
-        // Crystal placement
-        if (!crystalCandidates.isEmpty()) {
-            for (PlanetAPI planet : crystalCandidates) {
-                if (new Random().nextInt(4) == 0) {
-                    addConditionIfNeeded(planet, "US_crystals");
                 }
             }
         }

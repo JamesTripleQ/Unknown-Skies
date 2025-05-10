@@ -72,6 +72,10 @@
 		"cryosanctum_1": " will have access to a %s, however %s.",
 		"cryosanctum_2": "Cryosanctum",
 		"cryosanctum_3": "it may take some time before it's fully operational",
-		"cryosanctum_4": "%s maximum number of industries"
+		"cryosanctum_4": "%s maximum number of industries",
+
+		"hybrid_0": "%s is affected by %s",
+		"hybrid_1": "Aquaculture",
+		"hybrid_2": "food production bonuses"
 	}
 }

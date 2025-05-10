@@ -20,4 +20,6 @@ Accessible Sub-Ice Bedrock,US_bedrock,,TRUE,,com.fs.starfarer.api.impl.campaign.
 ,,,,,,,,
 Chemical Crystals,US_crystals,,TRUE,,data.scripts.campaign.econ.US_crystals,The extreme conditions on $market allowed for the growth of sprawling crystalline structures. Gullible bourgeoisie and collectors will pay a high price for pieces of these fascinating spectacles.,graphics/icons/markets/US_crystals.png,10
 ,,,,,,,,
+Hybrid Production,US_hybrid,,,,data.scripts.campaign.econ.US_hybrid,"While the main source of food on $market comes from aquaculture, the patches of farmland found on the various islands can still be utilized to boost production.",graphics/icons/markets/US_hybrid.png,230
+,,,,,,,,
 Unique Condition,US_unique_filter,planet_search,,,data.scripts.campaign.econ.US_unique_filter,Internal condition for filtering unique planets.,graphics/icons/markets/US_unique_filter.png,1000
