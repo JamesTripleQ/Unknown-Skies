@@ -46,6 +46,9 @@ public class US_modPlugin extends BaseModPlugin {
     private List<String> CRYOSANCTUM_LIST = new ArrayList<>();
     private List<String> ARTIFICIAL_LIST = new ArrayList<>();
     private List<String> FLUORESCENT_LIST = new ArrayList<>();
+    private List<String> SAKURA_LIST = new ArrayList<>();
+
+    private boolean ALWAYS_SPAWN_SAKURA = false;
 
     private static final List<Color> artificialLights = new ArrayList<>();
 
@@ -124,6 +127,7 @@ public class US_modPlugin extends BaseModPlugin {
         makeRelated(getConditionEntryId("US_artificial"), getPlanetEntryId("US_artificial"));
         makeRelated(getConditionEntryId("US_storm"), getPlanetEntryId("US_storm"));
         makeRelated(getConditionEntryId("US_fluorescent"), getPlanetEntryId("US_fluorescent"));
+        makeRelated(getConditionEntryId("US_sakura"), getPlanetEntryId("US_sakura"));
         // Water planets
         makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_water"));
         makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_water"));
@@ -155,6 +159,7 @@ public class US_modPlugin extends BaseModPlugin {
         List<PlanetAPI> cryosanctumCandidates = new ArrayList<>();
         List<PlanetAPI> artificialCandidates = new ArrayList<>();
         List<PlanetAPI> fluorescentCandidates = new ArrayList<>();
+        List<PlanetAPI> sakuraCandidates = new ArrayList<>();
 
         // Seed planetary conditions
         for (StarSystemAPI s : Global.getSector().getStarSystems()) {
@@ -297,6 +302,8 @@ public class US_modPlugin extends BaseModPlugin {
                         }
                     } else if (FLUORESCENT_LIST.contains(p.getTypeId())) {
                         fluorescentCandidates.add(p);
+                    } else if (SAKURA_LIST.contains(p.getTypeId())) {
+                        sakuraCandidates.add(p);
                     }
                 }
             }
@@ -465,6 +472,18 @@ public class US_modPlugin extends BaseModPlugin {
             fluorescentCandidates.remove(planet);
         }
 
+        // Sakura swap
+        if (!sakuraCandidates.isEmpty() && (sakuraCandidates.size() >= 3 || ALWAYS_SPAWN_SAKURA)) {
+            PlanetAPI planet = sakuraCandidates.get(new Random().nextInt(sakuraCandidates.size()));
+            LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Sakura");
+            changePlanetType(planet, "US_sakura", true);
+            addConditionIfNeeded(planet, "US_sakura");
+            addConditionIfNeeded(planet, "US_unique_filter");
+
+            // Setup for future picks
+            sakuraCandidates.remove(planet);
+        }
+
         cleanupSettings();
         LOG.info("Unknown Skies onNewGameAfterProcGen() END");
     }
@@ -574,6 +593,9 @@ public class US_modPlugin extends BaseModPlugin {
         CRYOSANCTUM_LIST = MagicSettings.getList(modId, "cryosanctum_type");
         ARTIFICIAL_LIST = MagicSettings.getList(modId, "artificial_type");
         FLUORESCENT_LIST = MagicSettings.getList(modId, "fluorescent_type");
+        SAKURA_LIST = MagicSettings.getList(modId, "sakura_type");
+
+        ALWAYS_SPAWN_SAKURA = MagicSettings.getBoolean(modId, "alwaysSpawnSakura");
     }
 
     // Cleanup
@@ -591,5 +613,6 @@ public class US_modPlugin extends BaseModPlugin {
         CRYOSANCTUM_LIST.clear();
         ARTIFICIAL_LIST.clear();
         FLUORESCENT_LIST.clear();
+        SAKURA_LIST.clear();
     }
 }

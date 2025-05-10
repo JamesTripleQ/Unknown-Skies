@@ -76,6 +76,10 @@
 
 		"hybrid_0": "%s is affected by %s",
 		"hybrid_1": "Aquaculture",
-		"hybrid_2": "food production bonuses"
+		"hybrid_2": "food production bonuses",
+
+		"sakura_0": "%s population growth (based on colony size)",
+		"sakura_1": "%s food production (Farming)",
+		"sakura_2": "%s colony income"
 	}
 }

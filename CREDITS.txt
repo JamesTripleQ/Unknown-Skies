@@ -14,3 +14,4 @@ Additional assets credits:
 - Alpine texture by ICOMDESIGN
 - Jungle texture from Stars in Shadow (modified by Smaug) https://stars-in-shadow.com/artwork_license.html
 - Terran texture by astral-requin (commissioned omnoproxyl337, modified by Smaug) https://www.deviantart.com/astral-requin/art/Ein-World-Comission-424223086, https://www.deviantart.com/omnoproxyl337
+- Sakura texture by ICOMDESIGN (modified by JamesTripleQ)

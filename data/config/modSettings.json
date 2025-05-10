@@ -1,5 +1,7 @@
 {
 	"unknownSkies": {
+		"alwaysSpawnSakura": false,
+		
 		"crystal_types": [
 			"toxic",
 			"toxic_cold",
@@ -62,6 +64,12 @@
 			"ice_giant",
 			"US_gas_giant",
 			"US_gas_giantB"
+		],
+		
+		"sakura_type": [
+			"terran",
+			"US_continent",
+			"US_terran"
 		],
 		
 		"backgrounds": {

@@ -1853,5 +1853,48 @@
 		],
 		"cloudRotation": -2,
 		"tags":["codex_unlockable"]
+	},
+	"US_sakura": {
+		"name": "Sakura",
+		"tilt": 15,
+		"pitch": 5,
+		"rotation": -3,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.25,
+		"atmosphereThicknessMin": 40,
+		"atmosphereColor": [
+			60,
+			160,
+			215,
+			160
+		],
+		"texture": "graphics/planets/US_planet_textureSakura.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			245,
+			129,
+			205,
+			255
+		],
+		"isStar": false,
+		"lightPosition": [
+			1,
+			-3,
+			8
+		],
+		"cloudTexture": "graphics/planets/US_clouds_textureMedium.png",
+		"cloudColor": [
+			235,
+			240,
+			250,
+			240
+		],
+		"cloudRotation": -5,
+		"tags":["codex_unlockable"]
 	}
 }
