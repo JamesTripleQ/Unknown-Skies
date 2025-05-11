@@ -1160,7 +1160,6 @@
 		],
 		"cloudRotation": -1
 	},
-
 	"US_crimsonB": {
 		"name": "Lifeless-Bombarded",
 		"descriptionId": "US_crimson",
@@ -1204,8 +1203,6 @@
 		],
 		"cloudRotation": -1
 	},
-
-
 	"US_lifeless": {
 		"name": "Lifeless",
 		"tilt": 15,
@@ -1592,6 +1589,91 @@
 			200
 		],
 		"cloudRotation": -2
+	},
+	"US_waterAtoll": {
+		"name": "Atoll",
+		"tilt": -30,
+		"pitch": 15,
+		"rotation": -3,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.2,
+		"atmosphereThicknessMin": 62,
+		"atmosphereColor": [
+			30,
+			90,
+			140,
+			130
+		],
+		"texture": "graphics/planets/US_planet_textureAtoll.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			45,
+			98,
+			174,
+			255
+		],
+		"isStar": false,
+		"lightPosition": [
+			-10,
+			-10,
+			1
+		],
+		"cloudTexture": "graphics/planets/US_clouds_textureSoft.png",
+		"cloudColor": [
+			255,
+			255,
+			255,
+			200
+		],
+		"cloudRotation": -7
+	},
+	"US_waterIsle": {
+		"name": "Island",
+		"descriptionId": "US_waterAtoll",
+		"tilt": -30,
+		"pitch": 15,
+		"rotation": -3,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.2,
+		"atmosphereThicknessMin": 62,
+		"atmosphereColor": [
+			30,
+			90,
+			140,
+			130
+		],
+		"texture": "graphics/planets/US_planet_textureIsle.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			45,
+			98,
+			174,
+			255
+		],
+		"isStar": false,
+		"lightPosition": [
+			-10,
+			-10,
+			1
+		],
+		"cloudTexture": "graphics/planets/US_clouds_textureMedium.png",
+		"cloudColor": [
+			255,
+			255,
+			255,
+			200
+		],
+		"cloudRotation": -7
 	},
 	"US_waterHycean": {
 		"name": "Hycean",

@@ -77,6 +77,8 @@ public class US_modPlugin extends BaseModPlugin {
         // Set aquaculture planets
         Farming.AQUA_PLANETS.add("US_water");
         Farming.AQUA_PLANETS.add("US_waterB");
+        Farming.AQUA_PLANETS.add("US_waterAtoll");
+        Farming.AQUA_PLANETS.add("US_waterIsle");
         Farming.AQUA_PLANETS.add("US_waterHycean");
 
         // Set Slipsurge strength
@@ -131,10 +133,12 @@ public class US_modPlugin extends BaseModPlugin {
         // Water planets
         makeRelated(getConditionEntryId("US_hybrid"), getPlanetEntryId("US_water"));
         makeRelated(getConditionEntryId("US_hybrid"), getPlanetEntryId("US_waterB"));
-        makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_water"));
         makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_water"));
-        makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_waterB"));
         makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_waterB"));
+        makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_waterAtoll"));
+        makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_waterAtoll"));
+        makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_waterIsle"));
+        makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_waterIsle"));
         makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_waterHycean"));
         makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_waterHycean"));
     }
@@ -192,6 +196,25 @@ public class US_modPlugin extends BaseModPlugin {
                 if (p.getTypeId().equals("lava_minor")) {
                     if (new Random().nextBoolean()) {
                         changePlanetType(p, "US_volcanic");
+                    }
+                }
+
+                // Swap US_water to US_waterB
+                if (p.getTypeId().equals("US_water")) {
+                    if (new Random().nextBoolean()) {
+                        changePlanetType(p, "US_waterB");
+                    }
+                }
+
+                // Swap water to US_waterAtoll or US_waterIsle
+                if (p.getTypeId().equals("water")) {
+                    switch (new Random().nextInt(3)) {
+                        case 0:
+                            changePlanetType(p, "US_waterAtoll");
+                            break;
+                        case 1:
+                            changePlanetType(p, "US_waterIsle");
+                            break;
                     }
                 }
 
