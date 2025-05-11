@@ -129,6 +129,8 @@ public class US_modPlugin extends BaseModPlugin {
         makeRelated(getConditionEntryId("US_fluorescent"), getPlanetEntryId("US_fluorescent"));
         makeRelated(getConditionEntryId("US_sakura"), getPlanetEntryId("US_sakura"));
         // Water planets
+        makeRelated(getConditionEntryId("US_hybrid"), getPlanetEntryId("US_water"));
+        makeRelated(getConditionEntryId("US_hybrid"), getPlanetEntryId("US_waterB"));
         makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_water"));
         makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_water"));
         makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_waterB"));
