@@ -1,3 +1,35 @@
+Version 3.0.0 - 11/05/2025
+- Added 6 new planets:
+    . The Sakura world, a unique planet with a special condition, not guaranteed to spawn in every sector.
+    . Atoll and Island worlds, two variants of the vanilla Water planet.
+    . A new Terran world.
+    . A new Arid world.
+    . A new Lifeless Bombarded world.
+- Reworked the star generation system, fixing several planet frequency issues.
+- Added 8 new stars:
+    . Two new blue stars.
+    . Two new red stars.
+    . Two new yellow stars.
+    . An orange star.
+    . A white star.
+- Retextured the Jungle, Savannah, Alpine and Artificial worlds.
+- Retextured Pre-Collapse Military Base and Luminescent Clouds icons.
+- Added a new Archipelago world condition to explain the vanilla aquaculture behavior.
+- Added filter for Pre-Collapse Military Base and unique conditions.
+- Added codex support.
+- Tweaked Luminescent Clouds, Volatiles production is now back to +3 (was +2), +25% hazard.
+- Many US planets now no longer have the same tilt and pitch.
+- Tweaked the appearance of existing US stars.
+- Renamed Desertic worlds to Barren-Desert.
+- Added new Industrial.Evolution compatibility.
+- Added credits file.
+- Removed extremely old save patching code.
+- Several minor graphical fixes.
+- Fixes some planet descriptions.
+- Fixed some incorrect US condition weights.
+- Fixed a rare vanilla Hycean planet bug.
+- Optimized Chemical Crystals generation.
+
 Version 2.1.0 - 06/04/2025
 - Updated to version 0.98.
 - Rebalanced hycean worlds to be much more in line with vanilla planets:
