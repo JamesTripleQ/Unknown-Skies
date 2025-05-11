@@ -254,14 +254,18 @@ public class US_modPlugin extends BaseModPlugin {
                     }
                 }
 
-                // Swap arid to US_auric or US_auricCloudy (balanced out to have 50% arid and 50% US_auric/US_auricCloudy)
+                // Swap arid to US_auric, US_auricCloudy or US_habArid
                 if (p.getTypeId().equals("arid")) {
-                    if (new Random().nextBoolean()) {
-                        if (new Random().nextBoolean()) {
+                    switch (new Random().nextInt(4)) {
+                        case 0:
                             changePlanetType(p, "US_auric");
-                        } else {
+                            break;
+                        case 1:
                             changePlanetType(p, "US_auricCloudy");
-                        }
+                            break;
+                        case 2:
+                            changePlanetType(p, "US_habArid");
+                            break;
                     }
                 }
 
@@ -289,7 +293,7 @@ public class US_modPlugin extends BaseModPlugin {
                 }
 
                 // Remove Inimical Biosphere from Lifeless and Lifeless-Bombarded planets
-                if (p.getTypeId().equals("US_lifelessArid") || p.getTypeId().equals("US_lifeless") || p.getTypeId().equals("US_crimson")) {
+                if (p.getTypeId().equals("US_lifelessArid") || p.getTypeId().equals("US_lifeless") || p.getTypeId().equals("US_crimson") || p.getTypeId().equals("US_crimsonB")) {
                     removeConditionIfNeeded(p, Conditions.INIMICAL_BIOSPHERE);
                 }
 

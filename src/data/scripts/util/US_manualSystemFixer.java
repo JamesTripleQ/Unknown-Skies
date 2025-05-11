@@ -47,7 +47,7 @@ public class US_manualSystemFixer {
             }
 
             // Remove Inimical Biosphere from Lifeless and Lifeless-Bombarded planets
-            if (planet.getTypeId().equals("US_lifelessArid") || planet.getTypeId().equals("US_lifeless") || planet.getTypeId().equals("US_crimson")) {
+            if (planet.getTypeId().equals("US_lifelessArid") || planet.getTypeId().equals("US_lifeless") || planet.getTypeId().equals("US_crimson") || planet.getTypeId().equals("US_crimsonB")) {
                 removeConditionIfNeeded(planet, Conditions.INIMICAL_BIOSPHERE);
             }
 
