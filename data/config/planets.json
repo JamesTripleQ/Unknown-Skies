@@ -1160,6 +1160,52 @@
 		],
 		"cloudRotation": -1
 	},
+
+	"US_crimsonB": {
+		"name": "Lifeless-Bombarded",
+		"descriptionId": "US_crimson",
+		"tilt": 30,
+		"pitch": 0,
+		"rotation": -3,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.1,
+		"atmosphereThicknessMin": 40,
+		"atmosphereColor": [
+			140,
+			150,
+			165,
+			140
+		],
+		"texture": "graphics/planets/US_planet_textureCrimsonB.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			200,
+			170,
+			145,
+			255
+		],
+		"isStar": false,
+		"lightPosition": [
+			1,
+			-3,
+			8
+		],
+		"cloudTexture": "graphics/planets/US_clouds_textureSoft.png",
+		"cloudColor": [
+			255,
+			255,
+			255,
+			200
+		],
+		"cloudRotation": -1
+	},
+
+
 	"US_lifeless": {
 		"name": "Lifeless",
 		"tilt": 15,
