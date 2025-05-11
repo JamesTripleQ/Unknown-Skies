@@ -1281,9 +1281,9 @@
 		],
 		"cloudTexture": "graphics/planets/US_clouds_textureMedium.png",
 		"cloudColor": [
-			190,
-			180,
-			170,
+			230,
+			230,
+			230,
 			240
 		],
 		"cloudRotation": -2

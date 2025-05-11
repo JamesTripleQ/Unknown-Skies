@@ -14,7 +14,7 @@ import static data.scripts.util.US_utils.*;
 
 public class US_sakura extends BaseHazardCondition implements MarketImmigrationModifier {
     private final int FOOD_MALUS = -2;
-    private final float INCOME_BONUS = 10f;
+    private final float INCOME_BONUS = 15f;
 
     @Override
     public void apply(String id) {

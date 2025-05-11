@@ -51,6 +51,11 @@ public class US_manualSystemFixer {
                 removeConditionIfNeeded(planet, Conditions.INIMICAL_BIOSPHERE);
             }
 
+            // Add Hybrid Production to Archipelago planets
+            if (planet.getTypeId().equals("US_water") || planet.getTypeId().equals("US_waterB")) {
+                addConditionIfNeeded(planet, "US_hybrid");
+            }
+
             // Hycean planets are handled in US_hyceanManager.java
             if (planet.getTypeId().equals("US_waterHycean")) {
                 manageHyceanConditions(planet);
