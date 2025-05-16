@@ -1,5 +1,7 @@
 {
 	"unknownSkies": {
+		# Removes the restriction requiring at least 3 candidates for the Sakura planet to spawn
+		# (Increases spawn chance significantly but it's still not 100% guaranteed as a sector could spawn without candidates)
 		"alwaysSpawnSakura": false,
 		
 		"crystal_types": [

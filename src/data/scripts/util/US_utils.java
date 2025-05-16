@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
+import com.fs.starfarer.api.impl.campaign.econ.impl.PlanetaryShield;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.procgen.ConditionGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.procgen.PlanetGenDataSpec;
@@ -225,6 +226,13 @@ public class US_utils {
 
     // Modified AddPlanet from StarSystemGenerator
     public static void changePlanetType(PlanetAPI planet, String type, boolean skipRandomColorVariation) {
+        boolean hasShield = false;
+
+        if (Global.getSettings().getSpriteName("industry", "shield_texture").equals(planet.getSpec().getShieldTexture())) {
+            hasShield = true;
+            PlanetaryShield.unapplyVisuals(planet);
+        }
+
         planet.changeType(type, random);
         PlanetGenDataSpec planetData = (PlanetGenDataSpec) Global.getSettings().getSpec(PlanetGenDataSpec.class, planet.getSpec().getPlanetType(), false);
 
@@ -269,6 +277,11 @@ public class US_utils {
 
         planet.getSpec().setTilt(tilt);
         planet.getSpec().setPitch(pitch);
+
+        if (hasShield) {
+            PlanetaryShield.applyVisuals(planet);
+        }
+
         planet.applySpecChanges();
     }
 

@@ -312,24 +312,27 @@ public class US_modPlugin extends BaseModPlugin {
                 }
 
                 // Find unique condition candidates
-                if (!p.getStarSystem().isDeepSpace() && !(p.getMemoryWithoutUpdate().getBoolean(PLANETARY_SHIELD_PLANET) ||
-                        p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY) || p.hasCondition(Conditions.SOLAR_ARRAY))) {
-                    if (SPORE_LIST.contains(p.getTypeId())) {
-                        sporeCandidates.add(p);
-                    } else if (SHROOM_LIST.contains(p.getTypeId())) {
-                        shroomCandidates.add(p);
-                    } else if (VIRUS_LIST.contains(p.getTypeId())) {
-                        virusCandidates.add(p);
-                    } else if (CRYOSANCTUM_LIST.contains(p.getTypeId())) {
-                        cryosanctumCandidates.add(p);
-                    } else if (ARTIFICIAL_LIST.contains(p.getTypeId())) {
-                        if (p.getStarSystem().hasTag(Tags.THEME_DERELICT) || p.getStarSystem().hasTag(Tags.THEME_RUINS)) {
-                            artificialCandidates.add(p);
-                        }
-                    } else if (FLUORESCENT_LIST.contains(p.getTypeId())) {
-                        fluorescentCandidates.add(p);
-                    } else if (SAKURA_LIST.contains(p.getTypeId())) {
+                if (!p.getStarSystem().isDeepSpace() && !(p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY) || p.hasCondition(Conditions.SOLAR_ARRAY))) {
+                    if (SAKURA_LIST.contains(p.getTypeId())) {
                         sakuraCandidates.add(p);
+                    }
+
+                    if (!p.getMemoryWithoutUpdate().getBoolean(PLANETARY_SHIELD_PLANET)) {
+                        if (SPORE_LIST.contains(p.getTypeId())) {
+                            sporeCandidates.add(p);
+                        } else if (SHROOM_LIST.contains(p.getTypeId())) {
+                            shroomCandidates.add(p);
+                        } else if (VIRUS_LIST.contains(p.getTypeId())) {
+                            virusCandidates.add(p);
+                        } else if (CRYOSANCTUM_LIST.contains(p.getTypeId())) {
+                            cryosanctumCandidates.add(p);
+                        } else if (ARTIFICIAL_LIST.contains(p.getTypeId())) {
+                            if (p.getStarSystem().hasTag(Tags.THEME_DERELICT) || p.getStarSystem().hasTag(Tags.THEME_RUINS)) {
+                                artificialCandidates.add(p);
+                            }
+                        } else if (FLUORESCENT_LIST.contains(p.getTypeId())) {
+                            fluorescentCandidates.add(p);
+                        }
                     }
                 }
             }
