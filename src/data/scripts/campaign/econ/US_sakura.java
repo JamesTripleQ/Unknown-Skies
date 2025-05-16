@@ -28,7 +28,7 @@ public class US_sakura extends BaseHazardCondition implements MarketImmigrationM
             }
         }
 
-        market.getIncomeMult().modifyPercent(id, INCOME_BONUS, Misc.ucFirst(condition.getName().toLowerCase()));
+        market.getIncomeMult().modifyPercent(id + "_0", INCOME_BONUS, Misc.ucFirst(condition.getName().toLowerCase()));
     }
 
     @Override
@@ -38,7 +38,7 @@ public class US_sakura extends BaseHazardCondition implements MarketImmigrationM
             industry.getSupply(Commodities.FOOD).getQuantity().unmodifyFlat(id + "_0");
         }
 
-        market.getIncomeMult().unmodify(id);
+        market.getIncomeMult().unmodify(id + "_0");
     }
 
     @Override

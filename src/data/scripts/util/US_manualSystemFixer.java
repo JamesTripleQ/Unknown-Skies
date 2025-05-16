@@ -19,17 +19,14 @@ public class US_manualSystemFixer {
     // This tag is meant to prevent individual planets from being fixed, useful if a system is half manually created, half procgen
     public static final String US_SKIP_PLANET = "US_skipPlanet";
 
-    public static void fixSystem(StarSystemAPI system) {
-        fixSystem(system, false, false);
-    }
-
     public static void fixSystem(StarSystemAPI system, boolean removeHyceanRuins, boolean removeFloatingContinent) {
         if (system == null) return;
         if (system.getPlanets().isEmpty()) return;
+        if (system.hasTag(US_SKIP_SYSTEM)) return;
 
         for (PlanetAPI planet : system.getPlanets()) {
-            if (planet.isStar()) continue;
             if (planet.hasTag(US_SKIP_PLANET)) continue;
+            if (planet.isStar()) continue;
 
             // Add Organics to Methane planets
             if (planet.getTypeId().equals("US_purple")) {
@@ -83,5 +80,8 @@ public class US_manualSystemFixer {
                 }
             }
         }
+
+        // Add the tag to avoid editing the system in US_modPlugin (only affects systems that call this method manually)
+        system.addTag(US_SKIP_SYSTEM);
     }
 }
