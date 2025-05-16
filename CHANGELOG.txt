@@ -1,3 +1,16 @@
+Version 3.0.1 - 16/05/2025
+- Tweaked the Sakura planet:
+    . It can now spawn as the Red Planet.
+    . It cannot spawn on a naturally occurring polluted world.
+    . The condition no longer has an effect if the planet is polluted.
+    . Renamed condition to Ever-Blooming Forest.
+    . Fixed some condition effects having incorrect IDs.
+- Fixed the Red Planet not displaying its shield on certain US planets.
+- Minor text tweaks.
+- Removed some easter egg names.
+- Added a memKey that allow star swapping on non procgen systems (for modders).
+- Optimized the manual system fixer and added memKeys support (for modders).
+
 Version 3.0.0 - 11/05/2025
 - Added 6 new planets:
     . The Sakura world, a unique planet with a special condition, not guaranteed to spawn in every sector.
