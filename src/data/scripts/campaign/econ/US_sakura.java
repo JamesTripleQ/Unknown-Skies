@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketImmigrationModifier;
 import com.fs.starfarer.api.impl.campaign.econ.BaseHazardCondition;
 import com.fs.starfarer.api.impl.campaign.ids.Commodities;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.ids.Industries;
 import com.fs.starfarer.api.impl.campaign.population.PopulationComposition;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -21,14 +22,18 @@ public class US_sakura extends BaseHazardCondition implements MarketImmigrationM
         // Reduce food production
         Industry industry = market.getIndustry(Industries.FARMING);
         if (industry != null) {
-            if (industry.isFunctional()) {
+            if (industry.isFunctional() && !market.hasCondition(Conditions.POLLUTION)) {
                 industry.supply(id + "_0", Commodities.FOOD, FOOD_MALUS, Misc.ucFirst(condition.getName().toLowerCase()));
             } else {
                 industry.getSupply(Commodities.FOOD).getQuantity().unmodifyFlat(id + "_0");
             }
         }
 
-        market.getIncomeMult().modifyPercent(id + "_0", INCOME_BONUS, Misc.ucFirst(condition.getName().toLowerCase()));
+        if (!market.hasCondition(Conditions.POLLUTION)) {
+            market.getIncomeMult().modifyPercent(id + "_0", INCOME_BONUS, Misc.ucFirst(condition.getName().toLowerCase()));
+        } else {
+            market.getIncomeMult().unmodify(id + "_0");
+        }
     }
 
     @Override
@@ -43,7 +48,9 @@ public class US_sakura extends BaseHazardCondition implements MarketImmigrationM
 
     @Override
     public void modifyIncoming(MarketAPI market, PopulationComposition incoming) {
-        incoming.getWeight().modifyFlat(getModId(), getImmigrationBonus(market.getSize()), Misc.ucFirst(condition.getName().toLowerCase()));
+        if (!market.hasCondition(Conditions.POLLUTION)) {
+            incoming.getWeight().modifyFlat(getModId(), getImmigrationBonus(market.getSize()), Misc.ucFirst(condition.getName().toLowerCase()));
+        }
     }
 
     private float getImmigrationBonus(int size) {
@@ -53,6 +60,13 @@ public class US_sakura extends BaseHazardCondition implements MarketImmigrationM
     @Override
     protected void createTooltipAfterDescription(TooltipMakerAPI tooltip, boolean expanded) {
         super.createTooltipAfterDescription(tooltip, expanded);
+
+        tooltip.addPara(
+                txt("sakura_warn_0"),
+                10f,
+                Misc.getHighlightColor(),
+                txt("sakura_warn_1")
+        );
 
         tooltip.addPara(
                 txt("sakura_0"),

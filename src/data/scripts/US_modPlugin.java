@@ -313,7 +313,7 @@ public class US_modPlugin extends BaseModPlugin {
 
                 // Find unique condition candidates
                 if (!p.getStarSystem().isDeepSpace() && !(p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY) || p.hasCondition(Conditions.SOLAR_ARRAY))) {
-                    if (SAKURA_LIST.contains(p.getTypeId())) {
+                    if (SAKURA_LIST.contains(p.getTypeId()) && !p.hasCondition(Conditions.POLLUTION)) {
                         sakuraCandidates.add(p);
                     }
 

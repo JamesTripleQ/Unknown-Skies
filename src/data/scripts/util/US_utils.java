@@ -234,7 +234,7 @@ public class US_utils {
         }
     }
 
-    // Swaps to a given star variant
+    // Swaps to a given star variant based on memKeys
     public static void swapStarToVariant(PlanetAPI star) {
         if (star == null) {
             return;
