@@ -9,24 +9,35 @@ import java.util.Random;
 import static data.scripts.US_modPlugin.FLOATING_CONTINENT_RUINS;
 import static data.scripts.US_modPlugin.METHANE_ORGANICS;
 import static data.scripts.util.US_hyceanManager.manageHyceanConditions;
-import static data.scripts.util.US_utils.addConditionIfNeeded;
-import static data.scripts.util.US_utils.removeConditionIfNeeded;
+import static data.scripts.util.US_utils.*;
 
 @SuppressWarnings("unused")
 public class US_manualSystemFixer {
-    // This tag is meant to be used for systems created before or at procgen that have custom designed US planets that don't need fixing
+    // Note: this system uses both entity tags and memKeys to ensure maximum compatibility, only one of the two is needed
+    // The memKeys are identical to the tags but with a "$" in front: $US_skipSystem
+    // This tag/memKey is meant to be used for systems created before or at procgen that have custom designed US planets that don't need fixing
     public static final String US_SKIP_SYSTEM = "US_skipSystem";
-    // This tag is meant to prevent individual planets from being fixed, useful if a system is half manually created, half procgen
+    // This tag/memKey is meant to prevent individual planets/stars from being fixed, useful if a system is half manually created, half procgen
     public static final String US_SKIP_PLANET = "US_skipPlanet";
+
+    // This memKey allows for swapping star variants:
+    // 0 (default): no change
+    // 1/2/3: swap to the respective variant if possible, else no change
+    // -1: swap to random variant
+    public static final String US_STAR_VARIANT_KEY = "$US_starVariant";
 
     public static void fixSystem(StarSystemAPI system, boolean removeHyceanRuins, boolean removeFloatingContinent) {
         if (system == null) return;
         if (system.getPlanets().isEmpty()) return;
-        if (system.hasTag(US_SKIP_SYSTEM)) return;
+        if (hasTagOrKey(system, US_SKIP_SYSTEM)) return;
 
         for (PlanetAPI planet : system.getPlanets()) {
-            if (planet.hasTag(US_SKIP_PLANET)) continue;
-            if (planet.isStar()) continue;
+            if (hasTagOrKey(planet, US_SKIP_PLANET)) continue;
+
+            if (planet.isStar()) {
+                swapStarToVariant(planet);
+                continue;
+            }
 
             // Add Organics to Methane planets
             if (planet.getTypeId().equals("US_purple")) {

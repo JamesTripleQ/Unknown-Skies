@@ -175,9 +175,9 @@ public class US_modPlugin extends BaseModPlugin {
             }
             if (s.getPlanets().isEmpty()) continue;
 
-            swapStar(s.getStar());
-            swapStar(s.getSecondary());
-            swapStar(s.getTertiary());
+            swapStarToRandom(s.getStar());
+            swapStarToRandom(s.getSecondary());
+            swapStarToRandom(s.getTertiary());
 
             for (PlanetAPI p : s.getPlanets()) {
                 if (p.isStar()) continue;

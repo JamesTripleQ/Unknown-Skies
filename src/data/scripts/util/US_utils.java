@@ -2,6 +2,7 @@ package data.scripts.util;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.PlanetAPI;
+import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
@@ -22,15 +23,24 @@ import java.util.List;
 import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.getDataForGroup;
 import static com.fs.starfarer.api.impl.campaign.procgen.PlanetConditionGenerator.preconditionsMet;
 import static com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator.*;
+import static data.scripts.util.US_manualSystemFixer.US_STAR_VARIANT_KEY;
 
 public class US_utils {
 
-    /*------------------
-    ---- TEXT UTILS ----
-    ------------------*/
+    /*-------------------------
+    ---- TEXT & KEYS UTILS ----
+    -------------------------*/
 
     public static String txt(String id) {
         return Global.getSettings().getString("unknownSkies", id);
+    }
+
+    public static boolean hasTagOrKey(StarSystemAPI system, String id) {
+        return system.hasTag(id) || system.getMemoryWithoutUpdate().getBoolean("$" + id);
+    }
+
+    public static boolean hasTagOrKey(PlanetAPI planet, String id) {
+        return planet.hasTag(id) || planet.getMemoryWithoutUpdate().getBoolean("$" + id);
     }
 
     /*----------------------
@@ -108,8 +118,8 @@ public class US_utils {
         market.reapplyConditions();
     }
 
-    // Handles swapping stars
-    public static void swapStar(PlanetAPI star) {
+    // Swaps to a random star variant
+    public static void swapStarToRandom(PlanetAPI star) {
         if (star == null) {
             return;
         }
@@ -216,6 +226,130 @@ public class US_utils {
                 break;
             case "star_browndwarf":
                 if (new Random().nextBoolean()) {
+                    star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_browndwarf"));
+                    star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_unstable"));
+                    star.applySpecChanges();
+                }
+                break;
+        }
+    }
+
+    // Swaps to a given star variant
+    public static void swapStarToVariant(PlanetAPI star) {
+        if (star == null) {
+            return;
+        }
+
+        switch (star.getMemoryWithoutUpdate().getInt(US_STAR_VARIANT_KEY)) {
+            case 0:
+                return;
+            case -1:
+                swapStarToRandom(star);
+                return;
+        }
+
+        switch (star.getTypeId()) {
+            case "star_blue_giant":
+            case "star_blue_supergiant":
+                switch (star.getMemoryWithoutUpdate().getInt(US_STAR_VARIANT_KEY)) {
+                    case 1:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_blue_giant"));
+                        star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_intense"));
+                        star.getSpec().setCloudTexture(Global.getSettings().getSpriteName("clouds", "US_clouds_textureStarBlue"));
+                        star.getSpec().setCloudRotation(star.getSpec().getRotation() - 3);
+                        star.getSpec().setCloudColor(new Color(255, 255, 255));
+                        star.applySpecChanges();
+                        break;
+                    case 2:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_blue_giant_2"));
+                        star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_intense"));
+                        star.applySpecChanges();
+                        break;
+                    case 3:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_blue_giant_3"));
+                        star.applySpecChanges();
+                        break;
+                }
+                break;
+            case "star_yellow":
+                switch (star.getMemoryWithoutUpdate().getInt(US_STAR_VARIANT_KEY)) {
+                    case 1:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_yellow"));
+                        star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_unstable"));
+                        star.getSpec().setCloudTexture(Global.getSettings().getSpriteName("clouds", "US_clouds_textureStarYellow"));
+                        star.getSpec().setCloudRotation(star.getSpec().getRotation() - 3);
+                        star.getSpec().setCloudColor(new Color(255, 255, 255));
+                        star.applySpecChanges();
+                        break;
+                    case 2:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_yellow_2"));
+                        star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_unstable"));
+                        star.applySpecChanges();
+                        break;
+                    case 3:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_yellow_3"));
+                        star.applySpecChanges();
+                        break;
+                }
+                break;
+            case "star_orange":
+            case "star_orange_giant":
+                switch (star.getMemoryWithoutUpdate().getInt(US_STAR_VARIANT_KEY)) {
+                    case 1:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_orange"));
+                        star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", star.getTypeId().contains("giant") ? "US_halo_intense" : "US_halo_unstable"));
+                        star.getSpec().setCloudTexture(Global.getSettings().getSpriteName("clouds", "US_clouds_textureStarYellow"));
+                        star.getSpec().setCloudRotation(star.getSpec().getRotation() - 3);
+                        star.getSpec().setCloudColor(new Color(255, 125, 90));
+                        star.applySpecChanges();
+                        break;
+                    case 2:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_orange_2"));
+                        star.applySpecChanges();
+                        break;
+                }
+                break;
+            case "star_red_giant":
+            case "star_red_supergiant":
+            case "star_red_dwarf":
+                switch (star.getMemoryWithoutUpdate().getInt(US_STAR_VARIANT_KEY)) {
+                    case 1:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_red_giant"));
+                        star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", star.getTypeId().contains("giant") ? "US_halo_intense" : "US_halo_unstable"));
+                        star.getSpec().setCloudTexture(Global.getSettings().getSpriteName("clouds", "US_clouds_textureStarYellow"));
+                        star.getSpec().setCloudRotation(star.getSpec().getRotation() - 3);
+                        star.getSpec().setCloudColor(new Color(255, 200, 160));
+                        star.applySpecChanges();
+                        break;
+                    case 2:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_red_giant_2"));
+                        star.applySpecChanges();
+                        break;
+                    case 3:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_red_giant_3"));
+                        star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", star.getTypeId().contains("giant") ? "US_halo_intense" : "US_halo_unstable"));
+                        star.applySpecChanges();
+                        break;
+                }
+                break;
+            case "star_white":
+                switch (star.getMemoryWithoutUpdate().getInt(US_STAR_VARIANT_KEY)) {
+                    case 1:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_white"));
+                        star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_unstable"));
+                        star.getSpec().setCloudTexture(Global.getSettings().getSpriteName("clouds", "US_clouds_textureStarWhite"));
+                        star.getSpec().setCloudRotation(star.getSpec().getRotation() - 3);
+                        star.getSpec().setCloudColor(new Color(255, 255, 255));
+                        star.applySpecChanges();
+                        break;
+                    case 2:
+                        star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_white_2"));
+                        star.applySpecChanges();
+                        break;
+                }
+                break;
+            case "star_browndwarf":
+                if (star.getMemoryWithoutUpdate().getInt(US_STAR_VARIANT_KEY) == 1) {
                     star.getSpec().setTexture(Global.getSettings().getSpriteName("stars", "US_star_browndwarf"));
                     star.getSpec().setCoronaTexture(Global.getSettings().getSpriteName("coronas", "US_halo_unstable"));
                     star.applySpecChanges();
