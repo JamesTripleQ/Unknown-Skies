@@ -1,3 +1,8 @@
+Version 3.0.2 - 19/05/2025
+- Tweaked the Hybrid Production icon.
+- Fixed certain planets having static clouds.
+- Fixed an oversight that cause the Core Worlds to not have the appropriate system tag.
+
 Version 3.0.1 - 16/05/2025
 - Tweaked the Sakura planet:
     . It can now spawn as the Red Planet.
