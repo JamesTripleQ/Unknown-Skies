@@ -217,7 +217,7 @@
 			230,
 			100
 		],
-		"cloudRotation": -3
+		"cloudRotation": -2
 	},
 	"US_iceB": {
 		"name": "Frozen",
@@ -260,7 +260,7 @@
 			230,
 			100
 		],
-		"cloudRotation": -3
+		"cloudRotation": -2
 	},
 	"US_blue": {
 		"name": "Cryovolcanic",
@@ -387,7 +387,7 @@
 			235,
 			220
 		],
-		"cloudRotation": -3
+		"cloudRotation": -2
 	},
 	"US_acid": {
 		"name": "Acid",
@@ -839,7 +839,7 @@
 			160,
 			180
 		],
-		"cloudRotation": -3
+		"cloudRotation": -4
 	},
 	"US_desertA": {
 		"name": "Barren-Desert",
@@ -1416,7 +1416,7 @@
 			100,
 			220
 		],
-		"cloudRotation": -5
+		"cloudRotation": -6
 	},
 	"US_habArid": {
 		"name": "Arid",
@@ -1588,7 +1588,7 @@
 			255,
 			200
 		],
-		"cloudRotation": -3
+		"cloudRotation": -2
 	},
 	"US_waterB": {
 		"name": "Archipelago",
