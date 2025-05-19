@@ -2,7 +2,6 @@ package data.scripts.util;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.PlanetAPI;
-import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
@@ -33,14 +32,6 @@ public class US_utils {
 
     public static String txt(String id) {
         return Global.getSettings().getString("unknownSkies", id);
-    }
-
-    public static boolean hasTagOrKey(StarSystemAPI system, String id) {
-        return system.hasTag(id) || system.getMemoryWithoutUpdate().getBoolean("$" + id);
-    }
-
-    public static boolean hasTagOrKey(PlanetAPI planet, String id) {
-        return planet.hasTag(id) || planet.getMemoryWithoutUpdate().getBoolean("$" + id);
     }
 
     /*----------------------

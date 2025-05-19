@@ -13,13 +13,10 @@ import static data.scripts.util.US_utils.*;
 
 @SuppressWarnings("unused")
 public class US_manualSystemFixer {
-    // Note: this system uses both entity tags and memKeys to ensure maximum compatibility, only one of the two is needed
-    // The memKeys are identical to the tags but with a "$" in front: $US_skipSystem
-    // This tag/memKey is meant to be used for systems created before or at procgen that have custom designed US planets that don't need fixing
-    public static final String US_SKIP_SYSTEM = "US_skipSystem";
-    // This tag/memKey is meant to prevent individual planets/stars from being fixed, useful if a system is half manually created, half procgen
-    public static final String US_SKIP_PLANET = "US_skipPlanet";
-
+    // This memKey is meant to be used for systems created before or at procgen that have custom designed US planets that don't need fixing
+    public static final String US_SKIP_SYSTEM_KEY = "$US_skipSystem";
+    // This memKey is meant to prevent individual planets/stars from being fixed, useful if a system is half manually created, half procgen
+    public static final String US_SKIP_PLANET_KEY = "$US_skipPlanet";
     // This memKey allows for swapping star variants:
     // 0 (default): no change
     // 1/2/3: swap to the respective variant if possible, else no change
@@ -29,10 +26,10 @@ public class US_manualSystemFixer {
     public static void fixSystem(StarSystemAPI system, boolean removeHyceanRuins, boolean removeFloatingContinent) {
         if (system == null) return;
         if (system.getPlanets().isEmpty()) return;
-        if (hasTagOrKey(system, US_SKIP_SYSTEM)) return;
+        if (system.getMemoryWithoutUpdate().getBoolean(US_SKIP_SYSTEM_KEY)) return;
 
         for (PlanetAPI planet : system.getPlanets()) {
-            if (hasTagOrKey(planet, US_SKIP_PLANET)) continue;
+            if (planet.getMemoryWithoutUpdate().getBoolean(US_SKIP_PLANET_KEY)) continue;
 
             if (planet.isStar()) {
                 swapStarToVariant(planet);
@@ -92,7 +89,7 @@ public class US_manualSystemFixer {
             }
         }
 
-        // Add the tag to avoid editing the system in US_modPlugin (only affects systems that call this method manually)
-        system.addTag(US_SKIP_SYSTEM);
+        // Set the memKey to avoid editing the system in US_modPlugin (only affects systems that call this method manually)
+        system.getMemoryWithoutUpdate().set(US_SKIP_SYSTEM_KEY, true);
     }
 }
