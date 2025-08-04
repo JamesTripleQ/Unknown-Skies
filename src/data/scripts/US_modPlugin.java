@@ -12,6 +12,7 @@ import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationTyp
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
+import lunalib.lunaSettings.LunaSettings;
 import org.apache.log4j.Logger;
 import org.magiclib.util.MagicSettings;
 
@@ -46,8 +47,6 @@ public class US_modPlugin extends BaseModPlugin {
     private List<String> ARTIFICIAL_LIST = new ArrayList<>();
     private List<String> FLUORESCENT_LIST = new ArrayList<>();
     private List<String> SAKURA_LIST = new ArrayList<>();
-
-    private boolean ALWAYS_SPAWN_SAKURA = false;
 
     private static final List<Color> artificialLights = new ArrayList<>();
 
@@ -456,7 +455,14 @@ public class US_modPlugin extends BaseModPlugin {
             PlanetAPI planet = artificialCandidates.get(new Random().nextInt(artificialCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Artificial");
             changePlanetType(planet, "US_artificial", true);
-            planet.getSpec().setGlowColor(artificialLights.get(new Random().nextInt(artificialLights.size())));
+
+            Color lightsColor = artificialLights.get(new Random().nextInt(artificialLights.size()));
+
+            if (Boolean.TRUE.equals(LunaSettings.getBoolean("US", "US_customArtiLights"))) {
+                lightsColor = LunaSettings.getColor("US", "US_customArtiColor");
+            }
+
+            planet.getSpec().setGlowColor(lightsColor);
             planet.applySpecChanges();
             addConditionIfNeeded(planet, "US_artificial");
             addConditionIfNeeded(planet, "US_unique_filter");
@@ -504,12 +510,21 @@ public class US_modPlugin extends BaseModPlugin {
         }
 
         // Sakura swap
-        if (!sakuraCandidates.isEmpty() && (sakuraCandidates.size() >= 3 || ALWAYS_SPAWN_SAKURA)) {
+        if (!sakuraCandidates.isEmpty() && sakuraCandidates.size() >= 3) {
             PlanetAPI planet = sakuraCandidates.get(new Random().nextInt(sakuraCandidates.size()));
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Sakura");
             changePlanetType(planet, "US_sakura", true);
             addConditionIfNeeded(planet, "US_sakura");
             addConditionIfNeeded(planet, "US_unique_filter");
+
+            String sakuraColonize = LunaSettings.getString("US", "US_nexSakuraColonize");
+            assert sakuraColonize != null;
+
+            if (sakuraColonize.equals("Planet")) {
+                planet.getMarket().getMemoryWithoutUpdate().set("$nex_do_not_colonize", true);
+            } else if (sakuraColonize.equals("System")) {
+                planet.getStarSystem().getMemoryWithoutUpdate().set("$nex_do_not_colonize", true);
+            }
 
             // Setup for future picks
             sakuraCandidates.remove(planet);
@@ -625,8 +640,6 @@ public class US_modPlugin extends BaseModPlugin {
         ARTIFICIAL_LIST = MagicSettings.getList(modId, "artificial_type");
         FLUORESCENT_LIST = MagicSettings.getList(modId, "fluorescent_type");
         SAKURA_LIST = MagicSettings.getList(modId, "sakura_type");
-
-        ALWAYS_SPAWN_SAKURA = MagicSettings.getBoolean(modId, "alwaysSpawnSakura");
     }
 
     // Cleanup

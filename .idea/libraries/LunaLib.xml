@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="LunaLib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../../../Program Files (x86)/Fractal Softworks/Starsector/mods/LunaLib/jars/LunaLib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -8,6 +8,10 @@
 	"jars":["jars/US.jar"],
 	"dependencies": [
 		{
+			"id": "lunalib",
+			"name": "LunaLib"
+		},
+		{
 			"id": "MagicLib",
 			"name": "MagicLib"
 		}
