@@ -1,3 +1,12 @@
+Version 3.0.3 - 04/08/2025
+- Added LunaLib dependency
+- Star variants and the Artificial world lights can now be customized via LunaSettings
+- Added a toggleable Nexerelin compatibility that prevents the Sakura world from being colonized by other factions (off by default)
+- Retextured the 3.0 yellow stars to actually be yellow
+- Removed a leftover debug option that could occasionally cause issues
+- Fixed Sakura worlds not having the stated immigration buff
+- Fixed certain missing codex links
+
 Version 3.0.2 - 19/05/2025
 - Tweaked the Hybrid Production icon.
 - Fixed certain planets having static clouds.
