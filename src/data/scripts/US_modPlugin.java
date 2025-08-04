@@ -140,6 +140,8 @@ public class US_modPlugin extends BaseModPlugin {
         makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_waterIsle"));
         makeRelated(getConditionEntryId(Conditions.WATER_SURFACE), getPlanetEntryId("US_waterHycean"));
         makeRelated(getIndustryEntryId(Industries.AQUACULTURE), getPlanetEntryId("US_waterHycean"));
+        makeRelated(getPlanetEntryId("water"), getPlanetEntryId("US_waterAtoll"));
+        makeRelated(getPlanetEntryId("water"), getPlanetEntryId("US_waterIsle"));
     }
 
     @Override
