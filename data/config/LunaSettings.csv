@@ -1,5 +1,5 @@
 fieldID,fieldName,fieldType,defaultValue,secondaryValue,fieldDescription,minValue,maxValue,tab
-US_starMode,Star Variants,Radio,Expanded,"Vanilla, Classic, Expanded","Determines which star variants can generate:
+US_starMode,Star Variants,Radio,Expanded,"Vanilla, Classic, Expanded","Determines which star variants can generate (manual generation via memKeys is unaffected):
 - Vanilla: only vanilla stars will spawn
 - Classic: includes the classic Unknown Skies stars by Tartiflette
 - Expanded: includes the Unknown Skies 3.0 stars by pixel_rice_bowl",,,

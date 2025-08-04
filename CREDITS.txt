@@ -4,7 +4,7 @@ Original credits:
 
 Updated credits:
 - JamesTripleQ: maintainer/developer
-- TouchOfVanilla: original Hycean planet concept, tons and tons of feedback on balance and writing
+- TouchOfVanilla: original Hycean planet concept and inspiration for the 2.0 update, tons and tons of feedback on balance and writing
 - Smaug: many planet textures and retextures
 - pixel_rice_bowl: many star textures, Artificial world retexture
 - SirHartley: Pre-Collapse Cryosanctum code, some condition textures
