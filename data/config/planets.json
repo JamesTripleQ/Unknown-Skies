@@ -1539,9 +1539,9 @@
 		],
 		"cloudTexture": "graphics/planets/US_clouds_textureSoft.png",
 		"cloudColor": [
-			230,
-			230,
-			230,
+			202,
+			214,
+			226,
 			240
 		],
 		"cloudRotation": -5
