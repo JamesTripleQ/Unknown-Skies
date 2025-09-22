@@ -1995,9 +1995,9 @@
 		"texture": "graphics/planets/US_planet_textureFluorescent.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			93,
-			46,
-			247,
+			81,
+			36,
+			209,
 			255
 		],
 		"isStar": false,
@@ -2007,23 +2007,23 @@
 			-2,
 			3
 		],
-		"glowTexture": "graphics/planets/US_planet_textureFluorescent.jpg",
+		"glowTexture": "graphics/planets/US_planet_textureFluorescent_light.png",
 		"glowColor": [
 			255,
 			255,
 			255,
-			200
+			250
 		],
 		"useReverseLightForGlow": false,
 		"doNotShowInCombat": true,
-		"cloudTexture": "graphics/planets/US_clouds_textureGiant.png",
+		"cloudTexture": "graphics/planets/US_clouds_textureFluorescent.png",
 		"cloudColor": [
 			107,
 			112,
 			253,
-			100
+			140
 		],
-		"cloudRotation": -2,
+		"cloudRotation": -3,
 		"tags":["codex_unlockable"]
 	},
 	"US_sakura": {
