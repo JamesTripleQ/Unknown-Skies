@@ -11,7 +11,6 @@ import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationType;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
-import com.fs.starfarer.api.util.WeightedRandomPicker;
 import lunalib.lunaSettings.LunaSettings;
 import org.apache.log4j.Logger;
 import org.magiclib.util.MagicSettings;
@@ -49,24 +48,12 @@ public class US_modPlugin extends BaseModPlugin {
 
     private static final List<Color> artificialLights = new ArrayList<>();
 
-    public static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
-    public static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
-
     static {
         artificialLights.add(new Color(35, 194, 236));
         artificialLights.add(new Color(53, 233, 49));
         artificialLights.add(new Color(233, 66, 49));
         artificialLights.add(new Color(162, 37, 211));
         artificialLights.add(new Color(233, 228, 84));
-
-        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_SCATTERED, 1);
-        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
-        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_EXTENSIVE, 3);
-        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_VAST, 1.5f);
-
-        METHANE_ORGANICS.add(Conditions.ORGANICS_COMMON, 5f);
-        METHANE_ORGANICS.add(Conditions.ORGANICS_ABUNDANT, 20f);
-        METHANE_ORGANICS.add(Conditions.ORGANICS_PLENTIFUL, 10f);
     }
 
     @Override
@@ -268,15 +255,12 @@ public class US_modPlugin extends BaseModPlugin {
 
                 // Add Ruins to planets with Floating Continent
                 if (p.getMarket().hasCondition("US_floating")) {
-                    addConditionIfNeeded(p, FLOATING_CONTINENT_RUINS.pick());
-                    if (new Random().nextInt(15) == 0) {
-                        addConditionIfNeeded(p, Conditions.DECIVILIZED);
-                    }
+                    applyFloatingContinentRuins(p);
                 }
 
                 // Add Organics to Methane planets
                 if (p.getTypeId().equals("US_purple")) {
-                    addConditionIfNeeded(p, METHANE_ORGANICS.pick());
+                    applyMethaneOrganics(p);
                 }
 
                 // Add Irradiated to Burnt planets

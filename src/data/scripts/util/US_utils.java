@@ -5,6 +5,7 @@ import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
+import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.procgen.ConditionGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.procgen.PlanetGenDataSpec;
@@ -441,6 +442,32 @@ public class US_utils {
 
     public static void changePlanetType(PlanetAPI planet, String type) {
         changePlanetType(planet, type, false);
+    }
+
+    public static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
+    static {
+        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_SCATTERED, 1);
+        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
+        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_EXTENSIVE, 3);
+        FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_VAST, 1.5f);
+    }
+
+    public static void applyFloatingContinentRuins(PlanetAPI planet) {
+        addConditionIfNeeded(planet, FLOATING_CONTINENT_RUINS.pick());
+        if (new Random().nextInt(15) == 0) {
+            addConditionIfNeeded(planet, Conditions.DECIVILIZED);
+        }
+    }
+
+    public static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
+    static {
+        METHANE_ORGANICS.add(Conditions.ORGANICS_COMMON, 5f);
+        METHANE_ORGANICS.add(Conditions.ORGANICS_ABUNDANT, 20f);
+        METHANE_ORGANICS.add(Conditions.ORGANICS_PLENTIFUL, 10f);
+    }
+
+    public static void applyMethaneOrganics(PlanetAPI planet) {
+        addConditionIfNeeded(planet, METHANE_ORGANICS.pick());
     }
 
     /*--------------------

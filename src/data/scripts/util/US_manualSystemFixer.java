@@ -4,10 +4,6 @@ import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 
-import java.util.Random;
-
-import static data.scripts.US_modPlugin.FLOATING_CONTINENT_RUINS;
-import static data.scripts.US_modPlugin.METHANE_ORGANICS;
 import static data.scripts.util.US_hyceanManager.manageHyceanConditions;
 import static data.scripts.util.US_utils.*;
 
@@ -38,7 +34,7 @@ public class US_manualSystemFixer {
 
             // Add Organics to Methane planets
             if (planet.getTypeId().equals("US_purple")) {
-                addConditionIfNeeded(planet, METHANE_ORGANICS.pick());
+                applyMethaneOrganics(planet);
             }
 
             // Add Irradiated to Burnt planets
@@ -81,10 +77,7 @@ public class US_manualSystemFixer {
                 if (removeFloatingContinent) {
                     removeConditionIfNeeded(planet, "US_floating");
                 } else {
-                    addConditionIfNeeded(planet, FLOATING_CONTINENT_RUINS.pick());
-                    if (new Random().nextInt(15) == 0) {
-                        addConditionIfNeeded(planet, Conditions.DECIVILIZED);
-                    }
+                    applyFloatingContinentRuins(planet);
                 }
             }
         }
