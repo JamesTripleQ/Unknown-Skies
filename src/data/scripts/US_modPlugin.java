@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.*;
 import java.util.Map.Entry;
 
-import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PK_PLANET_KEY;
-import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.PLANETARY_SHIELD_PLANET;
+import static com.fs.starfarer.api.impl.campaign.procgen.themes.MiscellaneousThemeGenerator.*;
 import static com.fs.starfarer.api.impl.codex.CodexDataV2.*;
 import static data.scripts.util.US_hyceanManager.manageHyceanConditions;
 import static data.scripts.util.US_manualSystemFixer.fixSystem;
@@ -313,7 +312,7 @@ public class US_modPlugin extends BaseModPlugin {
                 }
 
                 // Find unique condition candidates
-                if (!p.getStarSystem().isDeepSpace() && !(p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY) || p.hasCondition(Conditions.SOLAR_ARRAY))) {
+                if (!p.getStarSystem().isDeepSpace() && !p.getMemoryWithoutUpdate().getBoolean(PK_PLANET_KEY) && !p.hasCondition(Conditions.SOLAR_ARRAY) && !p.getMemoryWithoutUpdate().getBoolean(LOCR_MINERS)) {
                     if (SAKURA_LIST.contains(p.getTypeId()) && !p.hasCondition(Conditions.POLLUTION)) {
                         sakuraCandidates.add(p);
                     }
