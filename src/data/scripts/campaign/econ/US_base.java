@@ -14,7 +14,6 @@ import static data.scripts.util.US_utils.txt;
 
 public class US_base extends BaseHazardCondition {
     private final float PRODUCTION_BONUS = 0.25f;
-    private final String sharedID = "milBase";
 
     @Override
     public void apply(String id) {
@@ -25,25 +24,25 @@ public class US_base extends BaseHazardCondition {
         Industry industry = market.getIndustry(Industries.HEAVYINDUSTRY);
         if (industry != null) {
             if (industry.isFunctional()) {
-                modifyAllFactionMarkets(sharedID, market.getFaction());
+                modifyAllFactionMarkets(id, market.getFaction());
             } else {
-                unmodifyAllFactionMarkets(sharedID, market.getFaction());
+                unmodifyAllFactionMarkets(id, market.getFaction());
             }
         }
 
         industry = market.getIndustry(Industries.ORBITALWORKS);
         if (industry != null) {
             if (industry.isFunctional()) {
-                modifyAllFactionMarkets(sharedID, market.getFaction());
+                modifyAllFactionMarkets(id, market.getFaction());
             } else {
-                unmodifyAllFactionMarkets(sharedID, market.getFaction());
+                unmodifyAllFactionMarkets(id, market.getFaction());
             }
         }
     }
 
     @Override
     public void unapply(String id) {
-        unmodifyAllFactionMarkets(sharedID, market.getFaction());
+        unmodifyAllFactionMarkets(id, market.getFaction());
     }
 
     @Override
@@ -59,16 +58,14 @@ public class US_base extends BaseHazardCondition {
     }
 
     private void modifyAllFactionMarkets(String id, FactionAPI faction) {
-        for (MarketAPI thisMarket : Misc.getFactionMarkets(faction)) {
-            thisMarket.getStats().getDynamic().getMod(Stats.PRODUCTION_QUALITY_MOD).modifyFlat(id, PRODUCTION_BONUS, txt("base"));
-            super.apply(id);
+        for (MarketAPI m : Misc.getFactionMarkets(faction)) {
+            m.getStats().getDynamic().getMod(Stats.PRODUCTION_QUALITY_MOD).modifyFlat(id, PRODUCTION_BONUS, market.getName() + " " + txt("base"));
         }
     }
 
     private void unmodifyAllFactionMarkets(String id, FactionAPI faction) {
-        for (MarketAPI thisMarket : Misc.getFactionMarkets(faction)) {
-            thisMarket.getStats().getDynamic().getMod(Stats.PRODUCTION_QUALITY_MOD).unmodify(id);
-            super.apply(id);
+        for (MarketAPI m : Misc.getFactionMarkets(faction)) {
+            m.getStats().getDynamic().getMod(Stats.PRODUCTION_QUALITY_MOD).unmodify(id);
         }
     }
 }

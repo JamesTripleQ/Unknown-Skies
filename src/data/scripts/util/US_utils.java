@@ -5,7 +5,6 @@ import com.fs.starfarer.api.campaign.PlanetAPI;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.campaign.econ.MarketConditionAPI;
 import com.fs.starfarer.api.characters.MarketConditionSpecAPI;
-import com.fs.starfarer.api.impl.campaign.econ.impl.PlanetaryShield;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.procgen.ConditionGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.procgen.PlanetGenDataSpec;
@@ -358,12 +357,17 @@ public class US_utils {
 
     // Modified AddPlanet from StarSystemGenerator
     public static void changePlanetType(PlanetAPI planet, String type, boolean skipRandomColorVariation) {
-        boolean hasShield = false;
+        String glowTexture = planet.getSpec().getGlowTexture();
+        Color glowColor = planet.getSpec().getGlowColor();
+        boolean useReverseLightForGlow = planet.getSpec().isUseReverseLightForGlow();
 
-        if (Global.getSettings().getSpriteName("industry", "shield_texture").equals(planet.getSpec().getShieldTexture())) {
-            hasShield = true;
-            PlanetaryShield.unapplyVisuals(planet);
-        }
+        String shieldTexture = planet.getSpec().getShieldTexture();
+        float shieldThickness = planet.getSpec().getShieldThickness();
+        Color shieldColor = planet.getSpec().getShieldColor();
+
+        String shieldTexture2 = planet.getSpec().getShieldTexture2();
+        float shieldThickness2 = planet.getSpec().getShieldThickness2();
+        Color shieldColor2 = planet.getSpec().getShieldColor2();
 
         planet.changeType(type, random);
         PlanetGenDataSpec planetData = (PlanetGenDataSpec) Global.getSettings().getSpec(PlanetGenDataSpec.class, planet.getSpec().getPlanetType(), false);
@@ -410,8 +414,26 @@ public class US_utils {
         planet.getSpec().setTilt(tilt);
         planet.getSpec().setPitch(pitch);
 
-        if (hasShield) {
-            PlanetaryShield.applyVisuals(planet);
+        if (planet.getSpec().getGlowTexture() == null && glowTexture != null) {
+            planet.getSpec().setGlowTexture(glowTexture);
+            if (glowColor != null) {
+                planet.getSpec().setGlowColor(glowColor);
+            }
+            planet.getSpec().setUseReverseLightForGlow(useReverseLightForGlow);
+            planet.getSpec().setAtmosphereThickness(0.5f);
+            planet.getSpec().setCloudRotation(planet.getSpec().getCloudRotation() * (-1f - 2f * random.nextFloat()));
+        }
+
+        if (planet.getSpec().getShieldTexture() == null && shieldTexture != null) {
+            planet.getSpec().setShieldTexture(shieldTexture);
+            planet.getSpec().setShieldThickness(shieldThickness);
+            planet.getSpec().setShieldColor(shieldColor);
+        }
+
+        if (planet.getSpec().getShieldTexture2() == null && shieldTexture2 != null) {
+            planet.getSpec().setShieldTexture2(shieldTexture2);
+            planet.getSpec().setShieldThickness2(shieldThickness2);
+            planet.getSpec().setShieldColor2(shieldColor2);
         }
 
         planet.applySpecChanges();
