@@ -1870,8 +1870,8 @@
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
 			195,
+			145,
 			150,
-			120,
 			255
 		],
 		"isStar": false,
@@ -1885,9 +1885,17 @@
 			190,
 			180,
 			170,
-			240
+			230
 		],
 		"cloudRotation": -2,
+		"glowTexture": "graphics/planets/US_planet_textureMagnetic_light.png",
+		"glowColor": [
+			255,
+			255,
+			255,
+			150
+		],
+		"useReverseLightForGlow": false,
 		"tags":["codex_unlockable"]
 	},
 	"US_artificial": {
