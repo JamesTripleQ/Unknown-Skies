@@ -1098,9 +1098,9 @@
 		"texture": "graphics/planets/US_planet_textureDesertic.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			200,
-			170,
-			145,
+			232,
+			191,
+			136,
 			255
 		],
 		"isStar": false,
@@ -1526,9 +1526,9 @@
 		"texture": "graphics/planets/US_planet_textureAlpine.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			62,
-			95,
-			56,
+			60,
+			90,
+			60,
 			255
 		],
 		"isStar": false,
@@ -1539,10 +1539,10 @@
 		],
 		"cloudTexture": "graphics/planets/US_clouds_textureSoft.png",
 		"cloudColor": [
-			202,
-			214,
+			213,
+			220,
 			226,
-			240
+			210
 		],
 		"cloudRotation": -5
 	},
