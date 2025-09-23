@@ -1,17 +1,20 @@
 fieldID,fieldName,fieldType,defaultValue,secondaryValue,fieldDescription,minValue,maxValue,tab
-US_starMode,Star Variants,Radio,Expanded,"Vanilla, Classic, Expanded","Determines which star variants can generate (manual generation via memKeys is unaffected):
-- Vanilla: only vanilla stars will spawn
-- Classic: includes the classic Unknown Skies stars by Tartiflette
-- Expanded: includes the Unknown Skies 3.0 stars by pixel_rice_bowl",,,
-US_customArtiLights,Enable Custom Artificial Lights,Boolean,false,,"Allows for the selection of a custom light color for Artificial worlds.
-
-NOTE: The color must be selected before starting a new game and once the sector is generated it cannot be changed. Does not affect ongoing saves.",,,
+US_settingsWarning,,Text,[IMPORTANT NOTE]: all settings on all pages only affect [new saves].,,,,,
+,,,,,,,,
+US_procgenHeader,Proc-Gen,Header,Proc-Gen,,,,,
+US_starMode,Star Mode,Radio,Expanded,"Vanilla, Classic, Expanded","Determines which star can spawn (manual generation via memKeys is unaffected):
+- [Vanilla]: only vanilla stars will spawn
+- [Classic]: includes the classic Unknown Skies stars by Tartiflette
+- [Expanded]: includes the Unknown Skies 3.0 stars by pixel_rice_bowl",,,
+,,,,,,,,
+US_miscHeader,Miscellaneous,Header,Miscellaneous,,,,,
+US_customArtiLights,Enable Custom Artificial Lights,Boolean,false,,Allows for the selection of a custom light color for Artificial worlds.,,,
 US_customArtiColor,Custom Artificial Lights Color,Color,#ffffff,,"Requires the toggle above to be on.
 
-NOTE: Avoiding darker colors such as gray and black is recommended.",,,
+[NOTE]: Avoiding darker colors such as gray and black is recommended.",,,
 ,,,,,,,,
-US_nexHeader,Nexerelin,Header,Nexerelin,,,,,
+US_nexHeader,Nexerelin,Header,Nexerelin,,,,,Cross-Mod
 US_nexSakuraColonize,Sakura Colonization Prevention,Radio,None,"None, Planet, System","Prevents other factions from colonizing the Sakura world:
-- None: no prevention
-- Planet: the Sakura world itself cannot be colonized but other planets in the system can
-- System: the system in which the Sakura world is located cannot be colonized",,,
+- [None]: no prevention
+- [Planet]: the Sakura world itself cannot be colonized but other planets in the system can
+- [System]: the system in which the Sakura world is located cannot be colonized",,,Cross-Mod
