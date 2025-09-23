@@ -8,6 +8,7 @@ US_starMode,Star Mode,Radio,Expanded,"Vanilla, Classic, Expanded","Determines wh
 - [Expanded]: includes the Unknown Skies 3.0 stars by pixel_rice_bowl",,,
 ,,,,,,,,
 US_miscHeader,Miscellaneous,Header,Miscellaneous,,,,,
+US_sakuraIntel,Sakura Spawned Intel,Boolean,false,,"When starting a new game, creates an intel entry if a Sakura world has been generated (does not include the planet's location).",,,
 US_customArtiLights,Enable Custom Artificial Lights,Boolean,false,,Allows for the selection of a custom light color for Artificial worlds.,,,
 US_customArtiColor,Custom Artificial Lights Color,Color,#ffffff,,"Requires the toggle above to be on.
 

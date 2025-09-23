@@ -8,9 +8,12 @@ import com.fs.starfarer.api.campaign.StarSystemAPI;
 import com.fs.starfarer.api.impl.campaign.abilities.GenerateSlipsurgeAbility;
 import com.fs.starfarer.api.impl.campaign.econ.impl.Farming;
 import com.fs.starfarer.api.impl.campaign.ids.*;
+import com.fs.starfarer.api.impl.campaign.intel.misc.RemoteSurveyDataForPlanetIntel;
 import com.fs.starfarer.api.impl.campaign.procgen.Constellation.ConstellationType;
 import com.fs.starfarer.api.impl.campaign.procgen.StarAge;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
+import com.fs.starfarer.api.ui.SectorMapAPI;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import lunalib.lunaSettings.LunaSettings;
 import org.apache.log4j.Logger;
 import org.magiclib.util.MagicSettings;
@@ -29,6 +32,8 @@ import static data.scripts.util.US_utils.*;
 @SuppressWarnings("unused")
 public class US_modPlugin extends BaseModPlugin {
     public static Logger LOG = Global.getLogger(US_modPlugin.class);
+
+    private static final String SAKURA_ID_KEY = "$US_sakuraId";
 
     private final List<String> BG_YOUNG = new ArrayList<>();
     private final List<String> BG_AVERAGE = new ArrayList<>();
@@ -509,12 +514,50 @@ public class US_modPlugin extends BaseModPlugin {
                 planet.getStarSystem().getMemoryWithoutUpdate().set("$nex_do_not_colonize", true);
             }
 
+            Global.getSector().getMemoryWithoutUpdate().set(SAKURA_ID_KEY, planet.getId());
+
             // Setup for future picks
             sakuraCandidates.remove(planet);
         }
 
         cleanupSettings();
         LOG.info("Unknown Skies onNewGameAfterProcGen() END");
+    }
+
+    @Override
+    public void onNewGameAfterTimePass() {
+        boolean sakuraIntel = Boolean.TRUE.equals(LunaSettings.getBoolean("US", "US_sakuraIntel"));
+        String sakuraId = Global.getSector().getMemoryWithoutUpdate().getString(SAKURA_ID_KEY);
+
+        if (sakuraIntel && sakuraId != null) {
+            PlanetAPI sakura = (PlanetAPI) Global.getSector().getEntityById(sakuraId);
+
+            RemoteSurveyDataForPlanetIntel intel = new RemoteSurveyDataForPlanetIntel(sakura) {
+                @Override
+                protected String getName() {
+                    return txt("sakuraIntel_name");
+                }
+
+                @Override
+                public void createSmallDescription(TooltipMakerAPI info, float width, float height) {
+                    info.showPlanetInfo(planet, width, width / 1.62f, new TooltipMakerAPI.PlanetInfoParams(), 0f);
+                    info.addPara(txt("sakuraIntel_desc"), 0f);
+
+                    addBulletPoints(info, ListInfoMode.IN_DESC);
+                    addDeleteButton(info, width);
+                }
+
+                @Override
+                public SectorEntityToken getMapLocation(SectorMapAPI map) {
+                    return null;
+                }
+            };
+
+            intel.setIconId("US_sakuraIntel");
+            intel.setImportant(true);
+
+            Global.getSector().getIntelManager().addIntel(intel);
+        }
     }
 
     private void replaceBackground(StarSystemAPI system) {

@@ -82,6 +82,9 @@
 		"sakura_warn_1": "not polluted",
 		"sakura_0": "%s population growth (based on colony size)",
 		"sakura_1": "%s food production (Farming)",
-		"sakura_2": "%s colony income"
+		"sakura_2": "%s colony income",
+
+		"sakuraIntel_name": "Rose-Tinted Rumors",
+		"sakuraIntel_desc": "Word spreads around the sector of a stunning planet with beautiful pink forests and breathtaking views."
 	}
 }

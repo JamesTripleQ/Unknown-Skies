@@ -26,6 +26,10 @@
 		"coronas": {
 			"US_halo_intense": "graphics/fx/US_star_halo_intense.png",
 			"US_halo_unstable": "graphics/fx/US_star_halo_unstable.png"
+		},
+		
+		"intel": {
+			"US_sakuraIntel": "graphics/icons/intel/US_sakuraIntel.png"
 		}
 	}
 }
