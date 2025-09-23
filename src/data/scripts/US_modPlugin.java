@@ -102,7 +102,7 @@ public class US_modPlugin extends BaseModPlugin {
         makeRelated(getConditionEntryId("US_mind"), getPlanetEntryId("US_savannah"));
         // Psychoactive Fungus
         makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("arid"));
-        makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("US_arid"));
+        makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("US_habArid"));
         makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("tundra"));
         makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("US_alkali"));
         makeRelated(getConditionEntryId("US_shrooms"), getPlanetEntryId("US_alpine"));
