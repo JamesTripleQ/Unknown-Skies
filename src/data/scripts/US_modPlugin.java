@@ -513,7 +513,10 @@ public class US_modPlugin extends BaseModPlugin {
             addConditionIfNeeded(planet, "US_unique_filter");
 
             String sakuraColonize = LunaSettings.getString("US", "US_nexSakuraColonize");
-            assert sakuraColonize != null;
+
+            if (sakuraColonize == null) {
+                sakuraColonize = "None";
+            }
 
             if (sakuraColonize.equals("Planet")) {
                 planet.getMarket().getMemoryWithoutUpdate().set("$nex_do_not_colonize", true);
