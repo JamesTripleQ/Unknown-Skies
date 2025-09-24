@@ -1885,9 +1885,9 @@
 			190,
 			180,
 			170,
-			230
+			225
 		],
-		"cloudRotation": -2,
+		"cloudRotation": -5,
 		"glowTexture": "graphics/planets/US_planet_textureMagnetic_light.png",
 		"glowColor": [
 			255,

@@ -432,9 +432,11 @@ public class US_modPlugin extends BaseModPlugin {
                             planet,
                             planet.getRadius(),
                             planet.getRadius() + 110,
-                            new Color(50, 175, 200, 100),
-                            0.25f,
-                            new Color(25, 250, 100, 150)
+                            new Color(11, 168, 255, 100),
+                            0.75f,
+                            new Color(63, 255, 128, 150),
+                            new Color(1, 85, 255, 150),
+                            new Color(255, 118, 255, 150)
                     )
             );
             magField.setCircularOrbit(planet, 0, 0, 100);
