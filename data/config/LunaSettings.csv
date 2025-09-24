@@ -2,10 +2,14 @@ fieldID,fieldName,fieldType,defaultValue,secondaryValue,fieldDescription,minValu
 US_settingsWarning,,Text,[IMPORTANT NOTE]: all settings on all pages only affect [new saves].,,,,,
 ,,,,,,,,
 US_procgenHeader,Proc-Gen,Header,Proc-Gen,,,,,
-US_starMode,Star Mode,Radio,Expanded,"Vanilla, Classic, Expanded","Determines which star can spawn (manual generation via memKeys is unaffected):
+US_starMode,Star Mode,Radio,Expanded,"Vanilla, Classic, Expanded","Determines which stars can generate (manual generation via memKeys is unaffected):
 - [Vanilla]: only vanilla stars will spawn
 - [Classic]: includes the classic Unknown Skies stars by Tartiflette
-- [Expanded]: includes the Unknown Skies 3.0 stars by pixel_rice_bowl",,,
+- [Expanded]: includes the Unknown Skies 3.0.0 stars by pixel_rice_bowl",,,
+US_giantMode,Gas/Ice Giant Mode,Radio,Expanded,"Vanilla, Classic, Expanded","Determines which gas giants can spawn:
+- [Vanilla]: only vanilla gas giants will spawn
+- [Classic]: includes the classic Unknown Skies gas giants by Tartiflette
+- [Expanded]: includes the Unknown Skies 3.1.0 gas giants by Tesser",,,
 ,,,,,,,,
 US_miscHeader,Miscellaneous,Header,Miscellaneous,,,,,
 US_sakuraIntel,Sakura Spawned Intel,Boolean,false,,"When starting a new game, creates an intel entry if a Sakura world has been generated (does not include the planet's location).",,,

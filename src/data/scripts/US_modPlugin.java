@@ -174,6 +174,11 @@ public class US_modPlugin extends BaseModPlugin {
             for (PlanetAPI p : s.getPlanets()) {
                 if (p.isStar()) continue;
 
+                // Swap gas/ice giants according to mode
+                if (p.getTypeId().equals("gas_giant") || p.getTypeId().equals("ice_giant")) {
+                    swapGiant(p);
+                }
+
                 // Swap lava to US_lava
                 if (p.getTypeId().equals("lava")) {
                     if (new Random().nextBoolean()) {

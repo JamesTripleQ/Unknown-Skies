@@ -110,6 +110,42 @@ public class US_utils {
         market.reapplyConditions();
     }
 
+    // Swaps gas/ice giants
+    public static void swapGiant(PlanetAPI planet) {
+        if (planet == null) {
+            return;
+        }
+
+        String giantMode = LunaSettings.getString("US", "US_giantMode");
+
+        if (giantMode == null || giantMode.equals("Vanilla")) {
+            return;
+        }
+
+        switch (planet.getTypeId()) {
+            case "gas_giant":
+                switch (new Random().nextInt(giantMode.equals("Classic") ? 2 : 2)) {
+                    case 1:
+                        changePlanetType(planet, "US_gas_giantB");
+                        break;
+                    case 2:
+                        changePlanetType(planet, "other");
+                        break;
+                }
+                break;
+            case "ice_giant":
+                switch (new Random().nextInt(giantMode.equals("Classic") ? 2 : 2)) {
+                    case 1:
+                        changePlanetType(planet, "US_gas_giant");
+                        break;
+                    case 2:
+                        changePlanetType(planet, "other");
+                        break;
+                }
+                break;
+        }
+    }
+
     // Swaps to a random star variant
     public static void swapStarToRandom(PlanetAPI star) {
         if (star == null) {

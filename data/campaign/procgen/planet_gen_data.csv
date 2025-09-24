@@ -1,7 +1,7 @@
 id,type,category,frequency,habOffsetMin,habOffsetMax,habOffsetYOUNG,habOffsetAVERAGE,habOffsetOLD,tags,probOrbits,minOrbits,maxOrbits,minRadius,maxRadius,minColor,maxColor,YOUNG,AVERAGE,OLD,star_orange_giant,star_red_giant,star_red_supergiant,star_red_dwarf,star_orange,star_yellow,star_browndwarf,star_white,star_blue_giant,star_blue_supergiant,star_neutron,black_hole,binary,trinary,cat_giant,cat_frozen,cat_cryovolcanic,cat_hab1,cat_hab2,cat_hab3,cat_hab4,cat_hab5,cat_barren,cat_toxic,lagrange,in_asteroids,is_moon
 #Gas giants,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-US_gas_giant,PLANET,cat_giant,10,2,100,,,,,0.95,2,4,250,400,150 230 230,255 255 255,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-US_gas_giantB,PLANET,cat_giant,10,0,100,-10,,,,0.95,2,4,250,400,180 160 150,255 255 255,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+US_gas_giant,PLANET,cat_giant,0,2,100,,,,,0.95,2,4,250,400,150 230 230,255 255 255,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+US_gas_giantB,PLANET,cat_giant,0,0,100,-10,,,,0.95,2,4,250,400,180 160 150,255 255 255,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #Hot,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 US_lava,PLANET,cat_lava,0,-100,-2,2,,-1,around_giant_at_any_offset,0,,,100,150,220 220 220,255 255 255,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
