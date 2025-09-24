@@ -514,14 +514,12 @@ public class US_modPlugin extends BaseModPlugin {
 
             String sakuraColonize = LunaSettings.getString("US", "US_nexSakuraColonize");
 
-            if (sakuraColonize == null) {
-                sakuraColonize = "None";
-            }
-
-            if (sakuraColonize.equals("Planet")) {
-                planet.getMarket().getMemoryWithoutUpdate().set("$nex_do_not_colonize", true);
-            } else if (sakuraColonize.equals("System")) {
-                planet.getStarSystem().getMemoryWithoutUpdate().set("$nex_do_not_colonize", true);
+            if (sakuraColonize != null) {
+                if (sakuraColonize.equals("Planet")) {
+                    planet.getMarket().getMemoryWithoutUpdate().set("$nex_do_not_colonize", true);
+                } else if (sakuraColonize.equals("System")) {
+                    planet.getStarSystem().getMemoryWithoutUpdate().set("$nex_do_not_colonize", true);
+                }
             }
 
             Global.getSector().getMemoryWithoutUpdate().set(SAKURA_ID_KEY, planet.getId());
