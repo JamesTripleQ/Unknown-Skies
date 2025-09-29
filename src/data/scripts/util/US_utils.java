@@ -143,12 +143,15 @@ public class US_utils {
 
         switch (planet.getTypeId()) {
             case "gas_giant":
-                switch (new Random().nextInt(giantMode.equals("Classic") ? 2 : 2)) {
+                switch (new Random().nextInt(giantMode.equals("Classic") ? 2 : 4)) {
                     case 1:
                         changePlanetType(planet, "US_gas_giantB");
                         break;
                     case 2:
-                        changePlanetType(planet, "other");
+                        changePlanetType(planet, "US_gas_giantB_2");
+                        break;
+                    case 3:
+                        changePlanetType(planet, "US_gas_giantB_3");
                         break;
                 }
                 break;

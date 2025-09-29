@@ -73,6 +73,8 @@ public class US_modPlugin extends BaseModPlugin {
         // Set Slipsurge strength
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giant", 0f);
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giantB", 0f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giantB_2", 0f);
+        GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_gas_giantB_3", 0f);
         GenerateSlipsurgeAbility.SLIPSURGE_STRENGTH.put("US_fluorescent", 0f);
     }
 

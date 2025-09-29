@@ -67,9 +67,9 @@
 		"texture": "graphics/planets/US_planet_textureOrangeGiant.jpg",
 		"icon": "graphics/warroom/icon_planet.png",
 		"iconColor": [
-			220,
-			180,
-			100,
+			194,
+			134,
+			75,
 			255
 		],
 		"isStar": false,
@@ -85,6 +85,94 @@
 			174,
 			220,
 			100
+		],
+		"cloudRotation": -2
+	},
+	"US_gas_giantB_2": {
+		"name": "Gas Giant",
+		"descriptionId": "gas_giant",
+		"tilt": 0,
+		"pitch": 0,
+		"rotation": -3,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.18,
+		"atmosphereThicknessMin": 62,
+		"atmosphereColor": [
+			140,
+			100,
+			45,
+			140
+		],
+		"texture": "graphics/planets/US_planet_textureOrangeGiant_2.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			221,
+			167,
+			110,
+			255
+		],
+		"isStar": false,
+		"isGasGiant": true,
+		"lightPosition": [
+			5,
+			-2,
+			3
+		],
+		"cloudTexture": "graphics/planets/US_clouds_textureGiant_2.png",
+		"cloudColor": [
+			211,
+			177,
+			143,
+			150
+		],
+		"cloudRotation": -2
+	},
+	"US_gas_giantB_3": {
+		"name": "Gas Giant",
+		"descriptionId": "gas_giant",
+		"tilt": 0,
+		"pitch": 0,
+		"rotation": -3,
+		"planetColor": [
+			255,
+			255,
+			255,
+			255
+		],
+		"atmosphereThickness": 0.18,
+		"atmosphereThicknessMin": 62,
+		"atmosphereColor": [
+			140,
+			100,
+			45,
+			140
+		],
+		"texture": "graphics/planets/US_planet_textureOrangeGiant_3.jpg",
+		"icon": "graphics/warroom/icon_planet.png",
+		"iconColor": [
+			201,
+			160,
+			108,
+			255
+		],
+		"isStar": false,
+		"isGasGiant": true,
+		"lightPosition": [
+			5,
+			-2,
+			3
+		],
+		"cloudTexture": "graphics/planets/US_clouds_textureGiant_2.png",
+		"cloudColor": [
+			211,
+			177,
+			143,
+			150
 		],
 		"cloudRotation": -2
 	},

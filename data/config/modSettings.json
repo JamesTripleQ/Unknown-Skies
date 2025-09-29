@@ -61,7 +61,9 @@
 			"gas_giant",
 			"ice_giant",
 			"US_gas_giant",
-			"US_gas_giantB"
+			"US_gas_giantB",
+			"US_gas_giantB_2",
+			"US_gas_giantB_3"
 		],
 		
 		"sakura_type": [
