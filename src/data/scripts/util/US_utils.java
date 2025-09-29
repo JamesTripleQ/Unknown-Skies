@@ -9,7 +9,6 @@ import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import com.fs.starfarer.api.impl.campaign.ids.Factions;
 import com.fs.starfarer.api.impl.campaign.procgen.ConditionGenDataSpec;
 import com.fs.starfarer.api.impl.campaign.procgen.PlanetGenDataSpec;
-import com.fs.starfarer.api.impl.campaign.procgen.StarSystemGenerator;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -108,6 +107,26 @@ public class US_utils {
 
         market.removeCondition(id);
         market.reapplyConditions();
+    }
+
+    // Returns a planet from the candidate list only picking moons if no other option is available (assumes candidate list isn't empty)
+    public static PlanetAPI pickPlanetAvoidingMoons(List<PlanetAPI> candidates) {
+        List<PlanetAPI> planets = new ArrayList<>();
+        List<PlanetAPI> moons = new ArrayList<>();
+
+        for (PlanetAPI candidate : candidates) {
+            if (candidate.isMoon()) {
+                moons.add(candidate);
+            } else {
+                planets.add(candidate);
+            }
+        }
+
+        if (!planets.isEmpty()) {
+            return planets.get(new Random().nextInt(planets.size()));
+        }
+
+        return moons.get(new Random().nextInt(moons.size()));
     }
 
     // Swaps gas/ice giants
@@ -481,6 +500,7 @@ public class US_utils {
     }
 
     public static final WeightedRandomPicker<String> FLOATING_CONTINENT_RUINS = new WeightedRandomPicker<>();
+
     static {
         FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_SCATTERED, 1);
         FLOATING_CONTINENT_RUINS.add(Conditions.RUINS_WIDESPREAD, 2);
@@ -496,6 +516,7 @@ public class US_utils {
     }
 
     public static final WeightedRandomPicker<String> METHANE_ORGANICS = new WeightedRandomPicker<>();
+
     static {
         METHANE_ORGANICS.add(Conditions.ORGANICS_COMMON, 5f);
         METHANE_ORGANICS.add(Conditions.ORGANICS_ABUNDANT, 20f);
@@ -515,7 +536,7 @@ public class US_utils {
     public static WeightedRandomPicker<String> getGroupPicker(PlanetAPI planet, String group, Map<String, Float> baseWeights) {
         Set<String> conditionsSoFar = getConditionsSoFar(planet);
 
-        WeightedRandomPicker<String> picker = new WeightedRandomPicker<>(StarSystemGenerator.random);
+        WeightedRandomPicker<String> picker = new WeightedRandomPicker<>(random);
         List<ConditionGenDataSpec> groupData = getDataForGroup(group);
 
         for (ConditionGenDataSpec data : groupData) {

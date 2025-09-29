@@ -506,7 +506,7 @@ public class US_modPlugin extends BaseModPlugin {
 
         // Sakura swap
         if (!sakuraCandidates.isEmpty() && sakuraCandidates.size() >= 3) {
-            PlanetAPI planet = sakuraCandidates.get(new Random().nextInt(sakuraCandidates.size()));
+            PlanetAPI planet = pickPlanetAvoidingMoons(sakuraCandidates);
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Sakura");
             changePlanetType(planet, "US_sakura", true);
             addConditionIfNeeded(planet, "US_sakura");
