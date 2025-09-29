@@ -7,7 +7,6 @@ import com.fs.starfarer.api.impl.campaign.ids.Conditions;
 import static data.scripts.util.US_hyceanManager.manageHyceanConditions;
 import static data.scripts.util.US_utils.*;
 
-@SuppressWarnings("unused")
 public class US_manualSystemFixer {
     // This memKey is meant to be used for systems created before or at procgen that have custom designed US planets that don't need fixing
     public static final String US_SKIP_SYSTEM_KEY = "$US_skipSystem";

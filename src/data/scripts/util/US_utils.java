@@ -589,6 +589,7 @@ public class US_utils {
                 && !market.getFactionId().equals(Factions.NEUTRAL);
     }
 
+    @SuppressWarnings("RedundantArrayCreation")
     public static void addScalingTable(MarketAPI market, TooltipMakerAPI tooltip, boolean expanded, int type, String effect3, String effect4, String effect5, String effect6) {
         if (!expanded) {
             tooltip.addPara(txt("tooltip_hint"), Misc.getGrayColor(), 10f);
