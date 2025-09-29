@@ -362,8 +362,8 @@ public class US_modPlugin extends BaseModPlugin {
             addConditionIfNeeded(planet, "US_unique_filter");
 
             // Add ruins if needed (at least widespread)
-            if (!planet.getMarket().hasCondition(Conditions.RUINS_VAST) && !planet.getMarket().hasCondition(Conditions.RUINS_WIDESPREAD)) {
-                addConditionIfNeeded(planet, Conditions.RUINS_EXTENSIVE);
+            if (!planet.getMarket().hasCondition(Conditions.RUINS_VAST) && !planet.getMarket().hasCondition(Conditions.RUINS_EXTENSIVE)) {
+                addConditionIfNeeded(planet, Conditions.RUINS_WIDESPREAD);
             }
 
             // Setup for future picks
