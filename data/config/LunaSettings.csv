@@ -10,6 +10,7 @@ US_giantMode,Gas/Ice Giant Mode,Radio,Expanded,"Vanilla, Classic, Expanded","Det
 - [Vanilla]: only vanilla gas giants will spawn
 - [Classic]: includes the classic Unknown Skies gas giants by Tartiflette
 - [Expanded]: includes the Unknown Skies 3.1.0 gas giants by Tesser",,,
+US_sakuraAvoidMoon,Sakura Avoids Moons,Boolean,false,,The Sakura world will not generate as a moon unless no other option is present.,,,
 ,,,,,,,,
 US_miscHeader,Miscellaneous,Header,Miscellaneous,,,,,
 US_sakuraIntel,Sakura Spawned Intel,Boolean,false,,"When starting a new game, creates an intel entry if a Sakura world has been generated (does not include the planet's location).",,,

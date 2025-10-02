@@ -508,7 +508,14 @@ public class US_modPlugin extends BaseModPlugin {
 
         // Sakura swap
         if (!sakuraCandidates.isEmpty() && sakuraCandidates.size() >= 3) {
-            PlanetAPI planet = pickPlanetAvoidingMoons(sakuraCandidates);
+            PlanetAPI planet;
+
+            if (Boolean.TRUE.equals(LunaSettings.getBoolean("US", "US_sakuraAvoidMoon"))) {
+                planet = pickPlanetAvoidingMoons(sakuraCandidates);
+            } else {
+                planet = sakuraCandidates.get(new Random().nextInt(sakuraCandidates.size()));
+            }
+
             LOG.info("Changing " + planet.getName() + " in " + planet.getStarSystem().getName() + " to Sakura");
             changePlanetType(planet, "US_sakura", true);
             addConditionIfNeeded(planet, "US_sakura");
